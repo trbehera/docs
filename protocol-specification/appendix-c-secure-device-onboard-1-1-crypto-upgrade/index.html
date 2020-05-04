@@ -1,0 +1,1002 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Secure Device Onboard Project">
+      
+      
+        <link rel="canonical" href="https://secure-device-onboard.github.io/docs/protocol-specification/appendix-c-secure-device-onboard-1-1-crypto-upgrade/">
+      
+      
+        <meta name="author" content="Secure Device Onboard Contributers">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Appendix C - Secure Device Onboard 1.1 Crypto Upgrade - Secure Device Onboard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#appendix-c-secure-device-onboard-11-crypto-upgrade" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/sdo-x512.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Secure Device Onboard
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Appendix C - Secure Device Onboard 1.1 Crypto Upgrade
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../client-sdk/client-sdk-reference-guide/" class="md-tabs__link">
+          Client SDK
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../iot-platform-sdk/introduction/" class="md-tabs__link">
+          IOT Platform SDK
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../rendezvous-service/introduction/" class="md-tabs__link">
+          Rendezvous Service
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" class="md-tabs__link">
+          Supply Chain Tools
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../protocol-reference-implementation/introduction/" class="md-tabs__link">
+          Protocol Reference Implementation
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../all-in-one-demo/introduction/" class="md-tabs__link">
+          All-in-one Demo
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+          Protocol Specification
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-nav__button md-logo">
+      
+        <img src="../../images/sdo-x512.png" width="48" height="48">
+      
+    </a>
+    Secure Device Onboard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/" title="Reference" class="md-nav__link">
+      Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../community/" title="Community" class="md-nav__link">
+      Community
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../security-best-practices/security-best-practices/" title="Security Best Practices" class="md-nav__link">
+      Security Best Practices
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Client SDK
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Client SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client-sdk/client-sdk-reference-guide/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client-sdk/client-sdk-api-reference/" title="API Reference" class="md-nav__link">
+      API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      IOT Platform SDK
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        IOT Platform SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../iot-platform-sdk/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../iot-platform-sdk/running-the-demo/" title="Running The Demo" class="md-nav__link">
+      Running The Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../iot-platform-sdk/development-guide/" title="Development Guide" class="md-nav__link">
+      Development Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Rendezvous Service
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Rendezvous Service
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../rendezvous-service/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Supply Chain Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Supply Chain Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" title="Manufacturing Tools" class="md-nav__link">
+      Manufacturing Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/reseller/reseller-enablement-guide/" title="Reseller Tools" class="md-nav__link">
+      Reseller Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/keystore-guide/" title="Keystore Guide" class="md-nav__link">
+      Keystore Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Protocol Reference Implementation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Protocol Reference Implementation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-reference-implementation/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      All-in-one Demo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        All-in-one Demo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../all-in-one-demo/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12" checked>
+    
+    <label class="md-nav__link" for="nav-12">
+      Protocol Specification
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Protocol Specification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../protocol-description/" title="Protocol Description" class="md-nav__link">
+      Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../protocol-data-types/" title="Protocol Data Types" class="md-nav__link">
+      Protocol Data Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../data-transmission-persistence/" title="Data Transmission & Persistence" class="md-nav__link">
+      Data Transmission & Persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../detailed-protocol-description/" title="Detailed Protocol Description" class="md-nav__link">
+      Detailed Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../resale-protocol/" title="Resale Protocol" class="md-nav__link">
+      Resale Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../credential-reuse-protocol/" title="Credential Reuse Protocol" class="md-nav__link">
+      Credential Reuse Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../appendix-b-device-provisioning-with-ecdsa/" title="Appendix B - Device Provisioning with ECDSA" class="md-nav__link">
+      Appendix B - Device Provisioning with ECDSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Appendix C - Secure Device Onboard 1.1 Crypto Upgrade" class="md-nav__link md-nav__link--active">
+      Appendix C - Secure Device Onboard 1.1 Crypto Upgrade
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="appendix-c-secure-device-onboard-11-crypto-upgrade">Appendix C: Secure Device Onboard 1.1 Crypto Upgrade<a class="headerlink" href="#appendix-c-secure-device-onboard-11-crypto-upgrade" title="Permanent link">&para;</a></h1>
+<p>In October of 2017, the Security Architecture Forum (Intel Internal forum)
+(SAFE) Crypto Guidelines were upgraded, based on the potential threat of quantum
+cryptography. This table indicates crypto levels to apply. Secure Device Onboard 1.0 and Secure Device Onboard 1.1
+protocol spec use the left column, and the new crypto strength is given in the
+“Future Crypto” column; it will be assigned a Secure Device Onboard release in the
+future<em>.</em></p>
+<p><em>The length of a release is generally outside the scope of this document;
+however, implementers of Secure Device Onboard Service and Owner components must take care
+to ensure that Devices using Secure Device Onboard 1.1 crypto must be supported by all Secure Device Onboard components for the life of the Secure Device Onboard 1.1 release.</em></p>
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Secure Device Onboard 1.0 &amp; Secure Device Onboard 1.1</th>
+            <th>Future Crypto (Enhanced Strength for Quantum Crypto)</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Device HMAC</td>
+            <td>HMAC-SHA-256 with HMAC secret of 128 bits</td>
+            <td>HMAC-SHA-384 with HMAC secret of 512 bits</td>
+            <td>Bay Trail grandfathered for SHA-256 <a href="../protocol-description/#building-the-ownership-credential-ownership-voucher">See §</a></td>
+        </tr>
+        <tr>
+            <td>Hash of Owner Key</td>
+            <td>SHA-256</td>
+            <td>SHA-384</td>
+            <td>(inside Device DI protocol) It is also permissible to store the entire Owner key. <a href="../protocol-description/#building-the-ownership-credential-ownership-voucher">See §</a></td>
+        </tr>
+        <tr>
+            <td>Ownership Voucher (Owner attestation)</td>
+            <td>RSA2048 Use RSA2048RESTR as public key type.</td>
+            <td>RSA3072, except Bay Trail Use RSA_UR as public key type.</td>
+            <td>Bay Trail grandfathered for RSA2048RESTR option. <a href="../protocol-description/#building-the-ownership-credential-ownership-voucher">See §</a></td>
+        </tr>
+        <tr>
+            <td>Ownership Voucher (Owner attestation)</td>
+            <td>ECDSA NIST P-256</td>
+            <td>ECDSA NIST P-384</td>
+            <td>P-384 not supported by some crypto chips; it may be possible to grandfather them in. <a href="../protocol-description/index.html#building-the-ownership-credential-ownership-voucher">See §</a></td>
+        </tr>
+        <tr>
+            <td>Ownership Voucher</td>
+            <td>SHA-256</td>
+            <td>SHA-384</td>
+            <td>Bay Trail grandfathered for SHA-256. <a href="../protocol-description/#building-the-ownership-credential-ownership-voucher">See §</a></td>
+        </tr>
+        <tr>
+            <td>Device attestation EPID1.0, 1.1, 2.0</td>
+            <td>Per platform</td>
+            <td>No change</td>
+            <td>Intel<sup>®</sup> EPID is under evaluation by SAFE; Later versions of Intel<sup>®</sup> EPID are being developed by labs. <a href="../protocol-data-types/#intel-enhanced-privacy-id-intel-epid-signatures-overview">See §</a></td>
+        <tr>
+            <td>Ownership Voucher</td>
+            <td>SHA-256</td>
+            <td>SHA-384</td>
+            <td>Bay Trail grandfathered for SHA-256. <a href="../protocol-description/#building-the-ownership-credential-ownership-voucher">See §</a></td>
+        </tr>
+        <tr>
+            <td>Device attestation ECDSA</td>
+            <td>ECDSA NIST P-256 (with SHA-256 hash) &amp; ECDSA NIST P-384 (with SHA-384 hash)</td>
+            <td>ECDSA NIST P-384 (with SHA-384 hash)</td>
+            <td>This is the device attestation key built into the device. <a href="../protocol-data-types/#ecdsa-nist-p-256-and-ecdsa-nist-p-384-signatures">See §</a></td>
+        </tr>
+        <tr>
+            <td>Key Exchange, DH</td>
+            <td>Id14 (2048-bit modulus) a, b are 256 bits each</td>
+            <td>Id15 (3072 bit modulus) a, b are 768 bits each</td>
+            <td>New modulus available from same RFC as old, see refs. Increased entropy needed for SVK, SEK. <a href="../protocol-description/index.html#diffie-hellman-key-exchange-protocol">See §</a></td>
+        </tr>
+        <tr>
+            <td>Key Exchange, Asymmetric</td>
+            <td>RSA2048RESTR RSA-OAEP-MGF-SHA256 Device, Owner Random of 256 bits</td>
+            <td>RSA_UR, 3072 bits RSA-OAEP-MGF-SHA256 Device, Owner Random of 768 bits</td>
+            <td>*SHA256* may be used here as mask generation function for RSA-OAEP. Larger D&amp;O Randoms required for SVK, SEK. <a href="../protocol-description/#asymmetric-key-exchange-protocol">See §</a></td>
+        </tr>
+        <tr>
+            <td>Key Exchange, ECDH</td>
+            <td>ECC NIST P-256 or NIST P-384, keys used once only Device, Owner random of 128 bits</td>
+            <td>ECC NIST P-384, keys used once only Device, Owner random of 384 bits</td>
+            <td>Larger D&amp;O Randoms required for SVK, SEK. <a href="../protocol-description/#ecdh-key-exchange-protocol">See §</a></td>
+        </tr>
+        <tr>
+            <td>Key Exchange, ECDH, LEGACY</td>
+            <td>ECC NIST P-256, keys used once only Device, Owner random of 128 bits</td>
+            <td>ECC NIST P-256, keys used once only Device, Owner random of 512 bits</td>
+            <td>Note that this mode can only be used for legacy hardware, with approval from PSE. <a href="../protocol-description/index.html#ecdh-key-exchange-protocol">See §</a></td>
+        </tr>
+        <tr>
+            <td>Key Derivation Function (*‎2.5.5.4*)</td>
+            <td>SHA-256 based SEK, SVK entropy is 128 bits (SVK 256 bits, but with lower entropy)</td>
+            <td>SHA-384 based SEK is 256 bits SVK is 512 bits</td>
+            <td>Note changes to Device and Owner Randoms in key exchange algorithms to support this change. <a href="../protocol-description/index.html#key-derivation-function">See §</a></td>
+        </tr>
+        <tr>
+            <td>SEK (Session Encryption Key)</td>
+            <td>128 bits</td>
+            <td>256 bits</td>
+            <td>Matches TO2 Session Encryption modes. <a href="../protocol-description/#key-exchange-in-the-to2-protocol">See Table in §  </a>; also <a href="../data-transmission-persistence/#encrypted-message-body">see §</a></td>
+        </tr>
+        <tr>
+            <td>SVK (Session Verification Key)</td>
+            <td>256 bits, with 128 bits entropy</td>
+            <td>512 bits</td>
+            <td>Based on 512 bit state of SHA-384. <a href="../protocol-description/#key-exchange-in-the-to2-protocol">See Table in §  </a>; also <a href="../data-transmission-persistence/#encrypted-message-body">see §</a></td>
+        </tr>
+        <tr>
+            <td>TO2 Session HMAC</td>
+            <td>HMAC-SHA-256</td>
+            <td>HMAC-SHA-384</td>
+            <td>HMAC key is 512 bits. <a href="../protocol-description/#key-exchange-in-the-to2-protocol">See Table in §  </a>; also <a href="../data-transmission-persistence/#encrypted-message-body">see §</a></td>.
+        </tr>
+        <tr>
+            <td>TO2 Session Encryption, counter mode</td>
+            <td>AES-128/CTR IV 12 bytes, Counter is 4 bytes.</td>
+            <td>AES-256/CTR IV is 12 bytes, Counter is 4 bytes</td>
+            <td>Note session limits on TO2 protocol (<a href="../detailed-protocol-description/#limitation-of-round-trip-times">See §</a>).</td>
+        </tr>
+        <tr>
+            <td>TO2 Session Encryption, CBC mode</td>
+            <td>AES-128/CBC IV is 16 bytes</td>
+            <td>AES-256/CBC IV is 16 bytes</td>
+            <td>Note session limits on TO2 protocol (<a href="../detailed-protocol-description/#limitation-of-round-trip-times">See §</a>).</td>
+        </tr>
+        <tr>
+            <td>TO2 Protocol Roundtrip Limit</td>
+            <td>1M (1e6) rounds</td>
+            <td>1M (1e6) rounds</td>
+            <td>Required limit for AES/CTR mode. Increased limit is to permit small files to be transmitted in ServiceInfo, esp for MCUs. <a href="../detailed-protocol-description/#transfer-ownership-protocol-2">See §</a></td>
+        </tr>
+    </tbody>
+</table>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../appendix-b-device-provisioning-with-ecdsa/" title="Appendix B - Device Provisioning with ECDSA" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Appendix B - Device Provisioning with ECDSA
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

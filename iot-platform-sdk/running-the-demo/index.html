@@ -1,0 +1,2018 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Secure Device Onboard Project">
+      
+      
+        <link rel="canonical" href="https://secure-device-onboard.github.io/docs/iot-platform-sdk/running-the-demo/">
+      
+      
+        <meta name="author" content="Secure Device Onboard Contributers">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Running The Demo - Secure Device Onboard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#running-demos-with-the-iot-platform-sdk" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/sdo-x512.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Secure Device Onboard
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Running The Demo
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../client-sdk/client-sdk-reference-guide/" class="md-tabs__link">
+          Client SDK
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+          IOT Platform SDK
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../rendezvous-service/introduction/" class="md-tabs__link">
+          Rendezvous Service
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" class="md-tabs__link">
+          Supply Chain Tools
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../protocol-reference-implementation/introduction/" class="md-tabs__link">
+          Protocol Reference Implementation
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../all-in-one-demo/introduction/" class="md-tabs__link">
+          All-in-one Demo
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../protocol-specification/introduction/" class="md-tabs__link">
+          Protocol Specification
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-nav__button md-logo">
+      
+        <img src="../../images/sdo-x512.png" width="48" height="48">
+      
+    </a>
+    Secure Device Onboard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/" title="Reference" class="md-nav__link">
+      Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../community/" title="Community" class="md-nav__link">
+      Community
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../security-best-practices/security-best-practices/" title="Security Best Practices" class="md-nav__link">
+      Security Best Practices
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Client SDK
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Client SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client-sdk/client-sdk-reference-guide/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../client-sdk/client-sdk-api-reference/" title="API Reference" class="md-nav__link">
+      API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      IOT Platform SDK
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        IOT Platform SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Running The Demo
+      </label>
+    
+    <a href="./" title="Running The Demo" class="md-nav__link md-nav__link--active">
+      Running The Demo
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-iot-platform-sdk-with-the-pri" class="md-nav__link">
+    Running the IoT Platform SDK with the PRI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites-for-running-the-demo" class="md-nav__link">
+    Pre-requisites for Running the Demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-demo-manually" class="md-nav__link">
+    Running the Demo Manually
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-simulated-rendezvous-service" class="md-nav__link">
+    Start the Simulated Rendezvous Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-to0scheduler-service" class="md-nav__link">
+    Start the To0scheduler Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-ocs-service" class="md-nav__link">
+    Start the OCS Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-ops-service" class="md-nav__link">
+    Start the OPS Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-device-simulation" class="md-nav__link">
+    Start the Device Simulation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-simulation-using-docker-compose-tool" class="md-nav__link">
+    Running the Simulation Using Docker* Compose Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-simulated-rendezvous-service_1" class="md-nav__link">
+    Start the Simulated Rendezvous Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-iot-platform-sdk-services" class="md-nav__link">
+    Start the IOT Platform SDK Services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-device-simulation_1" class="md-nav__link">
+    Start the Device Simulation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-ownership-vouchercredential-pair" class="md-nav__link">
+    Generating Ownership Voucher/Credential Pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-multiple-owner-key-pairs" class="md-nav__link">
+    Working with Multiple Owner Key-Pair(s)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-key-pair-for-owner-attestation" class="md-nav__link">
+    Generating Key-Pair for Owner Attestation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-ecdsa-key-pair-for-owner-attestation" class="md-nav__link">
+    Generating ECDSA Key-Pair for Owner Attestation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-rsa-key-pair-for-owner-attestation" class="md-nav__link">
+    Generating RSA Key-Pair for Owner Attestation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserting-an-existing-owners-certificate-and-private-key-into-a-keystore" class="md-nav__link">
+    Inserting an Existing Owner's Certificate and Private Key into a Keystore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-an-existing-owners-certificate-from-keystore" class="md-nav__link">
+    Exporting an Existing Owner's Certificate from Keystore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-an-existing-owners-key-pair-from-keystore" class="md-nav__link">
+    Removing an Existing Owner's Key-Pair from Keystore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iot-platform-sdk-and-pri-component-configuration" class="md-nav__link">
+    IOT Platform SDK and PRI Component Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-proxies" class="md-nav__link">
+    Configuring Proxies
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-logs" class="md-nav__link">
+    Configuring Logs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-the-properties-file" class="md-nav__link">
+    Configuring the Properties File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-resources-for-ocs" class="md-nav__link">
+    Setting up Resources for OCS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-owner-companion-service-with-https" class="md-nav__link">
+    Running the Owner Companion Service with HTTPS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-to0scheduler-with-https-for-t00" class="md-nav__link">
+    Running the To0Scheduler with HTTPS for T00
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-owner-protocol-service-with-https-for-to2-process" class="md-nav__link">
+    Starting the Owner Protocol Service with HTTP(S) for TO2 Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-transport-layer-security-tls-during-to2" class="md-nav__link">
+    Enabling Transport Layer Security (TLS) during TO2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-iot-platform-sdk-components-on-separate-machines" class="md-nav__link">
+    Running the IOT Platform SDK Components on Separate Machines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-while-running-the-demo" class="md-nav__link">
+    Common Issues While Running the Demo
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../development-guide/" title="Development Guide" class="md-nav__link">
+      Development Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Rendezvous Service
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Rendezvous Service
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../rendezvous-service/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Supply Chain Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Supply Chain Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" title="Manufacturing Tools" class="md-nav__link">
+      Manufacturing Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/reseller/reseller-enablement-guide/" title="Reseller Tools" class="md-nav__link">
+      Reseller Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/keystore-guide/" title="Keystore Guide" class="md-nav__link">
+      Keystore Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Protocol Reference Implementation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Protocol Reference Implementation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-reference-implementation/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      All-in-one Demo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        All-in-one Demo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../all-in-one-demo/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Protocol Specification
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Protocol Specification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/protocol-description/" title="Protocol Description" class="md-nav__link">
+      Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/protocol-data-types/" title="Protocol Data Types" class="md-nav__link">
+      Protocol Data Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/data-transmission-persistence/" title="Data Transmission & Persistence" class="md-nav__link">
+      Data Transmission & Persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/detailed-protocol-description/" title="Detailed Protocol Description" class="md-nav__link">
+      Detailed Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/resale-protocol/" title="Resale Protocol" class="md-nav__link">
+      Resale Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/credential-reuse-protocol/" title="Credential Reuse Protocol" class="md-nav__link">
+      Credential Reuse Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/appendix-b-device-provisioning-with-ecdsa/" title="Appendix B - Device Provisioning with ECDSA" class="md-nav__link">
+      Appendix B - Device Provisioning with ECDSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/appendix-c-secure-device-onboard-1-1-crypto-upgrade/" title="Appendix C - Secure Device Onboard 1.1 Crypto Upgrade" class="md-nav__link">
+      Appendix C - Secure Device Onboard 1.1 Crypto Upgrade
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-iot-platform-sdk-with-the-pri" class="md-nav__link">
+    Running the IoT Platform SDK with the PRI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites-for-running-the-demo" class="md-nav__link">
+    Pre-requisites for Running the Demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-demo-manually" class="md-nav__link">
+    Running the Demo Manually
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-simulated-rendezvous-service" class="md-nav__link">
+    Start the Simulated Rendezvous Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-to0scheduler-service" class="md-nav__link">
+    Start the To0scheduler Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-ocs-service" class="md-nav__link">
+    Start the OCS Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-ops-service" class="md-nav__link">
+    Start the OPS Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-device-simulation" class="md-nav__link">
+    Start the Device Simulation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-simulation-using-docker-compose-tool" class="md-nav__link">
+    Running the Simulation Using Docker* Compose Tool
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-simulated-rendezvous-service_1" class="md-nav__link">
+    Start the Simulated Rendezvous Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-iot-platform-sdk-services" class="md-nav__link">
+    Start the IOT Platform SDK Services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-device-simulation_1" class="md-nav__link">
+    Start the Device Simulation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-ownership-vouchercredential-pair" class="md-nav__link">
+    Generating Ownership Voucher/Credential Pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-multiple-owner-key-pairs" class="md-nav__link">
+    Working with Multiple Owner Key-Pair(s)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-key-pair-for-owner-attestation" class="md-nav__link">
+    Generating Key-Pair for Owner Attestation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generating-ecdsa-key-pair-for-owner-attestation" class="md-nav__link">
+    Generating ECDSA Key-Pair for Owner Attestation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-rsa-key-pair-for-owner-attestation" class="md-nav__link">
+    Generating RSA Key-Pair for Owner Attestation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserting-an-existing-owners-certificate-and-private-key-into-a-keystore" class="md-nav__link">
+    Inserting an Existing Owner's Certificate and Private Key into a Keystore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-an-existing-owners-certificate-from-keystore" class="md-nav__link">
+    Exporting an Existing Owner's Certificate from Keystore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-an-existing-owners-key-pair-from-keystore" class="md-nav__link">
+    Removing an Existing Owner's Key-Pair from Keystore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iot-platform-sdk-and-pri-component-configuration" class="md-nav__link">
+    IOT Platform SDK and PRI Component Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-proxies" class="md-nav__link">
+    Configuring Proxies
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-logs" class="md-nav__link">
+    Configuring Logs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-the-properties-file" class="md-nav__link">
+    Configuring the Properties File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-resources-for-ocs" class="md-nav__link">
+    Setting up Resources for OCS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-owner-companion-service-with-https" class="md-nav__link">
+    Running the Owner Companion Service with HTTPS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-to0scheduler-with-https-for-t00" class="md-nav__link">
+    Running the To0Scheduler with HTTPS for T00
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-owner-protocol-service-with-https-for-to2-process" class="md-nav__link">
+    Starting the Owner Protocol Service with HTTP(S) for TO2 Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-transport-layer-security-tls-during-to2" class="md-nav__link">
+    Enabling Transport Layer Security (TLS) during TO2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-iot-platform-sdk-components-on-separate-machines" class="md-nav__link">
+    Running the IOT Platform SDK Components on Separate Machines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-while-running-the-demo" class="md-nav__link">
+    Common Issues While Running the Demo
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="running-demos-with-the-iot-platform-sdk">Running Demos with the IOT Platform SDK<a class="headerlink" href="#running-demos-with-the-iot-platform-sdk" title="Permanent link">&para;</a></h1>
+<h2 id="running-the-iot-platform-sdk-with-the-pri">Running the IoT Platform SDK with the PRI<a class="headerlink" href="#running-the-iot-platform-sdk-with-the-pri" title="Permanent link">&para;</a></h2>
+<p>Secure Device Onboard provides a <a href="https://github.com/secure-device-onboard/pri">Protocol Reference Implementation</a> (PRI) for the following Secure Device Onboard components: Rendezvous and Device. Both of these components are required to perform an end-to-end execution of the Secure Device Onboard protocol.</p>
+<p>To test integration of Secure Device Onboard with the IOT Platform SDK solution, the simulated Device and Rendezvous components of the PRI can be used.</p>
+<h2 id="pre-requisites-for-running-the-demo">Pre-requisites for Running the Demo<a class="headerlink" href="#pre-requisites-for-running-the-demo" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Clone the source repository of the <a href="https://github.com/secure-device-onboard/pri">Protocol Reference Implementation</a> (PRI). In the rest of this section, the absolute path of this folder is referred to as &lt;sdo-pri-root>.</p>
+</li>
+<li>
+<p>Build the PRI by following the steps mentioned in its <a href="https://github.com/secure-device-onboard/pri/blob/master/README.md">README</a>. Alternatively, run the command
+    <code>mvn package</code>
+    The build creates and copies the Rendezvous and Device WAR/JAR files into their respective \&lt;sdo-pri-root>/demo directory.</p>
+</li>
+<li>
+<p>&lt;sdo-pri-root> has the following directories, which are used during the IOT Platform SDK execution.</p>
+<ul>
+<li><strong>&lt;sdo-pri-root>/demo:</strong> Sample scripts and configuration to run the demonstration of an onboarding process are located in the following directories:<ul>
+<li>README.md</li>
+<li>rendezvous/ <br>
+    ./rendezvous (Sample script to start rendezvous)</li>
+<li>device/ <br>
+    ./device (Sample script to start device)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Clone the source repository of the <a href="https://github.com/secure-device-onboard/iot-platform-sdk">IoT Platform SDK</a>. In the rest of this section, the absolute path of this folder is referred to as &lt;sdo-iot-platform-sdk-root>.</p>
+</li>
+<li>
+<p>Build IOT Platform SDK by following the steps mentioned in the <a href="https://github.com/secure-device-onboard/iot-platform-sdk/blob/master/README.md">README</a>. Alternatively, run the following command:
+    <code>mvn clean install</code>
+    The build creates and copies the OCS, OPS and To0Scheduler WAR/JAR files into their respective &lt;sdo-iot-platform-sdk-root>/demo directory.</p>
+</li>
+<li>
+<p>&lt;sdo-iot-platform-sdk-root> has the following directories, which are used during the IOT Platform SDK execution.</p>
+<ul>
+<li>
+<p><strong>&lt;sdo-iot-platform-sdk-root>/demo:</strong> The IOT Platform SDK root directory containing Docker* files, configurations, and execution binaries:</p>
+<ul>
+<li>docker-compose.yml <br></li>
+<li>ocs/config/ <br>
+   ./run-ocs (Sample script and configuration to run the OCS)</li>
+<li>ops/config/ <br>
+   ./run-ops (Sample scripts and configuration to run the OPS)</li>
+<li>to0scheduler/config/ <br>
+   ./run-to0scheduler (Sample scripts and configuration to run the to0scheduler)</li>
+</ul>
+<p>The example instructions are executed under the Ubuntu* OS version 18.04.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The device must have already completed the DeviceInitialization (DI) protocol, and an Owner must have been assigned to it using Supply Chain Toolkit. The resulting Ownership voucher(OV) must be moved from SCT into the OCS.</p>
+</li>
+</ol>
+<h2 id="running-the-demo-manually">Running the Demo Manually<a class="headerlink" href="#running-the-demo-manually" title="Permanent link">&para;</a></h2>
+<p>The demo can be run with the default properties for both the PRI and IOT Platform SDK components. Any configurations to be done, such as configuring proxies, properties or logs, should be done before starting the services. However, resources such as the Ownership Voucher, owner certificate and private keys, and others, can be pushed into the OCS after the services are started.</p>
+<h2 id="start-the-simulated-rendezvous-service">Start the Simulated Rendezvous Service<a class="headerlink" href="#start-the-simulated-rendezvous-service" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and start a virtual instance of the Rendezvous service shown as follows:</p>
+<pre><code>$ cd &lt;sdo-pri-root&gt;/demo/rendezvous
+$ sh rendezvous
+</code></pre>
+
+<p>This starts the following server to listen to incoming messages from the IOT Platform SDK and the simulated device.</p>
+<p><a href="http://localhost:8040">http://localhost:8040</a> (for To0Scheduler and Simulated Device messages).</p>
+<h2 id="start-the-to0scheduler-service">Start the To0scheduler Service<a class="headerlink" href="#start-the-to0scheduler-service" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and follow these steps to start the To0scheduler service:</p>
+<pre><code>$ cd &lt;sdo-iot-platform-sdk-root&gt;/demo/to0scheduler/config
+$ sh run-to0scheduler
+</code></pre>
+
+<h2 id="start-the-ocs-service">Start the OCS Service<a class="headerlink" href="#start-the-ocs-service" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and follow these steps to start the OCS service:</p>
+<pre><code>$ cd &lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config
+$ sh run-ocs
+</code></pre>
+
+<h2 id="start-the-ops-service">Start the OPS Service<a class="headerlink" href="#start-the-ops-service" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and follow these steps to start the OPS service:</p>
+<pre><code>$ cd &lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config
+$ sh run-ops
+</code></pre>
+
+<h2 id="start-the-device-simulation">Start the Device Simulation<a class="headerlink" href="#start-the-device-simulation" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and follow these steps to start the device:</p>
+<pre><code>$ cd &lt;sdo-pri-root&gt;/demo/device
+$ sh device
+</code></pre>
+
+<p>After the device script completes successfully, there will be three new files created inside &lt;sdo-pri-root>/demo/device:</p>
+<ul>
+<li>linux64.sh</li>
+<li>payload.bin</li>
+<li>result.txt</li>
+</ul>
+<p>During the onboarding process payload.bin and linux64.sh are downloaded from the Owner over an encrypted channel. This demonstrates that files can be downloaded from the OPS (Owner) and executed on the local device during the onboarding process. Once downloaded, linux64.sh is executed which in turn operates on the binary program payload.bin and creates the file result.txt:</p>
+<pre><code>$ cat result.txt
+</code></pre>
+
+<p>should output: Device onboarded successfully.</p>
+<p>To clean up onboarded files to rerun the demo:</p>
+<pre><code>$ rm linux64.sh
+$ rm payload.bin
+$ rm result.txt
+</code></pre>
+
+<h2 id="running-the-simulation-using-docker-compose-tool">Running the Simulation Using Docker* Compose Tool<a class="headerlink" href="#running-the-simulation-using-docker-compose-tool" title="Permanent link">&para;</a></h2>
+<p>The demo can be run using the Docker* Compose tool for the IOT Platform SDK components. Any configuration, such as configuring proxies, properties or logs, should be done before starting the services.</p>
+<h2 id="start-the-simulated-rendezvous-service_1">Start the Simulated Rendezvous Service<a class="headerlink" href="#start-the-simulated-rendezvous-service_1" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and start a virtual instance of the Rendezvous service as per the steps described
+<a href="#start-the-simulated-rendezvous-service">here</a>:</p>
+<h2 id="start-the-iot-platform-sdk-services">Start the IOT Platform SDK Services<a class="headerlink" href="#start-the-iot-platform-sdk-services" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and start the IOT Platform SDK services:</p>
+<pre><code>$ cd &lt;sdo-iot-platform-sdk-root&gt;/demo/
+$ sudo docker-compose up
+</code></pre>
+
+<p>This brings up the OCS, OPS, and To0Scheduler instances inside an Ubuntu-based Docker container. During this operation, everything under the Docker directory, including the configurations and binaries are copied into the built Docker containers. Only the directory 'ocs/config/db' and the file 'to0scheduler/config/redirect.properties', are configurable once the Docker container starts, to externalize the device information and values, and the TO1 OPS (owner) redirect information. If any changes are made to any of the files, other than the directory 'ocs/config/db' and the file 'to0scheduler/config/redirect.properties', both, the container and its image needs to be deleted and re-created again.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When running the demo in a single machine, the ownership voucher must be created such that the IP address of the Rendezvous service is present, instead of 'localhost' in the Rendezvous information.</p>
+</div>
+<h2 id="start-the-device-simulation_1">Start the Device Simulation<a class="headerlink" href="#start-the-device-simulation_1" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal window and start the device as per the steps described <a href="#start-the-device-simulation">here</a>. Once onboarded, the device will have the same files and behavior as mentioned above.</p>
+<h2 id="generating-ownership-vouchercredential-pair">Generating Ownership Voucher/Credential Pair<a class="headerlink" href="#generating-ownership-vouchercredential-pair" title="Permanent link">&para;</a></h2>
+<p>Refer to the <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/">Supply Chain Tools Manufacturer Enablement Guide </a> on steps to create Ownership Voucher/Credential pair.</p>
+<h2 id="working-with-multiple-owner-key-pairs">Working with Multiple Owner Key-Pair(s)<a class="headerlink" href="#working-with-multiple-owner-key-pairs" title="Permanent link">&para;</a></h2>
+<p>The OCS instance handles multiple owner key-pair(s) using a Java* Keystore. Multiple owner key-pairs can be inserted into the keystore with different aliases. The listed key tool commands require a password to be entered. Enter the password whenever prompted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A sample keystore is provided in <sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds/owner-keystore.p12. This is an example implementation for demo purposes and should be updated in production deployment.</p>
+</div>
+<h2 id="generating-key-pair-for-owner-attestation">Generating Key-Pair for Owner Attestation<a class="headerlink" href="#generating-key-pair-for-owner-attestation" title="Permanent link">&para;</a></h2>
+<h3 id="generating-ecdsa-key-pair-for-owner-attestation">Generating ECDSA Key-Pair for Owner Attestation<a class="headerlink" href="#generating-ecdsa-key-pair-for-owner-attestation" title="Permanent link">&para;</a></h3>
+<p>Secure Device Onboard specification supports the National Institute of Standards and Technology (NIST) P-256 curve and P-384 types.</p>
+<p><strong>Step 1:</strong> Generate the private key.</p>
+<p>Generate the NIST-256 key by running the following command:</p>
+<p><code>$ openssl ecparam -genkey -name secp256r1 -out eckey.pem</code></p>
+<p>Alternatively, generate the NIST-384 key by running the following command:</p>
+<p><code>$ openssl ecparam -genkey -name secp384r1 -out eckey.pem</code></p>
+<p><strong>Step 2:</strong> Generate a self-signed certificate.</p>
+<p>Generate the self-signed certificate for the previously generated NIST-256 key as:</p>
+<p><code>$ openssl req -x509 -sha256 -nodes -days 3650 -key eckey.pem -out eccert.crt</code></p>
+<p>Alternatively, generate the self-signed certificate for the previously generated NIST-384 key as:</p>
+<p><code>$ openssl req -x509 -sha384 -nodes -days 3650 -key eckey.pem -out eccert.crt</code></p>
+<p><strong>Step 3:</strong> Convert the key to public key cryptography standards (PKCS#8) format (optional):</p>
+<p><code>$ openssl pkcs8 -topk8 -nocrypt -in eckey.pem -out eckey.key</code></p>
+<p><strong>Step 4:</strong> Create a certificate signing request to send for generating a certificate chain (optional):</p>
+<p><code>$ openssl x509 -x509toreq -in eccert.crt -out CSR.csr -signkey eckey.key</code></p>
+<h3 id="generating-rsa-key-pair-for-owner-attestation">Generating RSA Key-Pair for Owner Attestation<a class="headerlink" href="#generating-rsa-key-pair-for-owner-attestation" title="Permanent link">&para;</a></h3>
+<p>Secure Device Onboard specification supports the RSA2048</p>
+<p><strong>Step 1:</strong> Generate the private key.</p>
+<p>Generate the NIST-256 key by running the following command:</p>
+<p><code>$ openssl genrsa -out rsakey.pem 2048</code></p>
+<p><strong>Step 2:</strong> Generate a self-signed certificate.</p>
+<p>Generate the self-signed certificate for the previously generated NIST-256 key as:</p>
+<p><code>$ openssl req -x509 -key rsakey.pem -days 365 -out rsacert.pem</code></p>
+<h3 id="inserting-an-existing-owners-certificate-and-private-key-into-a-keystore">Inserting an Existing Owner's Certificate and Private Key into a Keystore<a class="headerlink" href="#inserting-an-existing-owners-certificate-and-private-key-into-a-keystore" title="Permanent link">&para;</a></h3>
+<p>Assuming that there is already an existing owner certificate named 'owner-certificate-1.pem' and the corresponding private key 'owner-private-key.pem', follow these steps to insert them as 'PrivateKeyEntry' into the keystore 'owner-keystore.p12':</p>
+<p><strong>Step 1:</strong> Convert the certificate and private key into 'PKCS12' format:</p>
+<p><code>$ openssl pkcs12 -export -in owner-certificate-1.pem -inkey
+owner-private-key.pem -name owner_123 -out owner_pkcs.p12</code></p>
+<p><strong>Step 2:</strong> Import the above generated PKCS12 file into the existing owner keystore file 'owner-keystore.p12' located under <sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds under the alias 'owner_123'. If the keystore file 'owner-keystore.p12' is not present, the keystore file is created afresh with the same name:</p>
+<p><code>$ keytool -importkeystore -destkeystore path/to/owner-keystore.p12
+-srckeystore owner_pkcs.p12 -srcstoretype PKCS12 -alias owner_123</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The password entered in Step 1 to generate the owner_pkcs.p12 must be the same as that of owner-keystore.p12, that is, the password of the newly created keystore must match the existing keystore where it will be imported to. This is because, in the current OCS implementation, the password of the owner-keystore.p12 is used to access the imported keys from the Step-1. As a result, every keystore being imported will have the same password as that of the destination keystore.</p>
+</div>
+<h2 id="exporting-an-existing-owners-certificate-from-keystore">Exporting an Existing Owner's Certificate from Keystore<a class="headerlink" href="#exporting-an-existing-owners-certificate-from-keystore" title="Permanent link">&para;</a></h2>
+<p>Assuming that there is an existing owner's certificate and private key stored in the keystore as a PrivateKeyEntry under the alias 'owner_123', run the following command to extract the owner's certificate into \&lt;owner_certificate.pem>:</p>
+<p><strong>Step 1:</strong> Get the list of key-pairs, along with their respective aliases, from the keystore:</p>
+<p><code>$ keytool -list -v -keystore path/to/owner-keystore.p12</code></p>
+<p><strong>Step 2:</strong> Export the certificate from the keystore using any of the aliases present in the keystore<strong>:</strong></p>
+<p><code>$ keytool -exportcert -alias owner_123 -file
+&lt;owner_certificate.pem&gt; -rfc -keystore /path/to/owner-keystore.p12</code></p>
+<h2 id="removing-an-existing-owners-key-pair-from-keystore">Removing an Existing Owner's Key-Pair from Keystore<a class="headerlink" href="#removing-an-existing-owners-key-pair-from-keystore" title="Permanent link">&para;</a></h2>
+<p>Assuming that there is an existing owner's certificate and private key stored in the keystore as a PrivateKeyEntry under the alias 'owner_123', run the following command to remove the key-pair corresponding to the alias:</p>
+<p><code>$ keytool -delete -alias owner_123 -keystore owner-keystore.p12</code></p>
+<h2 id="iot-platform-sdk-and-pri-component-configuration">IOT Platform SDK and PRI Component Configuration<a class="headerlink" href="#iot-platform-sdk-and-pri-component-configuration" title="Permanent link">&para;</a></h2>
+<p>When the IOT Platform SDK Demo is running, log messages are displayed on the terminal window. Some log messages may be truncated for better readability, but sufficient information is provided to compare against the logs generated during a simulation.</p>
+<h2 id="configuring-proxies">Configuring Proxies<a class="headerlink" href="#configuring-proxies" title="Permanent link">&para;</a></h2>
+<p>Update the proxy information specified by the properties mentioned below:</p>
+<ul>
+<li>
+<p>http_proxy_host: Represents the http proxy hostname. Typically, it is an IP address or domain name in the proxy URL.</p>
+</li>
+<li>
+<p>http_proxy_port: Represents the http proxy port. Typically, it is the port number in the proxy URL.</p>
+</li>
+<li>
+<p>https_proxy_host: Represents the https proxy hostname. Typically,it is an IP address or domain name in the proxy URL.</p>
+</li>
+<li>
+<p>https_proxy_port: Represents the https proxy port. Typically, it is the port number in the proxy URL.</p>
+</li>
+</ul>
+<p>Specify combination the hostname and port information together for either http, https, or both. For example, if the http proxy is 'http://myproxy.com:900', then the following updates will be made to the properties:</p>
+<ul>
+<li>
+<p>http_proxy_host: myproxy.com</p>
+</li>
+<li>
+<p>http_proxy_port: 900</p>
+</li>
+</ul>
+<p>If no proxy needs to be specified, leave the fields blank.</p>
+<p>These properties are present in the following script files:</p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config/run-ops</code></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/run-ocs</code></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/to0scheduler/config/run-to0scheduler</code></p>
+<h3 id="configuring-logs">Configuring Logs<a class="headerlink" href="#configuring-logs" title="Permanent link">&para;</a></h3>
+<p>Both the PRI and IOT Platform SDK utilizes Spring logback for logging. Each demo service has logback-spring.xml in its directory that configures the logging to be appended to the console by default. Log configuration is located in the following directories:</p>
+<p><code>&lt;sdo-pri-root&gt;/demo/rendezvous/logback-spring.xml</code></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/to0scheduler/config/logback-spring.xml</code></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/logback-spring.xml</code></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config/logback-spring.xml</code></p>
+<p><code>&lt;sdo-pri-root&gt;/demo/device/logback-spring.xml</code></p>
+<p>The logback-spring.xml can be modified to disable logging or use file only logging as shown below:</p>
+<p>Sample logback-spring.xml for logging to a file as well as on a console:</p>
+<pre><code>&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?\&gt;
+&lt;configuration\&gt;
+  &lt;appender name=\&quot;FILE\&quot; class=\&quot;ch.qos.logback.core.FileAppender\&quot;\&gt;
+    &lt;file\&gt;log-owner.txt\&lt;/file\&gt;
+    &lt;append\&gt;false\&lt;/append\&gt;
+    &lt;encoder\&gt;
+      &lt;pattern\&gt;%d{dd-MM-yyyy HH:mm:ss.SSS} %highlight(%-5level) %magenta(\[%thread\]) %logger{36}.%M - %msg%n\&lt;/pattern\&gt;
+    &lt;/encoder\&gt;
+  &lt;/appender\&gt;
+  &lt;appender name=\&quot;STDOUT\&quot;
+    class=\&quot;ch.qos.logback.core.ConsoleAppender\&quot;\&gt;
+    &lt;encoder\&gt;
+      &lt;pattern\&gt;%d{dd-MM-yyyy HH:mm:ss.SSS} %highlight(%-5level) %magenta(\[%thread\]) %logger{36}.%M - %msg%n\&lt;/pattern\&gt;
+    &lt;/encoder\&gt;
+  &lt;/appender\&gt;
+  &lt;root level=\&quot;info\&quot;\&gt;
+    &lt;appender-ref ref=\&quot;STDOUT\&quot; /\&gt;
+    &lt;appender-ref ref=\&quot;FILE\&quot; /\&gt;
+  &lt;/root\&gt;
+&lt;/configuration\&gt;
+</code></pre>
+
+<p>The following message is logged if the logback-spring.xml configuration file is used.</p>
+<p>For Rendezvous Service:</p>
+<p><code>org.sdo.cri.rendezvous.RendezvousApp.logStarting - Starting RendezvousApp</code></p>
+<p>For Owner Companion Service:</p>
+<p><code>o.s.i.ocs.fsimpl.fs.FsApplication.logStarting - Starting FsApplication</code></p>
+<p>For Owner Protocol Service:</p>
+<p><code>o.s.i.ops.opsimpl.OpsApplication.logStarting - Starting OpsApplication</code></p>
+<p>For To0Scheduler Service:</p>
+<p><code>o.s.i.t.t.To0ServiceApplication.logStarting - Starting To0ServiceApplication</code></p>
+<p>For Device Simulation:</p>
+<p><code>org.sdo.cri.device.DeviceApp.logStarting - Starting DeviceApp</code></p>
+<h2 id="configuring-the-properties-file">Configuring the Properties File<a class="headerlink" href="#configuring-the-properties-file" title="Permanent link">&para;</a></h2>
+<p>Each service has its own configuration file called application.properties. When each service starts, it will read the properties file in its current directory. For this simulation and during development, the properties file is writable. However, in a production environment, change the permissions of the properties file to read-only for added security.</p>
+<p>The description for the configuration settings can be found in the
+properties associated with each service.</p>
+<p><strong>PRI Rendezvous Service Properties:</strong></p>
+<p><code>&lt;sdo-pri-root&gt;/demo/rendezvous/application.properties</code></p>
+<p><strong>PRI Device Service Properties:</strong></p>
+<p><code>&lt;sdo-pri-root&gt;/demo/device/application.properties</code></p>
+<p><strong>to0scheduler Service Properties:</strong></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/to0scheduler/config/application.properties</code></p>
+<p><strong>OPS Service Properties:</strong></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config/application.properties</code></p>
+<p><strong>OCS Service Properties:</strong></p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/application.properties</code></p>
+<p>For information on all the properties for PRI components, refer to the comments in the specific properties files, or the README.</p>
+<p>For information on all the properties for IOT Platform SDK components, refer to the comments in the specific properties files.</p>
+<h2 id="setting-up-resources-for-ocs">Setting up Resources for OCS<a class="headerlink" href="#setting-up-resources-for-ocs" title="Permanent link">&para;</a></h2>
+<p>The resources used in the OCS implementation can be found in:</p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/db/v1</code></p>
+<p>The current OCS implementation supports multiple owner key-pairs with the use of PKCS12 keystore that contains each owner's certificate and private key as a PrivateKeyEntry. The owner keystore file named 'owner-keystore.p12' is located under:</p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/db/v1/creds</code></p>
+<p>Before the onboarding of the device, the certificate and private key of the corresponding owner's public key that the OV is assigned to, must be imported into the owner keystore.</p>
+<p>The device-specific information for every device can be found in:</p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/db/v1/devices</code></p>
+<p>The above directory contains several subdirectories, each representing a device, and named with the device's GUID. Each subdirectory is structured as:</p>
+<ul>
+<li>
+<p><strong>voucher.json</strong>: Contains the contents of the device's ownership voucher file.</p>
+</li>
+<li>
+<p><strong>state.json</strong>: Contains the device state in the following form:</p>
+</li>
+</ul>
+<pre><code>{
+  &quot;to2Error&quot;: &quot;TO2 error message of the form {&quot;ec&quot;:&quot;&quot;,&quot;em&quot;:&quot;&quot;,&quot;emsg&quot;:&quot;&quot;}&quot;,
+  &quot;to2Timestamp&quot;: Timestamp at which TO2 was completed,
+  &quot;to0Error&quot;: &quot;TO0 error message of the form {&quot;ec&quot;:&quot;&quot;,&quot;em&quot;:&quot;&quot;,&quot;emsg&quot;:&quot;&quot;}&quot;,
+  &quot;to0Timestamp&quot;: &quot;Timestamp at which last TO0 was successful&quot;,
+  &quot;to2State&quot;: &quot;State at which TO2 is. Can be one of to2begin/to2end/to2error&quot;,
+  &quot;to0Ws&quot;: &quot;Integer value representing the number of seconds after which the last TO0 expires &quot;,
+  &quot;g3&quot; : &quot;New GUID of the device&quot;
+
+}
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To re-trigger TO0 scheduling for a device, delete the device's state.json file.</p>
+</div>
+<ul>
+<li>
+<p><strong>svi.json</strong>: An array of objects, where each object provides information about the resource (in our case, a file) that will be read/fetched to get service-info. Depending on the implementation of the OCS, the resource can be anything. For example, a database implementation of OCS may have one or more rows representing a resource.</p>
+<p>The 'valueId' represents a resource on the OCS, which is used by the OPS to fetch resources one-by-one in subsequent requests.</p>
+<p>Depending on the message field (msg), the 'valueId' in each object is representative of:</p>
+<p><em>write</em> -- The ID of the resource (script, binaries, and others) that is sent to the device. In this implementation, the name of the service-info file.</p>
+<p><em>filedesc</em> -- The ID of the resource that contains the name to be given to the file once it is transferred. In this implementation, the name of the file whose value is the name of the file by which it is saved at the device.</p>
+<p><em>exec</em> -- The ID of the resource that contains the command that will be executed at the device. In this implementation, the name of the file whose value is the command to be executed at the device.</p>
+<p>The array must be ordered such that the 'filedesc' and 'write' objects  are one after the other pair-wise, followed by the 'exec' commands.</p>
+</li>
+</ul>
+<pre><code>{
+  &quot;module&quot;: &quot;Module name&quot;,
+  &quot;msg&quot;: &quot;Service-info type. One of filedesc, exec, write&quot;,
+  &quot;valueLen&quot;: Length of the file to be transferred,
+  &quot;valueId&quot;: &quot;An opaque-id representing a resource (in this case, file) that contains the actual service-info value&quot;,
+  &quot;enc&quot;: &quot;Encoding to be used. One of either base64, or, ascii&quot;
+}
+</code></pre>
+
+<ul>
+<li><strong>psi.json</strong>: Represents the pre-service info as key-value pairs that get pushed to the device. It is of the form:</li>
+</ul>
+<pre><code>{
+
+  &quot;module&quot;: &quot;Module name&quot;,
+  &quot;msg&quot;: &quot;Any key&quot;,
+  &quot;value&quot;: &quot;Any value&quot;
+}
+</code></pre>
+
+<ul>
+<li>
+<p><strong>dvi.json</strong>: Represents the device service-info. It is of the same form as psi.json.</p>
+<p>The service-info values as listed by svi.json that gets sent to device during onboarding, are found in &lt;sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/values</p>
+</li>
+</ul>
+<p>The demo onboarding process demonstrates download of a script file and a binary file. Once the files are downloaded, the script validates the checksum of the binary file and creates result.txt to store the result.</p>
+<p>These files can be replaced to customize the downloading process. For example, the following JavaScript* Object Notation (JSON) represents that a file 'package.sh' will be sent to the device, and will be renamed to the value stored in the file 'package_name', say 'linux64.sh'. Similarly, the file 'payload.bin' will be downloaded to the device and will be renamed to the value stored in the file 'payload_name', say 'payload.bin'. Finally, the value of the file 'sh-linux64', '/bin/sh linux64.sh', will be executed as command in the device.</p>
+<pre><code>[
+  {
+    &quot;module&quot;: &quot;sdo_sys&quot;,
+    &quot;msg&quot;: &quot;filedesc&quot;,
+    &quot;valueLen&quot;: -1,
+    &quot;valueId&quot;: &quot;package_name&quot;,
+    &quot;enc&quot;: &quot;base64&quot;
+  },
+  {
+    &quot;module&quot;: &quot;sdo_sys&quot;,
+    &quot;msg&quot;: &quot;write&quot;,
+    &quot;valueLen&quot;: -1,
+    &quot;valueId&quot;: &quot;package.sh&quot;,
+    &quot;enc&quot;: &quot;base64&quot;
+  },
+  {
+    &quot;module&quot;: &quot;sdo_sys&quot;,
+    &quot;msg&quot;: &quot;filedesc&quot;,
+    &quot;valueLen&quot;: -1,
+    &quot;valueId&quot;: &quot;payload_name&quot;,
+    &quot;enc&quot;: &quot;base64&quot;
+  },
+  {
+    &quot;module&quot;: &quot;sdo_sys&quot;,
+    &quot;msg&quot;: &quot;write&quot;,
+    &quot;valueLen&quot;: -1,
+    &quot;valueId&quot;: &quot;payload.bin&quot;,
+    &quot;enc&quot;: &quot;base64&quot;
+  },
+  {
+    &quot;module&quot;: &quot;sdo_sys&quot;,
+    &quot;msg&quot;: &quot;exec&quot;,
+    &quot;valueLen&quot;: -1,
+    &quot;valueId&quot;: &quot;sh-linux64&quot;,
+    &quot;enc&quot;: &quot;base64&quot;
+  }
+]
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When running the services as Docker*, only &lt;sdo-iot-platform-sdk-root>/demo/ocs/config/db and &lt;sdo-iot-platform-sdk-root>/demo/to0scheduler/config/redirect.properties, are configurable.</p>
+</div>
+<p>Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs to be done to add it as a device in the directory &lt;sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices:</p>
+<ol>
+<li>
+<p>Create a folder named deviceId/GUID.</p>
+</li>
+<li>
+<p>Rename the Owner voucher file to 'voucher.json'. Move this file to the newly created directory.</p>
+</li>
+<li>
+<p>Create the psi.json and svi.json files under the same directory. A sample of both files are present at the sample device directory '1fae14fb-deca-405a-abdd-b25391b9d932'.</p>
+</li>
+</ol>
+<p>The following is a sample Python* script that, given an Owner voucher file as an argument, extracts the GUID and creates the previously mentioned device directory structure.</p>
+<p>This sample script operates under the assumption that both the script and voucher files are placed at \<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices, and that this is the current working directory:</p>
+<p>The svi.json and psi.json files are copied from the sample device  \<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices/1fae14fb-deca-405a-abdd-b25391b9d932,  to the new device directory. The input voucher file is moved to the new device directory and is renamed as voucher.json.</p>
+<pre><code>import sys
+import os
+import os.path
+import json
+import base64
+import codecs
+import uuid
+import shutil
+
+# read the Owner Voucher (Ownership Voucher) from the /devices directory
+voucherFile=open(sys.argv[1], 'r')
+voucher=json.load(voucherFile)
+voucherFile.close()
+
+# read 'g' field
+encodedGuid=voucher['oh']['g']
+
+# base64 decode and convert to hex to generate the guid
+guid = codecs.encode(base64.b64decode(encodedGuid), 'hex')
+
+# format as per UUID standards
+guid = uuid.UUID(guid)
+print &quot;The GUID of the input owner voucher is - &quot; + str(guid)
+
+# create directory with the 'guid' as its name
+try:
+    os.mkdir(str(guid))
+except OSError:
+    print (&quot;Failed to create directory %s&quot; % guid)
+else:
+    print (&quot;Successfully created the device directory for GUID %s &quot; % guid)
+
+# source directory
+copyFromPath = os.path.basename(&quot;1fae14fb-deca-405a-abdd-b25391b9d932&quot;)
+
+# destination directory
+copyToPath = os.path.basename(str(guid))
+
+if os.path.isdir(copyToPath):
+
+    # move the owner voucher represented by sys.argv[1] and rename it to voucher.json
+    shutil.move(sys.argv[1], os.path.join(copyToPath, 'voucher.json'))
+
+    print &quot;Generated voucher.json at &quot; + copyToPath + &quot; with contents of input voucher &quot; + sys.argv[1]
+
+    # copy svi.json
+    shutil.copyfile(os.path.join(copyFromPath, 'svi.json'), os.path.join(copyToPath, 'svi.json'))
+
+    print &quot;Copied default svi.json from device directory &quot; + copyFromPath + &quot; to directory &quot; + copyToPath
+
+    # copy psi.json
+    shutil.copyfile(os.path.join(copyFromPath, 'psi.json'), os.path.join(copyToPath, 'psi.json'))
+
+    print &quot;Copied default psi.json from device directory &quot; + copyFromPath + &quot; to directory &quot; + copyToPath
+</code></pre>
+
+<p>For example, suppose the name of the script is add-device.py and the  name of the owner voucher file to be added as a device is device.json having GUID fad58be5-c7ba-417c-b1bd-eb9703ea8016. Then, the script execution would look like below.</p>
+<p>At the end of the script execution, a device directory named fad58be5-c7ba-417c-b1bd-eb9703ea8016 will be created at \<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices with files voucher.json, svi.json, and psi.json as its contents.</p>
+<pre><code>$ cd &lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/db/v1/devices
+$ cp path/to/device.json .
+$ python add-device.py device.json
+$ The GUID of the input owner voucher is - fad58be5-c7ba-417c-b1bd-eb9703ea8016
+
+Successfully created the device directory for GUID fad58be5-c7ba-417c-b1bd-eb9703ea8016
+Generated voucher.json at fad58be5-c7ba-417c-b1bd-eb9703ea8016 with contents of input voucher device.json
+Copied default svi.json from device directory 1fae14fb-deca-405a-abdd-b25391b9d932 to directory fad58be5-c7ba-417c-b1bd-eb9703ea8016
+Copied default psi.json from device directory 1fae14fb-deca-405a-abdd-b25391b9d932 to directory fad58be5-c7ba-417c-b1bd-eb9703ea8016
+</code></pre>
+
+<h2 id="running-the-owner-companion-service-with-https">Running the Owner Companion Service with HTTPS<a class="headerlink" href="#running-the-owner-companion-service-with-https" title="Permanent link">&para;</a></h2>
+<p>The provided reference implementation of Owner Companion Service, uses file-system as database.</p>
+<p>It sends REST call to To0Scheduler repeatedly at an interval (in seconds) specified by the property to0.scheduler.interval, at the URL defined by the property to0.rest.api.</p>
+<p>By default, the server is started using HTTPS. The keystore and truststore information can be configured, but the Mutual Transport Layer Security (TLS) authentication settings must be left untouched:</p>
+<pre><code>server.ssl.key-store-type=PKCS12 (Key-store type, Configurable)
+server.ssl.trust-store-type=PKCS12 (Trust-store type, Configurable)
+server.ssl.key-store=keystore.p12 (Path to keystore file, Configurable, Must be replaced for production deployment)
+server.ssl.key-store-password=&lt;password&gt; (Keystore password, Configurable, Must be replaced for production deployment)
+server.ssl.trust-store=truststore (Path to truststore file, Configurable, Must be replaced for production deployment)
+server.ssl.trust-store-password=&lt;password&gt; (Truststore password, Configurable, Must be replaced for production deployment)
+server.ssl.client-auth=need (Force Mutual TLS. Do not change)
+server.ssl.ciphers=TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256 (Cipher suites to be used during TLS. Do not change)
+server.ssl.enabled-protocols=TLSv1.3 (TLS version. Do not change.)
+</code></pre>
+
+<p>When starting the OCS, you can see the port(s) that the HTTPS server is listening to in the logs.</p>
+<pre><code>o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 9009 (https) with context path ''
+o.s.i.ocs.fsimpl.fs.FsApplication.logStarted - Started FsApplication in 7.792 seconds (JVM running for 9.125)
+</code></pre>
+
+<h2 id="running-the-to0scheduler-with-https-for-t00">Running the To0Scheduler with HTTPS for T00<a class="headerlink" href="#running-the-to0scheduler-with-https-for-t00" title="Permanent link">&para;</a></h2>
+<p>The To0Scheduler service schedules the list of received device GUIDs from OCS, for TO0. During TO0 process, the To0Scheduler will provide the DNS, IP address, and port that the Secure Device Onboard-enabled devices must use for TO2. The To0Scheduler sends the Rendezvous server, the redirect URI that will be used by the device to send TO2 messages. This URI information is passed to the device during the TO1 process. When the device completes TO1, it uses the TO2 redirect URI to communicate with the Owner.</p>
+<p>The TO2 redirect information, namely, DNS, IP address, and port information of the Owner Protocol Service, is stored separately in the URI specified by the property inside application.properties:</p>
+<pre><code>org.sdo.to0.ownersign.to1d.bo=./redirect.properties (Path to file containing redirect information, Configurable)
+</code></pre>
+
+<p>By default, the redirect information is stored in the file in the file redirect.properties, that contains the following properties:</p>
+<pre><code>dns=localhost
+ip=127.0.0.1
+port=8042
+</code></pre>
+
+<p>Please see the file <sdo-iot-platform-sdk-root>/demo/to0scheduler/config/redirect.properties for more information on these properties and their default values.</p>
+<p>As the TO0 scheduler runs, it will log the TO0 request and responses. On successful TO0, you see a Wait Second response, such as, ws:7200. This refers to the number of seconds the TO0 registration will be known to the Rendezvous Server.</p>
+<pre><code>o.s.i.t.to0library.To0Scheduler.setDeviceForTo0 - Register OP: 1fae14fb-deca-405a-abdd-b25391b9d932
+o.s.i.t.to0library.To0ClientSession.run - &lt;200,{&quot;ws&quot;:7200}
+o.s.i.t.t.To0SchedulerEventsImpl.onSuccess - TO0 done for the device having uuid 1fae14fb-deca-405a-abdd-b25391b9d932
+</code></pre>
+
+<p>The To0Scheduler communicates with the OCS at the URL defined by the property rest.api.server, defined in application.properties.</p>
+<p>Similar to OCS, the server is started using HTTPS, by default. The keystore and truststore information can be configured, but the Mutual TLS authentication settings must be left untouched. The properties are the same as that of OCS.</p>
+<p>When starting the to0scheduler service, you can see the port(s) that the HTTPS server is listening to in the logs.</p>
+<pre><code>o.s.i.t.t.To0ServiceApplication.logStarting - Starting To0ServiceApplication
+o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8049 (https) with context path ''
+o.s.i.t.t.To0ServiceApplication.logStarted - Started To0ServiceApplication in 9.159 seconds (JVM running for 10.693)
+</code></pre>
+
+<h2 id="starting-the-owner-protocol-service-with-https-for-to2-process">Starting the Owner Protocol Service with HTTP(S) for TO2 Process<a class="headerlink" href="#starting-the-owner-protocol-service-with-https-for-to2-process" title="Permanent link">&para;</a></h2>
+<p>The Owner Protocol server starts a HTTP server by default to listen to incoming messages from the device for TO2, by using the configuration provided in the application.properties file. To start the service using HTTPS, refer to <a href="#enabling-transport-layer-security-tls-during-to2">Enabling Transport Layer Security (TLS) during TO2</a>.</p>
+<p>It communicates with the OCS at the URL defined by the rest.api.server property, using the keystore, and trustore as specified in application.properties.</p>
+<pre><code>client.ssl.key-store-type=PKCS12 (Key-store type, Configurable)
+client.ssl.trust-store-type=PKCS12 (Trust-store type, Configurable)
+client.ssl.key-store=keystore.p12 (Path to keystore file, Configurable, Must be replaced for production deployment)
+client.ssl.key-store-password=&lt;password&gt; (Keystore password, Configurable, Must be replaced for production deployment)
+client.ssl.trust-store=truststore (Path to truststore file, Configurable, Must be replaced for production deployment)
+client.ssl.trust-store-password=&lt;password&gt; (Truststore password, Configurable, Must be replaced for production deployment)
+</code></pre>
+
+<p>The server.port property specifies the port at which the OPS listens to for TO2 protocol connections coming from devices enabled as a Secure Device Onboard client.</p>
+<p>When starting the owner, you can see the port(s) that the HTTP server is listening to in the logs.</p>
+<p>The Owner Protocol Service logs the following messages when the TO2 communication starts.</p>
+<pre><code>o.s.i.o.to2library.Message40Handler.onPost -
+</code></pre>
+
+<p>When the device sends Device Service-Info message, it is logged as shown below:</p>
+<pre><code>o.s.i.o.to2library.Message46Handler.onPost -
+</code></pre>
+
+<p>Once the TO2 is completed, the following messages are logged:</p>
+<pre><code>o.s.i.o.to2library.Message50Handler.onPost -
+o.s.i.o.opsimpl.OpsOwnerEventHandler.call - TO2 complete for device with guid
+</code></pre>
+
+<p>In addition, the file result.txt is created on the device containing following text:</p>
+<p>Device onboarded successfully.</p>
+<h2 id="enabling-transport-layer-security-tls-during-to2">Enabling Transport Layer Security (TLS) during TO2<a class="headerlink" href="#enabling-transport-layer-security-tls-during-to2" title="Permanent link">&para;</a></h2>
+<p>To run TO2 in TLS mode, follow the steps listed below.</p>
+<p><strong>Step 1:</strong> Add the following properties to</p>
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config/application.properties</code></p>
+<pre><code>security.require-ssl=true
+server.ssl.key-store-type=PKCS12
+server.ssl.key-store=ops-keystore.p12
+server.ssl.key-store-password=123456
+server.ssl.ciphers=TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256
+server.ssl.enabled-protocols=TLSv1.3
+</code></pre>
+
+<p>The following properties pertaining to the keystore must always match with each other in the properties file.</p>
+<pre><code>server.ssl.key-store-type matches client.ssl.key-store-type
+server.ssl.key-store matches client.ssl.key-store
+server.ssl.key-store-password matches client.ssl.key-store-password
+</code></pre>
+
+<p><strong>Step 2 (Optional):</strong> A new self-signed certificate and private key can be generated by generating keystore. Create the keystore by specifying the DNS and IP address of the host machine as the subject alternative name (SAN) entries. For example, if the owner is running on a machine with DNS as owner-protocol-service.com and IP address as 10.20.30.40, then the keystore can be created by running following command.</p>
+<pre><code>$ keytool -genkeypair -keystore ops-keystore.p12 -storetype PKCS12 -storepass 123456 -alias tomcat -keyalg RSA -keysize 2048 -validity 99999 -dname &quot;CN=localhost, OU=Development, O=Company, L=Hillsboro, ST=Oregon, C=US&quot; -ext &quot;san=dns:www.owner-protocol-service.com,ip:10.20.30.40&quot;
+</code></pre>
+
+<p><strong>Step 3 (Optional, dependent on Step 2):</strong> Copy the generated keystore, keystore.p12 to <code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config</code>.</p>
+<p><strong>Step 4:</strong> Export the certificate from any keystore file, say ops-keystore.p12, using following command.</p>
+<pre><code>$ openssl pkcs12 -in ops-keystore.p12 -clcerts -nokeys -out tlscert.pem
+</code></pre>
+
+<p><strong>Step 5:</strong> Navigate to the \$JAVA_HOME/jre/lib/security/ folder and import the generated certificate into the Java* device's truststore, so that the device can trust the Owner Protocol Service.</p>
+<pre><code>$ keytool -import -alias tomcat -keystore cacerts -file &lt;PATH_TO_CERT&gt;/tlscert.pem
+</code></pre>
+
+<p>Alternatively, to import the existing certificate into a separate truststore, run the following:</p>
+<pre><code>$ keytool -import -file &lt;PATH_TO_CERT&gt;/tlscert.pem -alias &lt;ALIAS_NAME&gt; -keystore &lt;PATH_TO_TRUSTSTORE_FILE&gt;
+</code></pre>
+
+<p>With these configurations in place, the OPS will enable TLS during TO2 communication.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sample keystore and truststore files are provided in <sdo-iot-platform-sdk-root\>/demo/ocs/config/, <sdo-iot-platform-sdk-root\>/demo/ops/config/, and <sdo-iot-platform-sdk-root>/demo/to0scheduler/config/. This is an example implementation for demo purposes and should be updated in production deployment.</p>
+</div>
+<h2 id="running-the-iot-platform-sdk-components-on-separate-machines">Running the IOT Platform SDK Components on Separate Machines<a class="headerlink" href="#running-the-iot-platform-sdk-components-on-separate-machines" title="Permanent link">&para;</a></h2>
+<p>To run each IOT Platform SDK component in its own separate machine, the following updates must be made:</p>
+<ul>
+<li>
+<p>Create OV/OC pair such that the DNS/IP of the rendezvous server is mentioned in these files as part of the rendezvous information. Refer to <a href="#generating-ownership-vouchercredential-pair">Generating Ownership Voucher/Credential Pair</a> for steps to create such OV/OC pairs.</p>
+</li>
+<li>
+<p>Update the following properties at each component:</p>
+</li>
+</ul>
+<p>At OCS <code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/application.properties:</code></p>
+<pre><code>to0.rest.api=https://&lt;To0Scheduler-machine-IP-or-DNS&gt;:&lt;port&gt;/v1/to0/devices
+
+</code></pre>
+
+<p>At OPS
+ <code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ops/config/application.properties</code>:</p>
+<pre><code>rest.api.server=https://&lt;OCS-machine-IP-or-DNS&gt;:&lt;port&gt;/
+</code></pre>
+
+<p>At To0Scheduler
+ <code>&lt;sdo-iot-platform-sdk-root&gt;/demo/to0scheduler/config/application.properties</code>:</p>
+<pre><code>rest.api.server=https://&lt;OCS-machine-IP-or-DNS&gt;:&lt;port&gt;/
+</code></pre>
+
+<p><code>&lt;sdo-iot-platform-sdk-root&gt;/demo/to0scheduler/config/redirect.properties</code>:</p>
+<pre><code>dns=&lt;OPS-DNS-name&gt;
+ip=&lt;OPS-machine-IP&gt;
+port=&lt;OPS-port&gt;
+</code></pre>
+
+<ul>
+<li>The keystore and truststore files of each of the components: OCS, OPS and To0Scheduler needs to be updated. Both the keystore and truststore files must contain the certificates whose Common Name (CN) or the Subject Alternative Names (SAN) properties have the IP address and the DNS of the machine where the component is running. This is needed for hostname verification to succeed in the Mutual TLS handshake process. Refer to <a href="#enabling-transport-layer-security-tls-during-to2">Enabling Transport Layer Security (TLS) during TO2</a> for steps to create such keystore files.</li>
+</ul>
+<p>Create a truststore file as follows:</p>
+<pre><code>$ keytool –import –file path/to/certificate –alias sampleCA –keystore path/to/truststore
+</code></pre>
+
+<p>Based on the component interactions, the truststore for each component  must contains the following certificate entries:</p>
+<pre><code>OCS truststore contains entries to accept certificates of OPS and To0Scheduler.
+OPS truststore contains entries to accept certifcates of OCS.
+To0Scheduler truststore contains entries to accept certifcates of OCS.
+</code></pre>
+
+<p>For information on the properties that needs to be updated for using the newly created files, refer to the following sections:<br />
+ - <a href="#setting-up-resources-for-ocs">Setting up Resources for OCS</a><br />
+ - <a href="#running-the-owner-companion-service-with-https">Running the Owner Companion Service with HTTPS</a><br />
+ - <a href="#running-the-to0scheduler-with-https-for-t00">Running the To0Scheduler with HTTPS for T00</a>  </p>
+<h2 id="common-issues-while-running-the-demo">Common Issues While Running the Demo<a class="headerlink" href="#common-issues-while-running-the-demo" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong><em>Signature is Invalid during TO0</em></strong>:</li>
+</ol>
+<p>This error occurs when the owner's certificate (and its public key)  residing at the OCS in the owner keystore, does not match the public  key present in the Ownership Voucher. To rectify this error, insert  the owner key-pair at
+ <code>&lt;sdo-iot-platform-sdk-root&gt;/demo/ocs/config/db/v1/creds/owner-keystore.p12</code>
+per the steps outlined <a href="#inserting-an-existing-owners-certificate-and-private-key-into-a-keystore">here</a>.  Refer to the properties file for details on properties to be updated.  The following is a sample error log at To0Scheduler:</p>
+<pre><code>o.s.i.t.t.To0SignatureServiceFactoryImpl.lambda$sign$0 - Obtaining signature from OCS
+o.s.i.t.t.RestClient.signatureOperation - Error occurred while getting the signature for 59ec2905-e715-4bec-ad8f-ad5610d64895. 500
+o.s.i.t.t.To0SignatureServiceFactoryImpl.lambda$sign$0 - Unable to get signature for 59ec2905-e715-4bec-ad8f-ad5610d64895
+o.s.i.t.t.To0ClientSession.run - &lt;POST http://10.0.0.1:8001/mp/113/msg/22,{&quot;to0d&quot;:………
+o.s.i.t.t.To0ScheduledClientSession.call - {&quot;ec&quot;:3,&quot;emsg&quot;:255,&quot;em&quot;:&quot;Signature of owner message is invalid.&quot;}
+c.i.s.o.t.To0SchedulerEventsImpl.onFailure - TO0 failed for the device having uuid 59ec2905-e715-4bec-ad8f-ad5610d64895.
+
+</code></pre>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../introduction/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../development-guide/" title="Development Guide" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Development Guide
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

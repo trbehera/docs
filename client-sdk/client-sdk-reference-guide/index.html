@@ -1,0 +1,1565 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation for Secure Device Onboard Project">
+      
+      
+        <link rel="canonical" href="https://secure-device-onboard.github.io/docs/client-sdk/client-sdk-reference-guide/">
+      
+      
+        <meta name="author" content="Secure Device Onboard Contributers">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Introduction - Secure Device Onboard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#introduction" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-header-nav__button md-logo">
+          
+            <img src="../../images/sdo-x512.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Secure Device Onboard
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Introduction
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          Client SDK
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../iot-platform-sdk/introduction/" class="md-tabs__link">
+          IOT Platform SDK
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../rendezvous-service/introduction/" class="md-tabs__link">
+          Rendezvous Service
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" class="md-tabs__link">
+          Supply Chain Tools
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../protocol-reference-implementation/introduction/" class="md-tabs__link">
+          Protocol Reference Implementation
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../all-in-one-demo/introduction/" class="md-tabs__link">
+          All-in-one Demo
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../protocol-specification/introduction/" class="md-tabs__link">
+          Protocol Specification
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-nav__button md-logo">
+      
+        <img src="../../images/sdo-x512.png" width="48" height="48">
+      
+    </a>
+    Secure Device Onboard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../reference/" title="Reference" class="md-nav__link">
+      Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../community/" title="Community" class="md-nav__link">
+      Community
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../security-best-practices/security-best-practices/" title="Security Best Practices" class="md-nav__link">
+      Security Best Practices
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Client SDK
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Client SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Introduction
+      </label>
+    
+    <a href="./" title="Introduction" class="md-nav__link md-nav__link--active">
+      Introduction
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-documents" class="md-nav__link">
+    Reference Documents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-sdk-overview" class="md-nav__link">
+    Client SDK Overview
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#threading-model" class="md-nav__link">
+    Threading Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    Networking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-specific-modules" class="md-nav__link">
+    Device-Specific Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrated-operational-flows" class="md-nav__link">
+    Integrated Operational Flows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdo-module-flows" class="md-nav__link">
+    SDO Module Flows
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module-initialization" class="md-nav__link">
+    Module Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-service-info-psi" class="md-nav__link">
+    Pre-Service Info (PSI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-service-info-dsi" class="md-nav__link">
+    Device Service Info (DSI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner-service-info-osi" class="md-nav__link">
+    Owner Service Info (OSI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-completion" class="md-nav__link">
+    Module Completion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-errors" class="md-nav__link">
+    Module Errors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-client-sdk" class="md-nav__link">
+    Run the Client SDK
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-binary-package" class="md-nav__link">
+    Run the Binary Package
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-the-device-private-key-epid-or-ecdsa-p-256-based" class="md-nav__link">
+    Get the Device Private Key (EPID or ECDSA P-256 based)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-initialization" class="md-nav__link">
+    Device Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-onboarding" class="md-nav__link">
+    Device Onboarding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-source" class="md-nav__link">
+    Build the Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-pluggable-modules" class="md-nav__link">
+    Custom Pluggable Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-limitations" class="md-nav__link">
+    Known Issues and Limitations
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../client-sdk-api-reference/" title="API Reference" class="md-nav__link">
+      API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      IOT Platform SDK
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        IOT Platform SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../iot-platform-sdk/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../iot-platform-sdk/running-the-demo/" title="Running The Demo" class="md-nav__link">
+      Running The Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../iot-platform-sdk/development-guide/" title="Development Guide" class="md-nav__link">
+      Development Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Rendezvous Service
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Rendezvous Service
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../rendezvous-service/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Supply Chain Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Supply Chain Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" title="Manufacturing Tools" class="md-nav__link">
+      Manufacturing Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/reseller/reseller-enablement-guide/" title="Reseller Tools" class="md-nav__link">
+      Reseller Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../supply-chain-tools/keystore-guide/" title="Keystore Guide" class="md-nav__link">
+      Keystore Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Protocol Reference Implementation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        Protocol Reference Implementation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-reference-implementation/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      All-in-one Demo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        All-in-one Demo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../all-in-one-demo/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Protocol Specification
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Protocol Specification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/protocol-description/" title="Protocol Description" class="md-nav__link">
+      Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/protocol-data-types/" title="Protocol Data Types" class="md-nav__link">
+      Protocol Data Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/data-transmission-persistence/" title="Data Transmission & Persistence" class="md-nav__link">
+      Data Transmission & Persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/detailed-protocol-description/" title="Detailed Protocol Description" class="md-nav__link">
+      Detailed Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/resale-protocol/" title="Resale Protocol" class="md-nav__link">
+      Resale Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/credential-reuse-protocol/" title="Credential Reuse Protocol" class="md-nav__link">
+      Credential Reuse Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/appendix-b-device-provisioning-with-ecdsa/" title="Appendix B - Device Provisioning with ECDSA" class="md-nav__link">
+      Appendix B - Device Provisioning with ECDSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../protocol-specification/appendix-c-secure-device-onboard-1-1-crypto-upgrade/" title="Appendix C - Secure Device Onboard 1.1 Crypto Upgrade" class="md-nav__link">
+      Appendix C - Secure Device Onboard 1.1 Crypto Upgrade
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-documents" class="md-nav__link">
+    Reference Documents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-sdk-overview" class="md-nav__link">
+    Client SDK Overview
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#threading-model" class="md-nav__link">
+    Threading Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#networking" class="md-nav__link">
+    Networking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-specific-modules" class="md-nav__link">
+    Device-Specific Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integrated-operational-flows" class="md-nav__link">
+    Integrated Operational Flows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdo-module-flows" class="md-nav__link">
+    SDO Module Flows
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module-initialization" class="md-nav__link">
+    Module Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-service-info-psi" class="md-nav__link">
+    Pre-Service Info (PSI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-service-info-dsi" class="md-nav__link">
+    Device Service Info (DSI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner-service-info-osi" class="md-nav__link">
+    Owner Service Info (OSI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-completion" class="md-nav__link">
+    Module Completion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-errors" class="md-nav__link">
+    Module Errors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-client-sdk" class="md-nav__link">
+    Run the Client SDK
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-binary-package" class="md-nav__link">
+    Run the Binary Package
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-the-device-private-key-epid-or-ecdsa-p-256-based" class="md-nav__link">
+    Get the Device Private Key (EPID or ECDSA P-256 based)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-initialization" class="md-nav__link">
+    Device Initialization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#device-onboarding" class="md-nav__link">
+    Device Onboarding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-the-source" class="md-nav__link">
+    Build the Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-pluggable-modules" class="md-nav__link">
+    Custom Pluggable Modules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-limitations" class="md-nav__link">
+    Known Issues and Limitations
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Introduction</h1>
+                
+                <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The Secure Device Onboard Client SDK is a portable implementation of the Secure Device Onboard (SDO) protocol state machines, cryptographic operations, and associated components. While the Client SDK was developed and tested on the Linux* OS, the core components of the SDK are isolated from OS-specific components via an abstraction layer. Well-known open-source implementations of cryptographic libraries are used for cryptographic operations.</p>
+<p>In addition, the Client SDK is ported to the following Arm* platforms: </p>
+<ol>
+<li>Nucleo<em> development board (NUCLEO-F429ZI) running STM32F429ZI ARM Cortex</em>-M4 MCU over Mbed* OS.  </li>
+<li>NUCLEO-F767ZI development board running STM32F767ZI Arm<em> Cortex</em>-M7 MCU over Mbed* OS.  </li>
+<li>WaRP7 development board running i.MX 7 series Arm Cortex-A7 MPU over Mbed Linux.  </li>
+<li>Raspberry Pi* development board running Arm Cortex-A53 MPU over Raspbian OS.  </li>
+</ol>
+<p>The Client SDK is a reference implementation that can be used to onboard a device and then give control to the device application or IOT Platform Service. “Onboarding” means the process by which a device establishes its first trusted connection with an IOT Platform Service.  </p>
+<p>Linux provides an easy-to-use development environment for SDK development, debug, and validation. When the SDK is ported to a particular environment, the abstraction layer will be ported to the target environment and real-time operating system (RTOS) (or bare metal). If the target environment supports hardware-accelerated cryptography, the cryptography interfaces will also be ported. If the target environment does not support cryptographic acceleration, the software cryptography libraries used by the SDK will need to be ported. The core SDK can be recompiled in the target environment with no change.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The hardware abstraction layer (HAL) implementation provided in this release is for reference only and not intended for production. It does not provide the level of security required by industry standards for a fully secure production environment.</p>
+</div>
+<h3 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h3>
+<p>Refer to the <a href="../../reference/">Secure Device Onboard Reference page</a>.</p>
+<h3 id="reference-documents">Reference Documents<a class="headerlink" href="#reference-documents" title="Permanent link">&para;</a></h3>
+<p>Refer to the <a href="../../reference/">Secure Device Onboard Reference page</a>.</p>
+<h2 id="client-sdk-overview">Client SDK Overview<a class="headerlink" href="#client-sdk-overview" title="Permanent link">&para;</a></h2>
+<p>Like any SDK, the Client SDK is expected to be embedded within a custom implementation that provides overall device functionality while using the SDK to perform SDO-based device onboarding. The SDK will be statically linked to an application that invokes SDK APIs to trigger onboarding functionality. This implementation is referred to as the ‘Application’ in this document.</p>
+<p>Figure 1.   SDO Client Block Diagram</p>
+<p><img alt="SDO Client Block Diagram" src="../img/1-Intel SDO Client Block Diagram.JPG" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>EPID is an acronym for Enhanced Privacy ID.<br />
+SDO is an acronym for Secure Device Onboard.  </p>
+</div>
+<p>Before initiating the Secure Device Onboard functionality, the Application must first initialize the SDK. After initializing the SDK, the Application can initiate the onboarding by calling the <code>sdo_sdk_run()</code>API.
+The SDK maintains persistent data such as configuration and state information that are used to track the onboarding state and store credentials, among others. This information is stored in the <strong>SDK Configuration</strong> file that persists across reboots.</p>
+<h3 id="threading-model">Threading Model<a class="headerlink" href="#threading-model" title="Permanent link">&para;</a></h3>
+<p>The SDO Client SDK is single threaded and the APIs are non-reentrant and blocking. SDK code executes in the context of the calling application thread and will make OS calls via the abstraction layer for storage and networking services within the context of this thread. OS service such as storage and network are assumed to be blocking.</p>
+<p>During the execution of the onboarding protocol, the SDK receives data from the Owner Server that must be passed back to application modules (Pre-Service &amp; Owner Service Information).This is achieved via module-specific callback functions that are registered during the SDK initialization.</p>
+<p>These callback functions are also called within the context of the application thread that entered the SDK via one of the SDK’s APIs (<em><code>sdo_sdk_run</code></em>). The application must not invoke an SDK API from within the callback – SDK flows have been designed such that this is not required.</p>
+<p>In addition to module specific callbacks, the SDK requires an additional callback that is used to inform the Application of events occurring during long-running activities, such as network connection retries, as well as errors, such as network connection drop.</p>
+<h3 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">&para;</a></h3>
+<p>It is assumed that the machine on which the SDK runs has access to the network. The SDK uses standard POSIX sockets interface to connect to external back-end Rendezvous and Owner Servers. The SDK uses the OpenSSL* toolkit for SSL support.</p>
+<p>The SDK will initiate connections to the following external ports, which must not be blocked by a firewall:</p>
+<ul>
+<li>8039: The SDK connects to the SDO Manufacturer Server on this port.</li>
+<li>8041: The SDK connects to the SDO Rendezvous Server on this port.</li>
+<li>8042: The SDK connects to the SDO Owner Server on this port.</li>
+</ul>
+<p>For details on the Manufacturer Server, Rendezvous Server, and Owner Server refer to the Reference Documents.</p>
+<h3 id="device-specific-modules">Device-Specific Modules<a class="headerlink" href="#device-specific-modules" title="Permanent link">&para;</a></h3>
+<p>SDO is a generic mechanism of establishing trust between a device and the final owner’s cloud-based IOT Platform Service (known as the Owner Service). Once this trust is established, the Owner Service must perform the following actions:</p>
+<ol>
+<li>Setup the device for final operation. This requires configuration of device specific operational parameters. This is determined by the device being onboarded, for example, it is device specific.</li>
+<li>Full integration into the organization’s IOT Platform Service. This is specific to the IOT Platform Service being used.</li>
+</ol>
+<p>Since SDO cannot define these steps for all devices and IOT Platforms, it provides a flexible method to allow these operations to be carried out in a secure manner using Modules.</p>
+<p>Modules are defined by the device manufacturer (ODM) and are pieces of code that have a specific name and perform a specific function. Firmware update, key provisioning, and Wi-Fi* network setup are some examples of common functionality that could be provided by modules.</p>
+<p>A module must be able to report information [called the <strong><em>Device Service Information (DSI)</em></strong>], to IOT Platform, and accept configuration information [called the <strong><em>Owner Service Information (OSI)</em></strong>], from the Owner Service. A module must also be able to publish details of what information it will report as DSI and what information it will accept as OSI. This is done in the form of key-value pairs. The key identifies a parameter and the value provides the value of the parameter.</p>
+<p>A module will publish its interface in the form of DSI keys with associated valid values and OSI keys with associated valid values. The Owner Service is expected to be aware of all devices it will onboard and associated DSI and OSI interfaces.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The expectation is that over time, much like reusable libraries, modules providing specific functionality such as firmware updates or key provisioning will become standardized in terms of their capabilities and interfaces. Device manufactures will simply port the modules and include these libraries to their device implementation. A similar development is expected to occur on the Owner Server side where standard libraries will be developed to interact with the device module and included in the Owner Server implementation.</p>
+</div>
+<p>When a device is onboarded, a secure channel is established between the device and Owner Server after the device has authenticated the Owner Server and vice-versa (during the TO2 protocol). At this point, the Owner Server can query information from the device (DSI) and send down configuration information to the device (OSI). The secure channel uses encryption and integrity protection to secure DSI/OSI data in transit from/to the device.</p>
+<p>In addition to DSI and OSI, SDO defines <strong><em>Pre-Service Info</em></strong> or <strong><em>PSI</em></strong>, a mechanism that the Owner Server can use to inform the device of its expectations in terms of module support. This precedes DSI and OSI and contains a list of expected modules along with basic capabilities expected of the module.
+The following section details the interactions between the Application, Client SDK and Device-specific Modules.</p>
+<h3 id="integrated-operational-flows">Integrated Operational Flows<a class="headerlink" href="#integrated-operational-flows" title="Permanent link">&para;</a></h3>
+<p>This SDK release requires all software components to be linked together into a single binary image and execute at the same privilege level. While some systems might include overlays and Trusted Execution Environments, these are not considered for this version.</p>
+<p>Figure 2.   Integrated Image and Execution Flow</p>
+<p><img alt="SDO Client Block Diagram" src="../img/2-Integrated Image and Execution Flow.JPG" /></p>
+<p>The integrated image and execution flows from system boot are shown above and each step is described below:</p>
+<ol>
+<li>
+<p>On reset, the Board Support Package (BSP) and RTOS initialize the hardware and pass the control to the Application. On Linux* systems, this is the normal OS boot flow and is complete by the time the Application executes.</p>
+</li>
+<li>
+<p>The Application initializes all SDO modules if required. The Application also initializes the SDK by calling the <code>sdo_sdk_init()</code> API and registers each module with the SDK by passing the module’s name and callback address to the SDK (in the <code>sdo_sdk_service_info_module</code> structure).</p>
+</li>
+<li>The Application checks if SDO onboarding has been completed by calling the <code>sdo_sdk_get_status()</code> API. If the status <code>SDO_SDK_STATE_IDLE</code> is returned, onboarding has been completed and the Application goes to step 6. If not, the Application goes to step 4.</li>
+<li>The Application initiates SDO onboarding by calling the <code>sdo_sdk_run()</code> API. This call returns either a successful completion of onboarding or an error. If an error occurs, the Application will reset the device and retry the sequence, with some delay. On successful completion of onboarding, the Application goes to step 6.</li>
+<li>During the onboarding process, the SDK will call registered modules during the Service Info stage of the protocol. This is done by calling the registered module callback. Details of this interaction are provided in the Figure 3. The onboarding process will succeed only if all module interactions at this stage are successful.</li>
+<li>The Application has successfully completed onboarding and continues normal operation of the device.</li>
+</ol>
+<p>The Application continues operating until the system is powered off or reset. On System restart, the preceding steps are re-executed. </p>
+<h3 id="sdo-module-flows">SDO Module Flows<a class="headerlink" href="#sdo-module-flows" title="Permanent link">&para;</a></h3>
+<p>As mentioned in <a href="#device-specific-modules">Device Specific Modules section</a>, three types of information exchange occur between each module and the Owner Service:  </p>
+<ol>
+<li>Pre-Service Info (PSI)</li>
+<li>Device Service Info (DSI)</li>
+<li>Owner Service Info (OSI)</li>
+</ol>
+<p>Each of these is described as follows: </p>
+<p>Figure 3.   Service Info Exchanges between Device and Owner Server</p>
+<p><img alt="SDO Client Block Diagram" src="../img/3-Service Info Exchanges between Device and Owner Server.JPG" /></p>
+<p>As shown in the diagram, PSI is ‘global’ to all modules and occurs once between the device and Owner Server. DSI and OSI are module specific.</p>
+<h4 id="module-initialization">Module Initialization<a class="headerlink" href="#module-initialization" title="Permanent link">&para;</a></h4>
+<p>For each registered module, the SDK initializes the module by call its callback with the <code>SDO_SI_START</code> type. The module is expected to prepare to receive PSI, DSI, and OSI calls after initialization.</p>
+<p>If an error occurs after a module has been initialized, during the remainder of TO2 protocol execution and the Application is restarted, the SDK will again call this API to initialize each registered module. The module must be prepared for multiple such calls due to the SDK’s retry-based approach to error recovery.</p>
+<h4 id="pre-service-info-psi">Pre-Service Info (PSI)<a class="headerlink" href="#pre-service-info-psi" title="Permanent link">&para;</a></h4>
+<p>The intent of PSI is described in the SDO Protocol specification. Basically, PSI provides the Owner Server with a way to inform a module what to expect during the next two service info sequences (such as, DSI and OSI). The module should use this information to prepare itself for the subsequent exchanges.</p>
+<p>PSI is an ASCII string containing one or more 2-tuple of the format 
+<code>[module-name][module-data]</code>. The SDK parses the PSI string and locates the module specified by module-name. If this module is not found, the SDK ignores it and continues with the next PSI touple in the string.</p>
+<p>The <code>[module-data]</code> is a key-value pair where the value is optional (depending on the key) and is encoded as <code>key~value</code> (the ‘~’ char is the delimiter). The SDK will parse this substring to extract the key and value.</p>
+<p>If the module is found, the SDK invokes the modules callback function with type <code>SDO_SI_SET_PSI</code> and passes the module-data to it in the sv parameter. The key is contained in <code>sv.key</code> and the value if present, is in <code>sv.value</code>. If no value is present, the <code>sv.value</code> will be <code>NULL</code>. The module is expected to process the key-value and return either success or failure. A failure response will cause the entire onboarding sequence to fail and the Application must retry it at a later time. In most cases the Owner Server will use PSI to allow the module to perform basic initialization and setup for the following DSI and OSI rounds in terms of allocating resources, and others.</p>
+<p>From a format standpoint, both key and value are <code>NULL</code> terminated ASCII strings. The value may optionally contain base64 encoded binary data. A PSI string could contain multiple 2-touples with the same module-name. In this case, the SDK will invoke the same module multiple times, once for each occurrence of module-name in the PSI string. The corresponding key-value pairs will be passed in each of these invocations. The <code>count</code> parameter will act as an ‘index’ starting at 0 for the first invocation and incremented for subsequent invocations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PSI is considered the module configuration data and is independent of the DSI (see next section), which is the device information. The number of PSI elements is hence decoupled from the number of DSI elements. If the module wishes to retain either the key of value parameters for later use, it must make a local copy of the contents. The pointers passed during the invocation will be invalid after the callback returns to the SDK.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PSI is one-way, from the Owner Server to the device. Apart from reporting success or failure, the device has no way of communicating any other information back to the Owner Server during this exchange.</p>
+</div>
+<h4 id="device-service-info-dsi">Device Service Info (DSI)<a class="headerlink" href="#device-service-info-dsi" title="Permanent link">&para;</a></h4>
+<p>DSI follows PSI. The module needs to determine in advance how many DSI key-value pairs it needs to send to the Owner Service. In some cases, this is determined statically while in others, the module uses information obtained from the Owner Server in PSI to determine how many DSI key-values it needs to upload.</p>
+<p>On completing the PSI round, the SDK queries each registered module for the number of DSI rounds it requires. This is done by invoking the modules callback with the <code>SDO_SI_GET_DSI_COUNT</code> type. The module is expected to return the number of DSI key-value pairs it requires in the <code>count</code> callback parameter.</p>
+<p>When the DSI round for a module begins, the SDK will call the modules callback with the <code>SDO_SI_GET_DSI</code> type. The <em><code>count</code></em> parameter will indicate the ‘index’ of the DSI key-value pair being requested by the SDK. The SDK uploads each key-value pair to the Owner Server in the same order. The module may choose to ignore the ‘index’ sent by the SDK but it is advisable for the module to return key-value data based on this index. This callback will be invoked as many times as specified by the module by the prior <code>SDO_SI_GET_DSI_COUNT</code> return value (the ‘index’ value will vary from 0 to <code>count-1</code>).</p>
+<p>Key-values are returned in the <code>sv.key</code> and <code>sv.value</code> parameter fields. The <code>sv.key</code> must strictly be an <code>NULL</code> terminated ASCII string. The <code>sv.value</code> is also a <code>NULL</code> terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the Owner Server knows how to interpret a particular key-value from a particular module. The module must include Base64 encoding capabilities if required.</p>
+<p>The very first key-value returned by a module (‘index’ zero) must be an activation value indicating whether the module is active or not. The key value must be <code>“active”</code> and the value must be <code>“1”</code> if the module is active or <code>“0”</code> if the module is not active. If the module is not active, the Owner Server will not send and DSI messages to the module. This requires each module to have at least one DSI – that is, the count value returned for the <code>SDO_SI_GET_DSI_COUNT</code> callback type must be at least <code>1.</code> See the SDO Protocol Specification for more information on module activation and deactivation.</p>
+<p>Note that DSI is one way – from device to Owner Server. The Owner Server cannot respond to any DSI message during this phase. It can however respond to a prior DSI message in the next, OSI phase.</p>
+<h4 id="owner-service-info-osi">Owner Service Info (OSI)<a class="headerlink" href="#owner-service-info-osi" title="Permanent link">&para;</a></h4>
+<p>OSI follows DSI. Unlike DSI, neither the SDK nor the module can determine in advance how many OSI key-values they are going to receive. On receiving an OSI, the SDK locates the module and invokes its callback with the <code>SDO_SI_SET_OSI</code> type.</p>
+<p>Received key-values are passed to the module in the <code>sv.key</code> and <code>sv.value</code> callback parameter fields. The <code>sv.key</code> must strictly be an <code>NULL</code> terminated ASCII string. The <code>sv.value</code> is also a NULL terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the module knows how to interpret the value for a particular key based on the key name. In addition to the sv parameter, the SDK will pass an ‘index’ of the OSI in the <code>count</code> parameter. The ‘index’ begins at 0 and increments for each OSI key-value pair received for the module.</p>
+<p>Corresponding to the activation message in DSI, the Owner Server could send a deactivation message to a module if it is not planning to use the module. The message will have a key of <code>“active”</code> and value of <code>“0”</code>. On receiving this message, a module may free allocated resources and effectively shutdown from an SDO perspective. Unlike the activation message, this message is optional and will only be sent if the Owner Server is not going to use the module. A module must expect to remain active unless it explicitly receives a deactivation message or it already indicated that is not active in the earlier DSI stage. See the SDO Protocol Specification for more information on module activation and deactivation.</p>
+<p>If a module receives an OSI when it is in the deactivated state, it should return a status of <code>SDO SI_CONTENT_ERROR</code> indicating that the received element was not expected.
+The module is expected to process the key-value pair and return a result indicating if the operation was successful or failed. The module may return <code>SDO_SI_CONTENT_ERROR</code> or <code>SDO_SI_INTERNAL_ERROR</code> to differentiate between invalid value contents or a module run-time error. This information is reported to the Owner Server. The module must return <code>SDO_SI_SUCCESS</code> on successful completion.</p>
+<p>Note that OSI is one way – from Owner Server to the device. Apart from indicating failure, the device cannot respond to an OSI message.</p>
+<h4 id="module-completion">Module Completion<a class="headerlink" href="#module-completion" title="Permanent link">&para;</a></h4>
+<p>When all service information rounds of all modules have completed successfully, the SDK calls each module’s callback with the <code>SDO_SI_END</code> type. All other callback parameters are <code>NULL</code>. Modules can commit configuration information at this point if not already done so.</p>
+<p>The SDK will not call into the module after this. The SDK will ignore the return value of this callback since no further failure is expected at this point.</p>
+<h4 id="module-errors">Module Errors<a class="headerlink" href="#module-errors" title="Permanent link">&para;</a></h4>
+<p>If an error occurs during the service information phase, the TO2 protocol is considered to have failed and will be aborted. The Application will need to retry onboarding at a later time. A failure could occur for multiple reasons including failure of device/server interaction, failure of signature or hash verification, malformed messages and also if a module returns a failure while processing a PSI, DSI, or OSI command/request.</p>
+<p>On failure, all modules must clean up internal state and discard any configuration information they might have got from the Owner Server. Conversely, the Owner Server will also discard all data it might have received from modules.</p>
+<p>When all service information rounds of all modules have completed successfully, the SDK calls each module’s callback with the <code>SDO_SI_FAILURE</code> type. All other callback parameters are <code>NULL</code>. Modules must discard all information received via PSI or OSI commands until this point. If operations have been performed, or data already committed, they should be undone to return the system to a pre-service information state.</p>
+<p>The SDK will not call into the module after this. The SDK will ignore the return value of this callback since no further failure is expected at this point.</p>
+<h2 id="run-the-client-sdk">Run the Client SDK<a class="headerlink" href="#run-the-client-sdk" title="Permanent link">&para;</a></h2>
+<p>The Client SDK includes a binary package, intended to get you started quickly and a source package. For details on downloading the packages, refer to the Get Started Guide. </p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
+<p>The requirements for the computer that you will run Client SDK on are as follows: </p>
+<p>Table 1.    Prerequisites</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Software</td>
+<td>·      Linux* Ubuntu* 16.04 / Ubuntu* 18.04 using   OpenSSL* 1.1.1f <br/>·      JDK11  <br/> ·      SDO release binaries package (for running test servers) <br/>     o The root directory of extracted binary package is referred to as <sdo_sdk_binaries> in subsequent sections. <br/>   ·      SDO Client SDK alpha-release binary package <br/>   o The root directory of extracted binary package is referred to as &lt; SDOClientSDK&gt; in subsequent sections. <br/>  ·      SDO Client SDK alpha-release sources package <br/>  o The root directory of extracted source code is referred to as &lt; SDOClientSDK&gt; in subsequent sections. <br/>  ·      Apache Maven* (for building sample Java* based test owner   service)   <br/>    Additional Ubuntu* 16.04/18.04  prerequisites can be found in the   <releases source>/SDOClientSDK/README.md</td>
+</tr>
+<tr>
+<td>Enhanced Privacy ID (EPID)</td>
+<td>EPID SDK v6.0.1   <br/>·      Download EPID SDK v6.0.1:   https://github.com/Intel-EPID-SDK/epid-sdk/releases  <br/>  ·      Extract the tar.gz and open doc/index.html in a browser <br/>  ·      Follow the instructions in the “Building from Source” topic  <br/>  ·      Recommend using scons for build</td>
+</tr>
+<tr>
+<td>Safestring   library</td>
+<td>Safestring library v1.0.0  <br/> ·          Download safestringlib from  https://github.com/intel/safestringlib  <br/> ·          <code>cd safestringlib</code> <br/>   ·          <code>mkdir obj</code> <br/>  ·          <code>make</code> <br/>  ·          The   library file libsafestring.a will be created after make.</td>
+</tr>
+<tr>
+<td>Java*</td>
+<td>Set the $JAVA_HOME environment   variable.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="run-the-binary-package">Run the Binary Package<a class="headerlink" href="#run-the-binary-package" title="Permanent link">&para;</a></h3>
+<p>The following subsections provide the steps to run the binary package.</p>
+<h4 id="get-the-device-private-key-epid-or-ecdsa-p-256-based">Get the Device Private Key (EPID or ECDSA P-256 based)<a class="headerlink" href="#get-the-device-private-key-epid-or-ecdsa-p-256-based" title="Permanent link">&para;</a></h4>
+<p>The SDK requires a device Private Key as input for device attestation process (to prove itself to Rendezvous or Owner Server during TO1 or TO2 protocol). The key could be based on EPID or ECDSA (on curve P-256/P-384) based on the device attestation method being used on the field. This key must be stored in a specific file and is read by the SDK on startup. </p>
+<p><em><strong>For EPID based device-attestation method:</strong></em>   </p>
+<p>In case of EPID, place the EPID private Key with the name epidprivkey.dat in the following location:
+<code>data/epidprivkey.dat</code></p>
+<p><em><strong>For ECDSA (P-256) based device-attestation method:</strong></em>  </p>
+<p>In case of ECDSA, place the ECDSA P-256 private Key with the name ecdsa256privkey.dat in the following location:
+<code>data/ecdsa256privkey.dat</code></p>
+<p><em><strong>For ECDSA (P-384) based device-attestation method:</strong></em>  </p>
+<p>For ECDSA384, place the ECDSA P-384 private Key with the name ecdsa384privkey.dat in the following
+location: <code>data/ecdsa384privkey.data</code></p>
+<p>Follow <a href="https://github.com/secure-device-onboard/all-in-one-demo/blob/master/README.md">All-in-one Demo README</a> to start the SDO Manufacturer, Rendezvous, and Owner Service: PRI Owner Service and PRI Rendezvous Service.</p>
+<pre><code>To run SDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/master/README.md) document.
+</code></pre>
+<p><em><strong>Terminal #1: Start All-in-one Demo</strong></em>  </p>
+<h4 id="device-initialization">Device Initialization<a class="headerlink" href="#device-initialization" title="Permanent link">&para;</a></h4>
+<p>This section describes about running the SDO reference device (based on Linux* reference implementation) only. 
+Going forward, <sdo-client-sdk-bindir> refers to the location where the SDO Client application 'linux-client' and the related 'data' folder are placed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running the device the first time completes DI. Running the device the second time on boards the device. Between subsequent device runs, it is assumed that ownership proxy is correctly extended and TO0 is successfully completed.</p>
+</div>
+<p><em><strong>Terminal 2: Run the device for device initialization:</strong></em>  </p>
+<pre><code>$ cd &lt;sdo-client-sdk-bindir&gt;
+$ ./linux-client`
+</code></pre>
+<pre><code>$ ./linux-client
+--------DI successful--------
+</code></pre>
+
+<p>This step completes Device Initialization. </p>
+<h4 id="device-onboarding">Device Onboarding<a class="headerlink" href="#device-onboarding" title="Permanent link">&para;</a></h4>
+<p><em><strong>Run the device again to onboard the device:</strong></em> </p>
+<pre><code>$ cd &lt;sdo-client-sdk-bindir&gt;
+$ ./linux-client`
+</code></pre>
+<pre><code>$ ./linux-client
+--------TO2 successful--------
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@Secure Device Onboarding Complete@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</code></pre>
+
+<p>This step successfully onboards the device. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To run SDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the <a href="https://github.com/secure-device-onboard/client-sdk/blob/master/README.md">README</a> document.</p>
+</div>
+<h3 id="build-the-source">Build the Source<a class="headerlink" href="#build-the-source" title="Permanent link">&para;</a></h3>
+<p>Follow these steps to build the source package:  </p>
+<ol>
+<li>Make sure you have completed the pre-requisites. Download source code from <a href="https://github.com/secure-device-onboard/client-sdk">Github repository</a>.</li>
+<li>Follow the instructions provided in the <a href="https://github.com/secure-device-onboard/client-sdk/blob/master/README.md">README</a> to build the source code by setting the necessary environment variables.</li>
+<li>The SDO Client binary is generated either in build/linux/debug or build/linux/release folder, depending on the build mode. Ensure to copy them to the root folder before proceeding with the next steps.</li>
+<li>Run the PRI Servers</li>
+<li>Complete Device Initialization </li>
+<li>Complete Device Onboarding</li>
+</ol>
+<h2 id="custom-pluggable-modules">Custom Pluggable Modules<a class="headerlink" href="#custom-pluggable-modules" title="Permanent link">&para;</a></h2>
+<p>As part of the onboard protocol, the Client SDK supports custom pluggable modules. OEMs can develop their desired functionality by following the module protocol. This module functionality will be called during the onboard protocol. </p>
+<p>A sample device module, <strong>sdo_sys</strong> has been developed and is available for reference.</p>
+<p><strong>sdo_sys</strong> device module is intended to collect the data (typically files and scripts) sent from the SDO Owner to the SDO device, process, and execute the data in some meaningful way.</p>
+<p>To use <strong>sdo_sys</strong> device module, follow these steps:</p>
+<p><strong>To use the sample device module sdo_sys :</strong>  </p>
+<ol>
+<li>Build Client SDK either in release or debug mode using MODULES=true flag.</li>
+</ol>
+<pre><code>$ cd client-sdk/
+$ make pristine
+$ make MODULES=true
+</code></pre>
+
+<p>The binary would be created either in build/linux/debug or build/linux/release folder. Copy them to the root folder before proceeding with the next steps.</p>
+<ol>
+<li>Run the SDO Linux* device for Device Initialization (DI) protocol:</li>
+</ol>
+<pre><code>$ ./linux-client
+--------DI successful--------
+</code></pre>
+
+<ol>
+<li>Run the SDO Linux* device for Transfer of Ownership (TO1/TO2) protocol (it is assumed that ownership voucher is correctly extended and TO0 is successfully completed prior to this step):</li>
+</ol>
+<pre><code>$ ./linux-client
+
+--------TO2 successful--------
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@Secure Device Onboarding Complete@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</code></pre>
+
+<h2 id="known-issues-and-limitations">Known Issues and Limitations<a class="headerlink" href="#known-issues-and-limitations" title="Permanent link">&para;</a></h2>
+<p>The following are the known issues:  </p>
+<p>•   The HAL implementation provided in this release is for reference only and not intended for production. It does not provide the level of security required by industry standards for a fully secure production environment.
+•   ‘sdo_sys’ module source within 'device_modules' folder is an example code demonstrating SDO device module implementation for reference purpose only. This code is not written following secure production level coding and checks. This sample code must not to be used as it is.</p>
+<p>The following are the known limitations:  </p>
+<p>•   EPID based device-attestation (DA) method is not supported with STM32F429ZI MCU due to memory constraints in the underlying development board NUCLEO-F429ZI.<br />
+•   Network discovery and CSR feature is not supported for ARM Cortex M4, M7, and A7 devices.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../security-best-practices/security-best-practices/" title="Security Best Practices" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Security Best Practices
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../client-sdk-api-reference/" title="API Reference" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                API Reference
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
