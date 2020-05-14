@@ -10,7 +10,7 @@ site_url: 'https://secure-device-onboard.github.io/docs/'
 # repo_name: 'secure-device-onboard'
 # repo_url: 'https://github.com/secure-device-onboard'
 
-# Copyright
+Copyright
 copyright: 'Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license'
 
 theme:
