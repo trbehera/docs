@@ -1,0 +1,21 @@
+node('ubuntu18.04-OnDemand'){
+
+  // Stage for checking out the sourceCode
+  stage('scm checkout'){
+    cleanWs()
+    checkout scm
+  }
+
+  stage('Deploy GH Pages'){
+    if (env.BRANCH_NAME == "master") {
+      sh """
+        git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+        git fetch --all
+      """
+      sh 'mkdocs gh-deploy --clean'
+    } else {
+      sh 'mkdocs build'
+      echo 'Deployment to gh-pages is done only from master branch'
+    }
+  }
+}
