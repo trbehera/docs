@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Secure Device Onboard Contributers">
+        <link rel="canonical" href="https://secure-device-onboard.github.io/docs/protocol-specification/introduction/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Introduction - Secure Device Onboard</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../css/version-select.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Secure Device Onboard</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../reference/" class="nav-link">Reference</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../community/" class="nav-link">Community</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../releases/" class="nav-link">Releases</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../security-best-practices/security-best-practices/" class="nav-link">Security Best Practices</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Client SDK <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../client-sdk/client-sdk-reference-guide/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../../client-sdk/client-sdk-api-reference/" class="dropdown-item">API Reference</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">IOT Platform SDK <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../iot-platform-sdk/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../../iot-platform-sdk/running-the-demo/" class="dropdown-item">Running The Demo</a>
+</li>
+                                    
+<li>
+    <a href="../../iot-platform-sdk/development-guide/" class="dropdown-item">Development Guide</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Rendezvous Service <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rendezvous-service/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Supply Chain Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" class="dropdown-item">Manufacturing Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../supply-chain-tools/reseller/reseller-enablement-guide/" class="dropdown-item">Reseller Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../supply-chain-tools/keystore-guide/" class="dropdown-item">Keystore Guide</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Protocol Reference Implementation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../protocol-reference-implementation/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">All-in-one Demo <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../all-in-one-demo/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Protocol Specification <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../protocol-description/" class="dropdown-item">Protocol Description</a>
+</li>
+                                    
+<li>
+    <a href="../protocol-data-types/" class="dropdown-item">Protocol Data Types</a>
+</li>
+                                    
+<li>
+    <a href="../data-transmission-persistence/" class="dropdown-item">Data Transmission & Persistence</a>
+</li>
+                                    
+<li>
+    <a href="../detailed-protocol-description/" class="dropdown-item">Detailed Protocol Description</a>
+</li>
+                                    
+<li>
+    <a href="../resale-protocol/" class="dropdown-item">Resale Protocol</a>
+</li>
+                                    
+<li>
+    <a href="../credential-reuse-protocol/" class="dropdown-item">Credential Reuse Protocol</a>
+</li>
+                                    
+<li>
+    <a href="../appendix-b-device-provisioning-with-ecdsa/" class="dropdown-item">Appendix B - Device Provisioning with ECDSA</a>
+</li>
+                                    
+<li>
+    <a href="../appendix-c-secure-device-onboard-1-1-crypto-upgrade/" class="dropdown-item">Appendix C - Secure Device Onboard 1.1 Crypto Upgrade</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../all-in-one-demo/introduction/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../protocol-description/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#transmitted-protocol-version" class="nav-link">Transmitted Protocol Version</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#privacy-concerns" class="nav-link">Privacy Concerns</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#intel-enhanced-privacy-id-intel-epid-attributes" class="nav-link">Intel® Enhanced Privacy ID (Intel® EPID) Attributes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#secure-device-onboard-terminologies" class="nav-link">Secure Device Onboard Terminologies</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#secure-device-onboard-transport-interfaces" class="nav-link">Secure Device Onboard Transport Interfaces</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<p>This document specifies the protocol interactions and message formats for the 
+Secure Device Onboard protocols. Secure Device Onboard is a device 
+provisioning scheme, sometimes called device “onboarding.”</p>
+<p>Device provisioning is the process of installing secrets and network addresses
+into a device so that the device and its network-based manager are able to
+connect using a trusted connection.  For example, they may share a secret or
+have trusted PKI credentials.  </p>
+<p>Device provisioning causes a new entity to own the device.  This requires a
+strong degree of trust, since the device owner must at least provision
+communications credentials into a Device, and probably needs complete control
+over the device operating system and software.  For example, the device owner
+must patch security vulnerabilities, install or update drivers, query hardware
+devices, program actuators, and others.  A given kind of device may restrict what an
+owner can do to it using Secure Device Onboard, trading off the risk of
+remote network compromise with the cost of perhaps needing to physically access
+the device to do some restricted configuration.</p>
+<p>For the purposes of Secure Device Onboard, we assume that the device initiates a connection
+to the manager, and not the reverse.  This is common industry practice, and has
+the advantages that:</p>
+<ol>
+<li>
+<p>The IP address of the manager is less likely to change than the IP address
+    of the device.</p>
+</li>
+<li>
+<p>The traffic outbound through network firewalls tends to be more permissive
+    than the reverse, increasing the <em>likelihood</em> that the device to manager
+    connection will not need special firewall policy.</p>
+</li>
+</ol>
+<p>In Secure Device Onboard, device physical installation is kept separate from device keying
+and remote control.  </p>
+<p>Secure Device Onboard works by establishing the ownership of a device during manufacturing,
+then tracking the transfers of ownership of the device until it is finally
+provisioned and put into service.  In this way, the device provisioning problem
+can be thought of as a device “transfer of ownership” problem. In Secure Device Onboard, we
+assume that this factory-time configuration is the only configuration done to
+the device.  Other steps taken outside the device make it possible for the
+device to use this configuration to find and establish trust with its owner when
+it is first powered on after manufacturing.  </p>
+<p>Between when the device is manufactured and when it is first powered on and
+given access to the Internet, the device may transfer ownership multiple times. 
+A structured digital document, called an Ownership Voucher, is used to transfer
+digital ownership credentials from owner to owner without the need to power on
+the device.</p>
+<p>When the device is first plugged in, the Secure Device Onboard protocols are invoked,
+causing the device to access the Secure Device Onboard Rendezvous Server.  By protocol
+cooperation between the device, the Rendezvous server, and the new owner, the
+device and new owner are able to prove themselves to each other, sufficient to
+allow the new owner to establish new cryptographic control of the device.  When
+this process is finished, the device is equipped with:</p>
+<ul>
+<li>
+<p>The Internet address and public key of its manager</p>
+</li>
+<li>
+<p>A random number that may be used as shared secret</p>
+</li>
+<li>
+<p>Optionally, a key pair whose public key is in a certificate signed by a
+    trusted party of its manager</p>
+</li>
+</ul>
+<p>This is expected to be a strong and flexible set of credentials, enough to
+satisfy most IoT device to manager needs. For example, this permits a 2-way
+authenticated Transport Layer Security (TLS) connection from device to manager.</p>
+<p>In the case where other credentials are needed, a TLS connection with the
+provisioned credentials should suffice to allow the manager to provide different
+ones.</p>
+<p>In our current model, we assume the device has access to the Internet when it is
+first powered on. In some environments, this will require that a
+second <em>Secure Device Onboard Installer Tool</em> be used to provide a temporary, perhaps restricted, Internet
+connection, sufficient to allow Secure Device Onboard to proceed.</p>
+<p>During manufacturing, an Secure Device Onboard equipped device is ideally configured with:</p>
+<ul>
+<li>
+<p>A processor containing:</p>
+<ul>
+<li>
+<p>A Trusted Execution Environment (TEE), with cryptographic hardware root of
+trust, based on either Intel<sup>®</sup> EPID or Elliptic Curve Digital Signature
+Algorithm (ECDSA)</p>
+</li>
+<li>
+<p>An Secure Device Onboard application that runs in the processor’s TEE that maintains and
+operates on device credentials</p>
+</li>
+</ul>
+</li>
+<li>
+<p>A set of device ownership credentials, accessible only within the TEE:</p>
+<ul>
+<li>
+<p>Rendezvous information for determining the current owner of the device</p>
+</li>
+<li>
+<p>Hash of a public key to form the base of a chain of signatures, referred to
+as the Ownership Voucher</p>
+</li>
+<li>
+<p>Other credentials, please see section <a href="../detailed-protocol-description/#disetcredentials-type-11">§</a> for more information.  </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Secure Device Onboard may be deployed in other environments, perhaps with less expectation
+of security and tamper resistance. These include:</p>
+<ul>
+<li>
+<p>A microcontroller unit (MCU), perhaps with a hardware root of trust, where
+    the entire system image is considered to be a single trusted object</p>
+</li>
+<li>
+<p>An OS daemon, with keys sealed by a Trusted Platform Module (TPM) or in the
+    filesystem</p>
+</li>
+</ul>
+<p>The remainder of this document presumes the ideal environment, as described
+previously.</p>
+<h2 id="transmitted-protocol-version">Transmitted Protocol Version<a class="headerlink" href="#transmitted-protocol-version" title="Permanent link">&para;</a></h2>
+<p>The current protocol version of Secure Device Onboard is <strong>13.1</strong></p>
+<p>Every message of the transmitted protocol for Secure Device Onboard specifies a
+<strong>protocol version</strong>.  This version indicates the compatibility of the
+protocol being transmitted and received.  The actual number of the
+protocol version is a major version and a minor version, expressed in
+this document with a period character ('.') between them.</p>
+<p>The specification version may be chosen for the convenience of the
+public.  The protocol version changes for technical reasons, and may
+or may not change for a given change in specification.  The protocol
+version and specification version are different values, although a
+given specification must map to a given protocol version.</p>
+<p>The receiving party of a message can use the protocol version to
+verify:</p>
+<ul>
+<li>
+<p>That the version is supported by the receiver</p>
+</li>
+<li>
+<p>That the version is the same as with previous received messages
+    in the same protocol transaction</p>
+</li>
+<li>
+<p>Whether the receiver needs to invoke a backwards compatibility
+    option.  Since Secure Device Onboard allows the Device to choose any supported
+    version of the protocol, this applies to the Owner or Rendezvous.</p>
+</li>
+</ul>
+<h2 id="privacy-concerns">Privacy Concerns<a class="headerlink" href="#privacy-concerns" title="Permanent link">&para;</a></h2>
+<p>Secure Device Onboard has a number of protocol features to preserve the privacy of a
+device’s progress from manufacturing to ownership, to resale or decommissioning.</p>
+<p>All keys exposed by protocol entities are created only for the
+purposes of Secure Device Onboard, and can be used temporarily, and new ones generated frequently to keep them
+from being used as to profile a manufacturer, a device, or a device
+owner/operator.</p>
+<p>The Intel<sup>®</sup> Enhanced Privacy ID (Intel<sup>®</sup> EPID) can be used to prove the ability to
+take ownership without identifying the device to the Rendezvous server or to
+anyone monitoring Internet traffic at the Rendezvous server. Intel® EPID may also
+be used to prove manufacturer and model number without identifying device.</p>
+<p>Transfer Ownership protocol 2 (TO2), replaces all keys and identifiers in the
+device, except the root of trust, so that no record of previous ownership chain
+exists. In case of Intel<sup>®</sup> EPID, it is not necessary to replace the Intel<sup>®</sup> EPID key
+for based on a privacy concern.</p>
+<p>IP addresses can be allocated dynamically by the device owner. This does not
+prevent a determined adversary from using IP addresses to trace devices, but can
+raise the bar against more casual attempts to trace devices from outside to
+inside an organization.</p>
+<h2 id="intel-enhanced-privacy-id-intel-epid-attributes">Intel<sup>®</sup> Enhanced Privacy ID (Intel<sup>®</sup> EPID) Attributes<a class="headerlink" href="#intel-enhanced-privacy-id-intel-epid-attributes" title="Permanent link">&para;</a></h2>
+<p>As Intel has acted to enable other companies to use Intel<sup>®</sup> EPID2 for a variety of
+devices and applications, a new Intel<sup>®</sup> EPID2 attributes feature has been added by
+the Intel Key Generation Facility
+(<a href="https://contentprotection.intel.com/">iKGF</a>), an independent key issuing
+authority. Intel<sup>®</sup> EPID attributes are identifiers associated with an Intel<sup>®</sup> EPID
+group, and reflected in the group certificate. A common set of attributes is
+also represented in the 128-bit EPID2 Group ID.</p>
+<p>Group ID attributes are important because Intel<sup>®</sup> EPID does not identify a device
+except as the member of a group. Thus, an Intel<sup>®</sup> EPID signature is only as
+trustworthy as the least trustworthy member of the group, implying that—for best
+results—all members of the group should be equally trustworthy.</p>
+<p>The group ID attribute allows an Intel<sup>®</sup> EPID user to work with Intel Key
+Generation Facility (iKGF) so that all devices in a given Intel<sup>®</sup> EPID group have
+the same security posture (For example, the same binary or the same source code base).
+The iKGF can work with the device builder to allocate multiple EPID groups from
+within a single “group address space” so that a given product type can be
+detected by a 128-bit mask-and-compare operation.</p>
+<p>The Owner is responsible for maintaining a list of Intel<sup>®</sup> EPID attribute
+mask-and-compare sets for each kind of device that it is provisioning. When an
+Intel<sup>®</sup> EPID signature appears at the Owner (in the TO2 Protocol):</p>
+<ul>
+<li>
+<p>The Group ID is compared against the Intel<sup>®</sup> EPID Attribute mask-and-compare
+    sets to determine that this device is supported by this Owner (if not, the
+    signature is rejected)</p>
+</li>
+<li>
+<p>The Group is checked for revocation (if so, the signature is rejected)</p>
+</li>
+<li>
+<p>The signature is verified against the group public key (if it fails to
+    verify, the signature is rejected)</p>
+</li>
+</ul>
+<p>We envision that Intel<sup>®</sup> EPID attribute mask-and-compare sets are included by
+manufacturers as part of their product documentation.</p>
+<h2 id="secure-device-onboard-terminologies">Secure Device Onboard Terminologies<a class="headerlink" href="#secure-device-onboard-terminologies" title="Permanent link">&para;</a></h2>
+<p>SIGMA is a protocol that allows an Intel<sup>®</sup> EPID device to establish a trusted
+connection with a known entity, based on the provisioning of a Public Key
+Infrastructure (PKI) certificate on the trusted entity’s server. This is similar
+to the operation performed by the Transfer Ownership Protocol 2 (TO2).</p>
+<p>In Secure Device Onboard, the trust of the Owner’s server is derived from the manufacturer’s
+credentials (its public key), through the Ownership Voucher, to the Owner
+key.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> Trust in Secure Device Onboard follows the supply chain entities, and not an
+outside single root of trust. In particular, Secure Device Onboard specifically does not
+require server belonging to the Owner of a device to have a certificate that is
+rooted in any particular authority chosen by Intel.</p>
+<p>While this makes SIGMA itself inappropriate for Secure Device Onboard, the concepts of SIGMA
+are incorporated in the TO2 protocol. For example, Secure Device Onboard uses a similar key
+exchange and a Session Verification Key (SVK)/Session Encryption Key (SEK)
+mechanism to create an encrypted channel.</p>
+<p>Refer to the <em>Secure Device Onboard Glossary</em> document.</p>
+<h2 id="secure-device-onboard-transport-interfaces">Secure Device Onboard Transport Interfaces<a class="headerlink" href="#secure-device-onboard-transport-interfaces" title="Permanent link">&para;</a></h2>
+<p>Figure ‎1 describes the way in which Secure Device Onboard data is transported. Secure Device Onboard
+protocols are defined in terms of an Secure Device Onboard message layer (section <a href="../detailed-protocol-description/#detailed-protocol-description">§</a>) and
+an encapsulation of these messages for transport to Secure Device Onboard network entities (section <a href="../data-transmission-persistence/#data-transmission-persistence">§</a>).</p>
+<p>Secure Device Onboard Devices may be either natively IP-based or non-IP-based. In the case
+of Secure Device Onboard Devices which are natively connected to
+an IP network, the Secure Device Onboard Device is capable of connecting directly to the Secure Device Onboard Owner or Secure Device Onboard
+Rendezvous server. In some cases, an Secure Device Onboard Installer Tool is needed to allow
+these devices to connect to the IP network. The Secure Device Onboard Installer Tool is a
+HTTP/HTTPS Proxy, with security set up to allow only Secure Device Onboard protocols to
+authorized Secure Device Onboard Rendezvous and Secure Device Onboard Owners.</p>
+<p>Secure Device Onboard Devices which are not capable of IP protocols can still use Secure Device Onboard
+by tunneling the Secure Device Onboard Message Layer across a reliable non-IP connection.
+Secure Device Onboard messages implement authentication, integrity, and confidentiality
+mechanisms, so any reliable transport is acceptable.</p>
+<p>The Secure Device Onboard message layer also permits Secure Device Onboard to be implemented end-to-end
+in a co-processor or trusted execution environment. However, security mechanisms
+must be provided to allow credentials provisioned by Secure Device Onboard to be copied to
+where they are needed. For example, if Secure Device Onboard is used to provision a
+symmetric secret into a co-processor, but the secret is <em>used</em> in the main
+processor, there needs to be a mechanism to preserve the confidentiality and
+integrity of the secret when it is transmitted between the co-processor and
+main-processor. This mechanism is outside the scope of this specification.</p>
+<figure id=fig-transportInterfaces>
+<!--    <img src="../img/7c7b99cfa129cb06ef415793979d8255.emf" alt="Transport Interfaces" /> -->
+    <img src="../img/fig-transport-interfaces.png" alt="Transport Interfaces">
+    <figcaption>Figure 1 - Secure Device Onboard Transport Interfaces</figcaption>
+</figure>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The Owner Key is the key signed in the last entry of the Ownership
+Voucher. The corresponding private key is held by the current owner of the
+Device. See section <a href="../protocol-description/#the-ownership-voucher">§</a>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../js/version-select.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
