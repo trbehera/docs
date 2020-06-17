@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Secure Device Onboard Contributers">
+        <link rel="canonical" href="https://secure-device-onboard.github.io/docs/protocol-specification/credential-reuse-protocol/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Credential Reuse Protocol - Secure Device Onboard</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <link href="../../css/version-select.css" rel="stylesheet">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Secure Device Onboard</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../reference/" class="nav-link">Reference</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../community/" class="nav-link">Community</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../releases/" class="nav-link">Releases</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../security-best-practices/security-best-practices/" class="nav-link">Security Best Practices</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Client SDK <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../client-sdk/client-sdk-reference-guide/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../../client-sdk/client-sdk-api-reference/" class="dropdown-item">API Reference</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">IOT Platform SDK <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../iot-platform-sdk/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../../iot-platform-sdk/running-the-demo/" class="dropdown-item">Running The Demo</a>
+</li>
+                                    
+<li>
+    <a href="../../iot-platform-sdk/development-guide/" class="dropdown-item">Development Guide</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Rendezvous Service <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../rendezvous-service/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Supply Chain Tools <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../supply-chain-tools/manufacturing/manufacturer-enablement-guide/" class="dropdown-item">Manufacturing Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../supply-chain-tools/reseller/reseller-enablement-guide/" class="dropdown-item">Reseller Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../supply-chain-tools/keystore-guide/" class="dropdown-item">Keystore Guide</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Protocol Reference Implementation <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../protocol-reference-implementation/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">All-in-one Demo <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../all-in-one-demo/introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Protocol Specification <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../introduction/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../protocol-description/" class="dropdown-item">Protocol Description</a>
+</li>
+                                    
+<li>
+    <a href="../protocol-data-types/" class="dropdown-item">Protocol Data Types</a>
+</li>
+                                    
+<li>
+    <a href="../data-transmission-persistence/" class="dropdown-item">Data Transmission & Persistence</a>
+</li>
+                                    
+<li>
+    <a href="../detailed-protocol-description/" class="dropdown-item">Detailed Protocol Description</a>
+</li>
+                                    
+<li>
+    <a href="../resale-protocol/" class="dropdown-item">Resale Protocol</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Credential Reuse Protocol</a>
+</li>
+                                    
+<li>
+    <a href="../appendix-b-device-provisioning-with-ecdsa/" class="dropdown-item">Appendix B - Device Provisioning with ECDSA</a>
+</li>
+                                    
+<li>
+    <a href="../appendix-c-secure-device-onboard-1-1-crypto-upgrade/" class="dropdown-item">Appendix C - Secure Device Onboard 1.1 Crypto Upgrade</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../resale-protocol/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../appendix-b-device-provisioning-with-ecdsa/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#credential-reuse-protocol" class="nav-link">Credential Reuse Protocol</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="credential-reuse-protocol">Credential Reuse Protocol<a class="headerlink" href="#credential-reuse-protocol" title="Permanent link">&para;</a></h1>
+<p>Credential Reuse protocol allows devices to reuse the Ownership Credential
+across multiple onboardings. The intended use case for this protocol is to
+support demos and testing scenarios where the onboarding can be run repeatedly
+and quickly without having to change the Ownership Voucher or resetting the
+system after each onboarding. Since credential reuse can permit the previous
+Owner unlimited access to the device, it is NOT recommended for use in the
+normal device supply chain.</p>
+<p>Credential reuse is selected by the Owner, and accepted or rejected by the
+device. We anticipate that new devices will always allow credential reuse, but
+some legacy devices do not support it. However, we can envision devices for high
+security applications which might reject credential reuse.</p>
+<p>In normal credential use, the Owner changes the Ownership Credential in
+TO2.SetupDevice, which also creates a new Ownership Voucher. At the end of a
+successful TO2 protocol, the device deactivates Secure Device Onboard and its state needs to
+be changed to ReadyN using the Resale protocol in order to reactivate onboarding
+process on next boot. The next onboarding uses the new Ownership Voucher.</p>
+<p>For credential reuse, the TO2 protocol supports a special case which indicates
+to the device not to change the Ownership Credential in TO2.SetupDevice. The
+device still runs the complete TO2 protocol to the end but does not deactivate
+Secure Device Onboard at the end of the protocol.</p>
+<p>The Credential Reuse protocol is as follows:</p>
+<p>In TO2.SetupDevice:</p>
+<ul>
+<li>
+<p><strong>If</strong> TO2.SetupDevice.noh.bo.g3 == TO2.ProveOPHdr.bo.oh.g # GUID same as
+    previous,</p>
+<p><strong>and</strong> TO2.SetupDevice.noh.bo.r3[0] == TO2.ProveOPHdr.bo.oh.r # RendezvousInfo same as previous,</p>
+<p><strong>and</strong> TO2.SetupDevice.pk == Owner’s current public key # public key in the last entry of Ownership Voucher,</p>
+<p><strong>and</strong> TO2.SetupDevice.sig is a valid signature</p>
+</li>
+<li>
+<p><strong>Then</strong></p>
+<ul>
+<li>
+<p>Device does not update the Ownership Credential,</p>
+</li>
+<li>
+<p><strong>and</strong> Device does not internally change the HMAC,</p>
+</li>
+<li>
+<p><strong>and</strong> in TO2.Done message, devices responds with TO2.Done.hmac equal
+    to the ASCII string “=” (i.e., hmac.length = 1 and value = 0x3d;
+    hmac.hashtype = 0).</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note that an HMAC with one byte (hmac.length=1) is not a legal HMAC. The special
+value for TO2.Done.hmac is used to indicate to the Owner that device supports
+Credential Reuse protocol, and that the HMAC is not changed.</p>
+<p>Devices which do not support credential reuse generate a new HMAC and return its
+value, a valid HMAC, in TO2.Done.hmac. The Owner can differentiate whether the
+device supports Credential Reuse based on the HMAC value.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../js/version-select.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
