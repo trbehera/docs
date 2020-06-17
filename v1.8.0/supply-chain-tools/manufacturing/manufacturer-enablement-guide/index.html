@@ -1,0 +1,1579 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for Secure Device Onboard Project">
+      
+      
+        <link rel="canonical" href="https://secure-device-onboard.github.io/docs/supply-chain-tools/manufacturing/manufacturer-enablement-guide/">
+      
+      
+        <meta name="author" content="Secure Device Onboard Contributers">
+      
+      <link rel="shortcut icon" href="../../../images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.3.0">
+    
+    
+      
+        <title>Manufacturing Tools - Secure Device Onboard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6e35a1a6.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-header-nav__button md-logo" aria-label="Secure Device Onboard">
+      
+  <img src="../../../images/sdo-x512.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Secure Device Onboard
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Manufacturing Tools
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://secure-device-onboard.github.io/docs/" title="Secure Device Onboard" class="md-nav__button md-logo" aria-label="Secure Device Onboard">
+      
+  <img src="../../../images/sdo-x512.png" alt="logo">
+
+    </a>
+    Secure Device Onboard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../reference/" title="Reference" class="md-nav__link">
+      Reference
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../community/" title="Community" class="md-nav__link">
+      Community
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../releases/" title="Releases" class="md-nav__link">
+      Releases
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../security-best-practices/security-best-practices/" title="Security Best Practices" class="md-nav__link">
+      Security Best Practices
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Client SDK
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Client SDK" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Client SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../client-sdk/client-sdk-reference-guide/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../client-sdk/client-sdk-api-reference/" title="API Reference" class="md-nav__link">
+      API Reference
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      IOT Platform SDK
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="IOT Platform SDK" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        IOT Platform SDK
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../iot-platform-sdk/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../iot-platform-sdk/running-the-demo/" title="Running The Demo" class="md-nav__link">
+      Running The Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../iot-platform-sdk/development-guide/" title="Development Guide" class="md-nav__link">
+      Development Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Rendezvous Service
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Rendezvous Service" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Rendezvous Service
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../rendezvous-service/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" checked>
+    
+    <label class="md-nav__link" for="nav-9">
+      Supply Chain Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Supply Chain Tools" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Supply Chain Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Manufacturing Tools
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Manufacturing Tools" class="md-nav__link md-nav__link--active">
+      Manufacturing Tools
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-documents" class="md-nav__link">
+    Related Documents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manufacturer-toolkit" class="md-nav__link">
+    Manufacturer Toolkit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-deployment" class="md-nav__link">
+    Evaluation Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-prepare-hardware-infrastructure" class="md-nav__link">
+    Step 1: Prepare Hardware Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-deploy-database-and-toolkit" class="md-nav__link">
+    Step 2: Deploy Database and Toolkit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-test" class="md-nav__link">
+    Step 3: Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    Production Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-integrate-with-business-system-processes" class="md-nav__link">
+    Step 1: Integrate with Business System Processes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-11-device-serial-number" class="md-nav__link">
+    Step 1.1: Device Serial Number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-customer-descriptor" class="md-nav__link">
+    Step 1.2: Customer Descriptor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-13-deploy-for-multiple-key-types" class="md-nav__link">
+    Step 1.3: Deploy for Multiple Key Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-14-deploy-for-multiple-manufacturing-stations" class="md-nav__link">
+    Step 1.4: Deploy for Multiple Manufacturing Stations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-prepare-hardware-infrastructure" class="md-nav__link">
+    Step 2: Prepare Hardware Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-deploy-database-and-manufacturer-toolkit" class="md-nav__link">
+    Step 3: Deploy Database and Manufacturer Toolkit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-validate-with-test-device" class="md-nav__link">
+    Step 4: Validate with Test Device
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-and-toolkit-installation" class="md-nav__link">
+    Database and Toolkit Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Database and Toolkit Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-docker-script" class="md-nav__link">
+    Setup: Docker* Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-manual" class="md-nav__link">
+    Setup: Manual
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-troubleshooting" class="md-nav__link">
+    Setup: Troubleshooting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-scenario" class="md-nav__link">
+    Usage Scenario
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verify-device-initialization-di" class="md-nav__link">
+    Verify Device Initialization (DI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-customer-public-key" class="md-nav__link">
+    Import Customer Public Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assign-device-voucher-to-customer" class="md-nav__link">
+    Assign Device (Voucher) to Customer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extend-ownership-voucher" class="md-nav__link">
+    Extend Ownership Voucher
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-with-an-sdo-device" class="md-nav__link">
+    Testing with an SDO Device
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing with an SDO Device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-m-string" class="md-nav__link">
+    Device m-string
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../reseller/reseller-enablement-guide/" title="Reseller Tools" class="md-nav__link">
+      Reseller Tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../keystore-guide/" title="Keystore Guide" class="md-nav__link">
+      Keystore Guide
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      Protocol Reference Implementation
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Protocol Reference Implementation" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Protocol Reference Implementation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-reference-implementation/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      All-in-one Demo
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="All-in-one Demo" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        All-in-one Demo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../all-in-one-demo/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Protocol Specification
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Protocol Specification" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Protocol Specification
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/protocol-description/" title="Protocol Description" class="md-nav__link">
+      Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/protocol-data-types/" title="Protocol Data Types" class="md-nav__link">
+      Protocol Data Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/data-transmission-persistence/" title="Data Transmission & Persistence" class="md-nav__link">
+      Data Transmission & Persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/detailed-protocol-description/" title="Detailed Protocol Description" class="md-nav__link">
+      Detailed Protocol Description
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/resale-protocol/" title="Resale Protocol" class="md-nav__link">
+      Resale Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/credential-reuse-protocol/" title="Credential Reuse Protocol" class="md-nav__link">
+      Credential Reuse Protocol
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/appendix-b-device-provisioning-with-ecdsa/" title="Appendix B - Device Provisioning with ECDSA" class="md-nav__link">
+      Appendix B - Device Provisioning with ECDSA
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../protocol-specification/appendix-c-secure-device-onboard-1-1-crypto-upgrade/" title="Appendix C - Secure Device Onboard 1.1 Crypto Upgrade" class="md-nav__link">
+      Appendix C - Secure Device Onboard 1.1 Crypto Upgrade
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#related-documents" class="md-nav__link">
+    Related Documents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manufacturer-toolkit" class="md-nav__link">
+    Manufacturer Toolkit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-deployment" class="md-nav__link">
+    Evaluation Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluation Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-prepare-hardware-infrastructure" class="md-nav__link">
+    Step 1: Prepare Hardware Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-deploy-database-and-toolkit" class="md-nav__link">
+    Step 2: Deploy Database and Toolkit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-test" class="md-nav__link">
+    Step 3: Test
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    Production Deployment
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-integrate-with-business-system-processes" class="md-nav__link">
+    Step 1: Integrate with Business System Processes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-11-device-serial-number" class="md-nav__link">
+    Step 1.1: Device Serial Number
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-customer-descriptor" class="md-nav__link">
+    Step 1.2: Customer Descriptor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-13-deploy-for-multiple-key-types" class="md-nav__link">
+    Step 1.3: Deploy for Multiple Key Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-14-deploy-for-multiple-manufacturing-stations" class="md-nav__link">
+    Step 1.4: Deploy for Multiple Manufacturing Stations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-prepare-hardware-infrastructure" class="md-nav__link">
+    Step 2: Prepare Hardware Infrastructure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-deploy-database-and-manufacturer-toolkit" class="md-nav__link">
+    Step 3: Deploy Database and Manufacturer Toolkit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-validate-with-test-device" class="md-nav__link">
+    Step 4: Validate with Test Device
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-and-toolkit-installation" class="md-nav__link">
+    Database and Toolkit Installation
+  </a>
+  
+    <nav class="md-nav" aria-label="Database and Toolkit Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-docker-script" class="md-nav__link">
+    Setup: Docker* Script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-manual" class="md-nav__link">
+    Setup: Manual
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-troubleshooting" class="md-nav__link">
+    Setup: Troubleshooting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-scenario" class="md-nav__link">
+    Usage Scenario
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Scenario">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verify-device-initialization-di" class="md-nav__link">
+    Verify Device Initialization (DI)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import-customer-public-key" class="md-nav__link">
+    Import Customer Public Key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assign-device-voucher-to-customer" class="md-nav__link">
+    Assign Device (Voucher) to Customer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extend-ownership-voucher" class="md-nav__link">
+    Extend Ownership Voucher
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-with-an-sdo-device" class="md-nav__link">
+    Testing with an SDO Device
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing with an SDO Device">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#device-m-string" class="md-nav__link">
+    Device m-string
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Manufacturing Tools</h1>
+                
+                <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Secure Device Onboard (SDO) enhances the out-of-the-box setup and provisioning experience for connected IoT devices.
+The Secure Device Onboard project provides the manufacturer toolkit and reseller toolkit for manufacturers (OEMs, ODMs, or 3rd party integrators) to enable SDO on their devices.
+This document details how a manufacturer can use these tools to produce an SDO-enabled device. </p>
+<h3 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h3>
+<p>Refer to the Secure Device Onboard <a href="../../../reference/">Reference page</a>.</p>
+<h3 id="related-documents">Related Documents<a class="headerlink" href="#related-documents" title="Permanent link">&para;</a></h3>
+<p>Your role as a supply chain integrator is combined with solutions implemented by manufacturers and device management service providers to enable a complete end-to-end experience. For more information, refer to the Secure Device Onboard <a href="../../../reference/">Reference page</a>. </p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>To produce Secure Device Onboard (SDO)-enabled devices, a manufacturer must run the SDO device initialization (DI) protocol on the device. The DI process sets security credentials in secure storage in the device and creates the initial ownership voucher.
+The manufacturer makes use of the provided tools for this process: a manufacturer toolkit, an SDO Database, and software that runs on the device to perform DI.
+The manufacturer toolkit acts as a DI server for the devices. After running DI on the device, the resulting ownership voucher is stored in the SDO Database. At this point, the SDO security credentials have been stored in the device and the device is SDO ready. When the device is sold to a customer, the ownership voucher is extended and shipped along with the device. 
+A complete integration and deployment of SDO in a manufacturing environment requires a fair amount of planning and effort. However, for development, test, and enabling purposes, a much simpler evaluation deployment can be done. </p>
+<h3 id="manufacturer-toolkit">Manufacturer Toolkit<a class="headerlink" href="#manufacturer-toolkit" title="Permanent link">&para;</a></h3>
+<p>The main function of the manufacturer toolkit is to serve as a DI protocol server. The manufacturer toolkit runs as a web service and makes use of the SDO Database for configuration and storage of ownership vouchers. 
+All configuration and data for the manufacturer toolkit is stored in the SDO Database. Views are used to read data while stored procedures are used to update the configuration. The following figure shows an overview of the SDO database.</p>
+<p>Figure 1.   An Overview of the SDO Database
+<img alt="Overview of the SDO Database" src="../img/Slide3.PNG" /></p>
+<h2 id="evaluation-deployment">Evaluation Deployment<a class="headerlink" href="#evaluation-deployment" title="Permanent link">&para;</a></h2>
+<p>The evaluation deployment is useful for development, test, and enabling purposes. The evaluation deployment can fully initialize a device to the same extent as the production deployment but does not require any integration with business systems nor the setup of a secure key fob.</p>
+<h3 id="step-1-prepare-hardware-infrastructure">Step 1: Prepare Hardware Infrastructure<a class="headerlink" href="#step-1-prepare-hardware-infrastructure" title="Permanent link">&para;</a></h3>
+<p>You need to have one machine that can run the manufacturer toolkit as well as host the Secure Device Onboard (SDO) database. A non-production environment has minimal requirements; the machine can run either the Linux* OS (version 18.04) or Windows* 10 OS.</p>
+<h3 id="step-2-deploy-database-and-toolkit">Step 2: Deploy Database and Toolkit<a class="headerlink" href="#step-2-deploy-database-and-toolkit" title="Permanent link">&para;</a></h3>
+<p>Install the SDO database and toolkit, see <a href="#database-and-toolkit-installation">Database and Toolkit Installation</a>. It is recommended to choose the key store file option unless there is a specified need to test with a secure key fob. </p>
+<h3 id="step-3-test">Step 3: Test<a class="headerlink" href="#step-3-test" title="Permanent link">&para;</a></h3>
+<p>Set up the device to run the SDO DI protocol (refer to device specific documentation for details). Run DI on the device against the manufacturer toolkit web service. Use the database view to query the device state and verification completion of the DI.</p>
+<h2 id="production-deployment">Production Deployment<a class="headerlink" href="#production-deployment" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-integrate-with-business-system-processes">Step 1: Integrate with Business System Processes<a class="headerlink" href="#step-1-integrate-with-business-system-processes" title="Permanent link">&para;</a></h3>
+<p>Producing Secure Device Onboard (SDO)-enabled devices requires integration with your business systems and manufacturing processes.<br />
+Your business system processes need to:  </p>
+<ul>
+<li>Manage SDO public key(s) from customers, and the public key(s) storage in the SDO database. 
+SDO requires the customer’s SDO public key. Your customer interactions and processes must be modified as required to support this receipt of their public key and then to import this key into the SDO Database. See <a href="#import-customer-public-key">Import Customer Public Key</a>.
+Whether this key is delivered with each order or done before separately depends on your processes and interaction with your customers.  </li>
+<li>Manage ownership vouchers sent to customers.<br />
+After a device is initialized with SDO, an initial ownership voucher is produced and stored in the SDO Database. This voucher must first be “signed” to a customer before sending to the customer.  </li>
+</ul>
+<p>The ownership voucher management task has the following two steps:  </p>
+<ol>
+<li>Assign a voucher (device) to a customer (technically, a customer public key) See <a href="#assign-device-voucher-to-customer">Assign Device (Voucher) to Customer</a>. </li>
+<li>Perform voucher extension. The resulting extended voucher can then be sent to the customer.  </li>
+</ol>
+<p>The following are the implied requirements:  </p>
+<ol>
+<li>It is assumed that you already have some way to track which device was shipped with which order. Most likely, this was done with serial numbers. With SDO, there is an additional requirement that you must match voucher(s) with physical devices such that the voucher(s) delivered to the customer are those that correspond to the actual physical devices that are delivered.</li>
+<li>You need to update or modify the existing B2B channel to include an ownership voucher for each physical device delivered to the customer. Typically, these vouchers would be linked to the order in a particular way, but the details will vary for each manufacturer.</li>
+<li>If a customer loses one of these vouchers and requires a replacement, then you must re-generate this voucher or retrieve the voucher from the device or order data if you choose to store the extended voucher with the device or order data.</li>
+</ol>
+<p>The following figure shows a typical usage scenario between your business systems and the SDO tools. The order and timing of each sequence may vary with your manufacturing, ordering, and inventory management processes. The only firm requirement is that Seq 1 and Seq 2 happens before Seq 3.</p>
+<p>Figure 2.   A Typical Usage Scenario between Business Systems and SDO Tools</p>
+<p><img alt="Usage Scenario between Business Systems and SDO Tools" src="../img/Slide4.PNG" /></p>
+<h3 id="step-11-device-serial-number">Step 1.1: Device Serial Number<a class="headerlink" href="#step-11-device-serial-number" title="Permanent link">&para;</a></h3>
+<p>SDO requires the correct ownership voucher to be delivered with each physical device. Therefore, an identifier that is present on the physical device, for example the serial number, can be used.
+Scanning an identifier on the physical device allows for the correct voucher to be selected (if an incorrect voucher is delivered, SDO will fail later in the supply chain when run). If, for example, the serial number is already known, the correct physical device can be selected.
+The same identifier must also be used when running the DI because the identifier is used as an index when storing vouchers in the SDO Database, and later when identifying vouchers.  </p>
+<h3 id="step-12-customer-descriptor">Step 1.2: Customer Descriptor<a class="headerlink" href="#step-12-customer-descriptor" title="Permanent link">&para;</a></h3>
+<p>A customer descriptor is used when importing customer public keys and assigning a voucher to a customer. This descriptor is a string value that must uniquely identify the customer. It is up to you, the manufacturer, to form this value. Duplicates are to be avoided because this value would be used when importing public keys and extending ownership vouchers.</p>
+<h3 id="step-13-deploy-for-multiple-key-types">Step 1.3: Deploy for Multiple Key Types<a class="headerlink" href="#step-13-deploy-for-multiple-key-types" title="Permanent link">&para;</a></h3>
+<p>If you, as a manufacturer, produces both the Rivest–Shamir–Adleman (RSA)- and elliptic-curve cryptography (ECC)-based devices, you will need to support two different key types. However, because of the limitations of the secure key fob (For example, Yubikey*), the deployment of multiple key types requires that multiple secure key fobs, each with one type of key pair, be used. The following figure shows a usage example. </p>
+<p>Figure 3.   An Example of Using Two Different Key Types</p>
+<p><img alt="Using Two Different Key Types" src="../img/Slide5.PNG" /></p>
+<h3 id="step-14-deploy-for-multiple-manufacturing-stations">Step 1.4: Deploy for Multiple Manufacturing Stations<a class="headerlink" href="#step-14-deploy-for-multiple-manufacturing-stations" title="Permanent link">&para;</a></h3>
+<p>If you are manufacturing SDO devices at multiple geographic locations, then you will need to consider how best to deploy the SDO Manufacturer Toolkit. A typical option is shown below. 
+Install the toolkit and an SDO Database at each location – both at the remote GEOs as well as the central location. Each manufacturing GEO performs device initialization while the central location performs the Ownership Voucher extension. A data collection process is periodically invoked to collect data from each GEO’s SDO Database and import it into the central SDO Database. </p>
+<p><img alt="Deploy for Multiple Manufacturing station" src="../img/Slide6.PNG" /></p>
+<h3 id="step-2-prepare-hardware-infrastructure">Step 2: Prepare Hardware Infrastructure<a class="headerlink" href="#step-2-prepare-hardware-infrastructure" title="Permanent link">&para;</a></h3>
+<p>You need to acquire and put into place the following:  </p>
+<ul>
+<li>A system to host the manufacturer toolkit and SDO Database  </li>
+<li>A private network to attach devices to the manufacturer toolkit  </li>
+<li>Secure key fob(s)  </li>
+</ul>
+<p>The following tables list the hardware infrastructure for Linux*- and Windows*-based manufacturer toolkits, respectively.</p>
+<p>Table 3.    Linux* OS-based Manufacturer Toolkit</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connectivity</td>
+<td>Two Ethernet networks: one to connect   to the IoT device and a separate network to connect to the backend to provide   access to voucher data and the voucher extension operation.</td>
+</tr>
+<tr>
+<td>Secure Key Fobs</td>
+<td>YubiKey* security key (see <a href="https://www.yubico.com/products/yubikey-hardware/">https://www.yubico.com/products/yubikey-hardware/</a>)</td>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>Ubuntu* OS version 16.x or 18.x</td>
+</tr>
+<tr>
+<td>Software</td>
+<td>Java* Runtime Environment (JRE) software version 11 </p>    Oracle* software (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>) </p>   or  </p> OpenJDK* (<a href="http://openjdk.java.net/install/index.html">http://openjdk.java.net/install/index.html</a>) </p>  · Apache Tomcat* (<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a>)   software version 8 or later </p>   · MariaDB* (<a href="https://mariadb.org/">https://mariadb.org/</a>)  server version 10.4 or later </p></td>
+</tr>
+</tbody>
+</table>
+<p>Table 4.    Windows* OS-based Manufacturer Toolkit</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connectivity</td>
+<td>Two Ethernet networks: one to connect   to the IoT device and a separate network to connect to the backend to provide   access to voucher data and the voucher extension operation.</td>
+</tr>
+<tr>
+<td>Secure Key Fobs</td>
+<td>YubiKey* security key (see  <a href="https://www.yubico.com/products/yubikey-hardware/">https://www.yubico.com/products/yubikey-hardware/</a>)</td>
+</tr>
+<tr>
+<td>Operating System</td>
+<td>Windows* 10 OS or Windows Server* OS   version 2012 R2 or later, 64-bit version.</td>
+</tr>
+<tr>
+<td>Software</td>
+<td>Java<em> Runtime Environment (JRE) software version 11    Oracle* software (<a href="http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>) </p>  or </p>  OpenJDK</em> (<a href="http://openjdk.java.net/install/index.html">http://openjdk.java.net/install/index.html</a>) </p>  · Apache Tomcat* (<a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a>)   software version 8 or later </p>  · MariaDB* (<a href="https://mariadb.org/">https://mariadb.org/</a>)  server version 10.4 or later  </p>  · OpenSC Utilities (<a href="https://github.com/OpenSC/OpenSC/releases/download/0.17.0/OpenSC-0.17.0-win64_vs12-Release.msi">https://github.com/OpenSC/OpenSC/releases/download/0.17.0/OpenSC-0.17.0-win64_vs12-Release.msi</a>.   After the installation, you will find the following DLL file installed: C:\windows\system32\opensc-pkcs11.dll</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-3-deploy-database-and-manufacturer-toolkit">Step 3: Deploy Database and Manufacturer Toolkit<a class="headerlink" href="#step-3-deploy-database-and-manufacturer-toolkit" title="Permanent link">&para;</a></h3>
+<p>Install the SDO database and toolkit, see <a href="#database-and-toolkit-installation">Database and Toolkit Installation</a>. Be sure to use the secure key fob option for the key storage. </p>
+<h3 id="step-4-validate-with-test-device">Step 4: Validate with Test Device<a class="headerlink" href="#step-4-validate-with-test-device" title="Permanent link">&para;</a></h3>
+<p>Set up an SDO-capable device to run the SDO DI protocol (see <a href="#device-di-setup">Device DI Setup</a>). Run DI on the device against the manufacturer toolkit web service. Use the database view to query the device state and verify the completion of DI.</p>
+<h2 id="database-and-toolkit-installation">Database and Toolkit Installation<a class="headerlink" href="#database-and-toolkit-installation" title="Permanent link">&para;</a></h2>
+<p>You can either use the Docker* script provided or deploy manually.</p>
+<h3 id="setup-docker-script">Setup: Docker* Script<a class="headerlink" href="#setup-docker-script" title="Permanent link">&para;</a></h3>
+<p>The Docker* script requires a key store file containing the manufacturer keys. See <a href="../../keystore-guide/">Supply Chain Tools Key Store Setup Guide</a> for details. 
+For the remaining setup, follow the instructions in the readme file in the SDO Docker directory.</p>
+<h3 id="setup-manual">Setup: Manual<a class="headerlink" href="#setup-manual" title="Permanent link">&para;</a></h3>
+<ol>
+<li>For the following steps, run as root or use sudo.</li>
+<li>Install the MariaDB* server from <a href="https://mariadb.org/">https://mariadb.org/</a>.</li>
+<li>For each of the following commands, use the ‘root’ user you defined in step 2 where you installed the MariaDB* server and run each script on the machine where the MariaDB* server is installed. You’ll find the scripts in both the source (scripts/mysql) and binary (docker_*) files of the release.</li>
+<li>Edit rt_config.sql and mt_config.sql as directed by the comments in each file. (These files are located in the sources of the SDO release package under /SupplyChainTools/scripts/mysql or /SupplyChainTools/scripts/sqlserver).    </li>
+<li>Run the rt_create.sql script:<br />
+<code>mysql -u &lt;username&gt; -p &lt; rt_create.sql</code></li>
+<li>Run the mt_create.sql script:<br />
+<code>mysql -u &lt;username&gt; -p &lt; mt_create.sql</code></li>
+<li>Run the rt_config.sql script:<br />
+<code>mysql -u &lt;username&gt; -p &lt; rt_config.sql</code></li>
+<li>Run the mt_config.sql script:<br />
+<code>mysql -u &lt;username&gt; -p &lt; mt_config.sql</code></li>
+<li>Create a key store containing the manufacturer keys. See <a href="../../keystore-guide/">Supply Chain Tools Key Store Setup Guide</a> for details. </li>
+<li>Set up and deploy the toolkit web service. If this is an evaluation deployment, you have an option to run the web service directly from the command line. If you choose to do this, instructions are provided in the readme file included with the toolkit software. Follow those instructions. You can verify that the toolkit starts up correctly by looking at the output in the window where you ran the toolkit. Installation is then complete, and you can skip the following steps. For example, if running directly:<br />
+<code>java -Dspring.datasource.url="jdbc:mariadb://localhost:3306/sdo" -Dspring.datasource.username=sdo_admin -Dspring.datasource.password=sdo -Dsdo.keystore="file:///sdo.p12" -Dsdo.keystore.password=123456 -jar ./manufacturer-webapp-1.8.war</code></li>
+<li>Install the Apache Tomcat* software from <a href="http://tomcat.apache.org/">http://tomcat.apache.org/</a> or equivalent.</li>
+<li>Update the listener port. Most likely this will be 8039 as the default for SDO Clients but this may vary because of your specific network environment. For example, with Apache Tomcat* version 8 on the Linux* machine, this setting can be found in var/lib/tomcat8/config/server.xml. Refer to the documentation specific to your Apache Tomcat* version and operating system.</li>
+<li>Copy the manufacturer toolkit war file into the Apache Tomcat* webapps directory (on the Linux* machine this would typically be /var/lib/tomcat8/webapps). Rename the war file to ROOT.war.</li>
+<li>Start the Apache Tomcat* service. This will trigger the Apache Tomcat* software to unpack the war file and create individual files in the webapps/ROOT directory.</li>
+<li>
+<p>Add the remaining toolkit configuration for Apache Tomcat* (see the readme file included with the toolkit software for further details). For Apache Tomcat* version 8 running on the Linux machine, these settings are located in /var/lib/tomcat/webapps/ROOT/WEB-INF/classes/application.properties. An example is given as follows:<br />
+<code>spring.datasource.url=jdbc:mariadb://localhost:3306/sdo?useSSL=false
+    spring.datasource.username=sdo_admin
+    spring.datasource.password=sdo
+    sdo.keystore=file:///var/lib/tomcat8/webapps/ROOT/sdo.p12 
+    sdo.keystore.password=123456</code>  </p>
+<p><strong>Note:</strong> </p>
+<ul>
+<li>The database user and password should match those configured in rt_config.sql.</li>
+<li>datasource.url: be sure to use localhost rather than the IP address.</li>
+<li>sdo.keystore: this is either the pathname to the software key store (jks) or to the public key cryptography standards (PKCS#11) library if using secure key fob. Be sure to not use quotes around the value.</li>
+<li>sdo.keystore.password: this is the password for the software key store or the pin code of the secure key fob.  </li>
+</ul>
+</li>
+<li>
+<p>Start or restart the Apache Tomcat* service.  </p>
+</li>
+<li>Test with the status page: http://<hostname or ip>/api/v1/status. If the page does not load, look at the Apache Tomcat* logs to debug any errors.  </li>
+</ol>
+<h3 id="setup-troubleshooting">Setup: Troubleshooting<a class="headerlink" href="#setup-troubleshooting" title="Permanent link">&para;</a></h3>
+<p>Troubleshoot using the following steps if the toolkit web service does not start correctly:  </p>
+<ol>
+<li>
+<p>Verify that the JDBC* string is correct.  </p>
+<p>An example is: jdbc:mariadb://localhost:3306/sdo. Be sure MariaDB* is included, the port is specified as 3306, and the host name is correct.  </p>
+</li>
+<li>
+<p>Verify that the database user and password are correct.  </p>
+<p>The user and password should be the same as those defined in rt_config.sql. You may wish to use some third-party database tool to log into the database to test that the user and password are correct.  </p>
+</li>
+<li>
+<p>Verify the server settings  </p>
+<p>Look at mt_config.sql and verify that the rendezvous info and validity intervals are specified. If the rendezvous info and validity intervals are not specified, the web service will not start up.  </p>
+</li>
+<li>
+<p>Look at the Apache Tomcat* log (or run the web service from the command line and look at the output).  </p>
+<p>The log messages will indicate the error.  </p>
+</li>
+</ol>
+<h2 id="usage-scenario">Usage Scenario<a class="headerlink" href="#usage-scenario" title="Permanent link">&para;</a></h2>
+<h3 id="verify-device-initialization-di">Verify Device Initialization (DI)<a class="headerlink" href="#verify-device-initialization-di" title="Permanent link">&para;</a></h3>
+<p>To determine the state of a device or devices, the database view, v_mt_device_state, is available. Data can be retrieved programmatically with a third-party database tool or through the command line:</p>
+<pre><code>mysql -u &lt;username&gt; -p -h &lt;SDO database server hostname or ip&gt; -e “use sdo; select * from v_mt_device_state”
+</code></pre>
+
+<h3 id="import-customer-public-key">Import Customer Public Key<a class="headerlink" href="#import-customer-public-key" title="Permanent link">&para;</a></h3>
+<p>Import the customer public key by calling the <strong>rt_add_customer_public_key</strong> stored procedure. In a production environment, the import would likely be invoked programmatically. For test, development, or evaluation purposes, run from the command line as follows:</p>
+<pre><code>mysql -u &lt;username&gt; -p -h &lt;SDO database server hostname or ip&gt; -e “use sdo; call rt_add_customer_public_key('CUST_DIST_12345', '-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0
+FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/
+3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
+-----END PUBLIC KEY-----’)”
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be sure this is the public key pem and not the certificate pem. The public key can be extracted from the certificate with OpenSSL*:<br />
+<code>openssl x509 -pubkey -noout -in &lt;cert file&gt;.pem &gt; &lt;pubkey&gt;.pem</code>  </p>
+</div>
+<h3 id="assign-device-voucher-to-customer">Assign Device (Voucher) to Customer<a class="headerlink" href="#assign-device-voucher-to-customer" title="Permanent link">&para;</a></h3>
+<p>Assign the device (voucher) by calling the <strong>rt_assign_device_to_customer</strong> stored procedure. In a production environment, the assignment would likely be invoked programmatically. For test, development, or evaluation purposes, run from the command line as follows:  </p>
+<pre><code>mysql -u &lt;username&gt; -p -h &lt;SDO database server hostname or ip&gt; -e “use sdo; call rt_assign_device_to_customer(‘SN12345678’, ’CUST_DIST_12345’)”
+</code></pre>
+
+<h3 id="extend-ownership-voucher">Extend Ownership Voucher<a class="headerlink" href="#extend-ownership-voucher" title="Permanent link">&para;</a></h3>
+<p>Ownership voucher is extended through the REST API. In a production environment, the extension would be done programmatically. For test purposes, you can use <strong>curl</strong> to invoke the extension:</p>
+<pre><code>curl -X GET http://&lt;mfr toolkit ip&gt;:&lt;PORT&gt;/api/v1/vouchers/&lt;device serial no&gt; 
+</code></pre>
+
+<p>The result will be the extended voucher.</p>
+<h2 id="testing-with-an-sdo-device">Testing with an SDO Device<a class="headerlink" href="#testing-with-an-sdo-device" title="Permanent link">&para;</a></h2>
+<p>Any device that can run the SDO DI protocol can be used to perform an end-to-end test of the Manufacturing Toolkit. If an SDO device is not available, then the SDO PRI Device can be used. This is a Java based Device Simulator that can run anywhere Java is supported. Please refer to the readme in the PRI directory of the SDO release package for details on how to run this device.  </p>
+<p>Regardless of which device is used, care must be taken when specifying the value of the device m-string in the DI protocol. See next section for details.  </p>
+<h3 id="device-m-string">Device m-string<a class="headerlink" href="#device-m-string" title="Permanent link">&para;</a></h3>
+<p>The m-string is used to provide device-specific information that is used to manage ownership vouchers. The m-string must be present and cannot be empty (the manufacturer toolkit will output an error in such case). </p>
+<p>In the development, test, or enablement environment, any non-empty value can be used (For example, “deviceA” or “deviceB”). The manufacturer toolkit will take the entire m value as the device serial number. </p>
+<p>For the production environment, creating the m-string value is complex, therefore, it is recommended to use a script to generate the value.
+The m-string is a base 64-encoded set of null terminated string values as follows:</p>
+<p><code>&lt;key type identifier&gt;&lt;null-1&gt;&lt;serial number&gt;&lt;null-2&gt;&lt;model number&gt;[&lt;null-3&gt;&lt;CSR&gt;]</code>  </p>
+<p>where:  </p>
+<ul>
+<li>
+<p><code>&lt;null&gt;</code> translates to value 0x00  </p>
+</li>
+<li>
+<p><code>&lt;null-1&gt;</code> and <code>&lt;null-2&gt;</code> are mandatory  </p>
+</li>
+<li>
+<p><code>Key type identifier</code> = 1 | 13 | 14  </p>
+<p>1 = RSA256, 13 = ECC256, 14 = ECC384  </p>
+<p>Identifies the type of cryptography used on the device. They key type used to extend ownership vouchers must match this type.</p>
+</li>
+<li>
+<p><code>Serial number</code> = device serial number  </p>
+<p>The serial number should uniquely identify the device and ideally, should be present on the device itself (such as, the label). It is used to correlate the device with its associated ownership voucher by manufacturers and resellers when shipping devices.  </p>
+</li>
+<li>
+<p><code>Model number</code> = device model number  </p>
+<p>The model number should identify the type of device model. This data is not strictly required and can be empty if desired.  </p>
+</li>
+<li>
+<p><code>CSR</code> = certificate signing request.   </p>
+<p>The CSR is optional and is only required for ECC devices. <null-3> is required only if the CSR is included. The format of the CSR should be base 64-encoded public key cryptography standards (PKCS#10) in privacy-enhanced mail (PEM) format.</p>
+</li>
+</ul>
+<p>An example of how to generate the m-string value is given below. This can be leveraged to programmatically generate the sdo_di -mi arg. </p>
+<p><code>$ echo -ne '1\0serial\0model' | base64</code>  </p>
+<p>MQBzZXJpYWwAbW9kZWw=  </p>
+<p>And a demonstration of what’s in the encoding:  </p>
+<p><code>$ echo -ne '1\0serial\0model' | base64 | base64 -d | xxd</code></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../../rendezvous-service/introduction/" title="Introduction" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../reseller/reseller-enablement-guide/" title="Reseller Tools" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Reseller Tools
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 license
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a14cc5fd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.7a2ea5ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
