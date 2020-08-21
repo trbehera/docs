@@ -15,11 +15,11 @@ copyright: 'Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 l
 
 theme:
   name: 'material'
-  logo: 'images/sdo-x512.png'
+  logo: 'images/securedeviceonboard-icon-color.png'
   extra:
   search:
     language: 'en'
-  favicon: 'images/favicon.ico'
+  favicon: 'images/securedeviceonboard-icon-color.png'
   features:
     - tabs
 
