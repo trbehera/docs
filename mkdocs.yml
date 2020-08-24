@@ -15,13 +15,13 @@ copyright: 'Copyright &copy; 2020 Intel Corporation - Released under CC BY 4.0 l
 
 theme:
   name: 'material'
-  logo: 'images/sdo-x512.png'
+  logo: 'images/securedeviceonboard-icon-color.png'
   extra:
   search:
     language: 'en'
-  favicon: 'images/favicon.ico'
-  feature:
-    tabs: true
+  favicon: 'images/securedeviceonboard-icon-color.png'
+  features:
+    - tabs
 
 markdown_extensions:
   - admonition
@@ -29,42 +29,38 @@ markdown_extensions:
   - toc:
       permalink: true
 
+# Page tree
 nav:
-  - Home: 'index.md'
-  - Reference: 'reference.md'
-  - Community: 'community.md'
-  - Releases: 'releases.md'
-  - Security Best Practices: 'security-best-practices/security-best-practices.md'
+  - Home:
+    - Home: index.md
+    - Reference: reference.md
+    - Community: community.md
+    - Releases: releases.md
+    - Security Best Practices: security-best-practices/security-best-practices.md
   - Client SDK: 
-    - Introduction: 'client-sdk/client-sdk-reference-guide.md'
-    - API Reference: 'client-sdk/client-sdk-api-reference.md'
+    - Introduction: client-sdk/client-sdk-reference-guide.md
+    - API Reference: client-sdk/client-sdk-api-reference.md
   - IOT Platform SDK: 
-    - Introduction: 'iot-platform-sdk/introduction.md'
-    - Running The Demo: 'iot-platform-sdk/running-the-demo.md'
-    - Development Guide: 'iot-platform-sdk/development-guide.md'
+    - Introduction: iot-platform-sdk/introduction.md
+    - Running The Demo: iot-platform-sdk/running-the-demo.md
+    - Development Guide: iot-platform-sdk/development-guide.md
   - Rendezvous Service: 
-    - Introduction: 'rendezvous-service/introduction.md'
+    - Introduction: rendezvous-service/introduction.md
   - Supply Chain Tools:
-    - Manufacturing Tools: 'supply-chain-tools/manufacturing/manufacturer-enablement-guide.md'
-    - Reseller Tools: 'supply-chain-tools/reseller/reseller-enablement-guide.md'
-    - Keystore Guide: 'supply-chain-tools/keystore-guide.md'
+    - Manufacturing Tools: supply-chain-tools/manufacturing/manufacturer-enablement-guide.md
+    - Reseller Tools: supply-chain-tools/reseller/reseller-enablement-guide.md
+    - Keystore Guide: supply-chain-tools/keystore-guide.md
   - Protocol Reference Implementation: 
-    - Introduction: 'protocol-reference-implementation/introduction.md'
+    - Introduction: protocol-reference-implementation/introduction.md
   - All-in-one Demo:
-    - Introduction: 'all-in-one-demo/introduction.md'
+    - Introduction: all-in-one-demo/introduction.md
   - Protocol Specification:
-    - Introduction: 'protocol-specification/introduction.md'
-    - Protocol Description: 'protocol-specification/protocol-description.md'
-    - Protocol Data Types: 'protocol-specification/protocol-data-types.md'
-    - Data Transmission & Persistence: 'protocol-specification/data-transmission-persistence.md'
-    - Detailed Protocol Description: 'protocol-specification/detailed-protocol-description.md'
-    - Resale Protocol: 'protocol-specification/resale-protocol.md'
-    - Credential Reuse Protocol: 'protocol-specification/credential-reuse-protocol.md'
-    - Appendix B - Device Provisioning with ECDSA: 'protocol-specification/appendix-b-device-provisioning-with-ecdsa.md'
-    - Appendix C - Secure Device Onboard 1.1 Crypto Upgrade: 'protocol-specification/appendix-c-secure-device-onboard-1-1-crypto-upgrade.md'
-
-
-
-
-
-  
+    - Introduction: protocol-specification/introduction.md
+    - Protocol Description: protocol-specification/protocol-description.md
+    - Protocol Data Types: protocol-specification/protocol-data-types.md
+    - Data Transmission & Persistence: protocol-specification/data-transmission-persistence.md
+    - Detailed Protocol Description: protocol-specification/detailed-protocol-description.md
+    - Resale Protocol: protocol-specification/resale-protocol.md
+    - Credential Reuse Protocol: protocol-specification/credential-reuse-protocol.md
+    - Appendix B - Device Provisioning with ECDSA: protocol-specification/appendix-b-device-provisioning-with-ecdsa.md
+    - Appendix C - Secure Device Onboard 1.1 Crypto Upgrade: protocol-specification/appendix-c-secure-device-onboard-1-1-crypto-upgrade.md
