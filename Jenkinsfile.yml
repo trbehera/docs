@@ -12,7 +12,10 @@ node('ubuntu18.04-OnDemand'){
         git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
         git fetch --all
       """
-      sh 'mkdocs gh-deploy --clean'
+    sh """
+        mike install-extras
+        mike deploy latest -b gh-pages-multi -p
+    """
     } else {
       sh 'mkdocs build'
       echo 'Deployment to gh-pages is done only from master branch'
