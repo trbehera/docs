@@ -109,7 +109,7 @@ previously.
 
 ## Transmitted Protocol Version
 
-The current protocol version of Secure Device Onboard is **13.1**
+The current protocol version of Secure Device Onboard is **1.13**
 
 Every message of the transmitted protocol for Secure Device Onboard specifies a
 **protocol version**.  This version indicates the compatibility of the
