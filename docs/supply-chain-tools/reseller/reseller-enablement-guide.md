@@ -146,7 +146,7 @@ For the remaining setup, follow the instructions in the readme file in the SDO D
 8.	Setup and deploy the toolkit web service. If this is an evaluation deployment, you have an option to run the web service directly from the command line. If you choose to do this, instructions are provided in the readme file included with the toolkit software. Follow those instructions. You can verify that the toolkit starts up correctly by looking at the output in the window where you ran the toolkit. Installation is then complete, and you can skip the following steps.
 An example if running directly:  
 	```
-	java -Dspring.datasource.url="jdbc:mariadb://localhost:3307/sdo" -Dspring.datasource.username=sdo_admin -Dspring.datasource.password=sdo -Dsdo.keystore="file:///sdo.p12" -Dsdo.keystore.password=123456 -jar ./reseller-webapp-1.8.war
+	java -Dspring.datasource.url="jdbc:mariadb://localhost:3307/sdo" -Dspring.datasource.username=sdo_admin -Dspring.datasource.password=sdo -Dsdo.keystore="file:///sdo.p12" -Dsdo.keystore.password=123456 -jar ./reseller-webapp-1.9.war
 	```
 9.	Install the Apache Tomcat* software from http://tomcat.apache.org/ or equivalent.
 10.	Copy the reseller toolkit war file into the Apache Tomcat\* webapps directory (on a Linux* machine this would typically be /var/lib/tomcat8/webapps). Rename the war file to ROOT.war.
@@ -184,7 +184,6 @@ The user and password should be the same as those defined in rt_config.sql. You 
 ## Usage Scenarios
 ### Import Customer Public Key
 Import the customer public key by calling the **rt_add_customer_public_key** stored procedure. The stored procedure allows addition of multiple PEM-formatted public keys of different key-types, against a single customer entry, in the format:
-```
 customer_descriptor='+[keyId:publicKey]' delimited by comma(,)
 where,
 customer_descriptor represents the customer identifier, and
@@ -215,7 +214,7 @@ RZfSLcSvoGZtpwW9JfIDntC+eqoqcwOrMRWZAnyAY52GFZqK9+cjJlXuoAS4uH+q
 6KHgLC5u0rcpLiDYJgiv56s4pwd4ILSuRGSohCYsIIIk9rD+tVWqFsGZGDcZXU0z
 CQIDAQAB
 -----END PUBLIC KEY-----')”
-```
+
 
 !!! note
 	Be sure this is the public key PEM and not the certificate PEM. The public key can be extracted from the certificate with the OpenSSL* toolkit:  
