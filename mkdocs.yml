@@ -40,6 +40,7 @@ nav:
   - Client SDK: 
     - Introduction: client-sdk/client-sdk-reference-guide.md
     - API Reference: client-sdk/client-sdk-api-reference.md
+    - Porting Guide: client-sdk/client-sdk-porting-guide.md
   - IOT Platform SDK: 
     - Introduction: iot-platform-sdk/introduction.md
     - Running The Demo: iot-platform-sdk/running-the-demo.md
