@@ -31,7 +31,6 @@ Figure 1.	SDO Client Block Diagram
 ![SDO Client Block Diagram](img/1-Intel SDO Client Block Diagram.JPG)
 
 !!! note
-	EPID is an acronym for Enhanced Privacy ID.  
     SDO is an acronym for Secure Device Onboard.  
 
 Before initiating the Secure Device Onboard functionality, the Application must first initialize the SDK. After initializing the SDK, the Application can initiate the onboarding by calling the `sdo_sdk_run()`API.
@@ -185,20 +184,14 @@ Table 1.	Prerequisites
 |                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Software                                      |    ·      Linux\* Ubuntu\* 16.04 / Ubuntu\* 18.04 using   OpenSSL\* 1.1.1f <br/>·      JDK11  <br/> ·      SDO release binaries package (for running test servers) <br/>     o The root directory of extracted binary package is referred to as <sdo_sdk_binaries> in subsequent sections. <br/>   ·      SDO Client SDK alpha-release binary package <br/>   o The root directory of extracted binary package is referred to as < SDOClientSDK> in subsequent sections. <br/>  ·      SDO Client SDK alpha-release sources package <br/>  o The root directory of extracted source code is referred to as < SDOClientSDK> in subsequent sections. <br/>  ·      Apache Maven\* (for building sample Java\* based test owner   service)   <br/>    Additional Ubuntu\* 16.04/18.04  prerequisites can be found in the   <releases source>/SDOClientSDK/README.md     |
-|    Enhanced Privacy ID (EPID)    |    EPID SDK v6.0.1   <br/>·      Download EPID SDK v6.0.1:   https://github.com/Intel-EPID-SDK/epid-sdk/releases  <br/>  ·      Extract the tar.gz and open doc/index.html in a browser <br/>  ·      Follow the instructions in the “Building from Source” topic  <br/>  ·      Recommend using scons for build                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |    Safestring   library                          |    Safestring library v1.0.0  <br/> ·          Download safestringlib from  https://github.com/intel/safestringlib  <br/> ·          `cd safestringlib` <br/>   ·          `mkdir obj` <br/>  ·          `make ` <br/>  ·          The   library file libsafestring.a will be created after make.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |    Java\*                                         |    Set the $JAVA_HOME environment   variable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |123456
 
 ### Run the Binary Package
 The following subsections provide the steps to run the binary package.
 
-#### Get the Device Private Key (EPID or ECDSA P-256 based)
-The SDK requires a device Private Key as input for device attestation process (to prove itself to Rendezvous or Owner Server during TO1 or TO2 protocol). The key could be based on EPID or ECDSA (on curve P-256/P-384) based on the device attestation method being used on the field. This key must be stored in a specific file and is read by the SDK on startup. 
-
-_**For EPID based device-attestation method:**_   
-
-In case of EPID, place the EPID private Key with the name epidprivkey.dat in the following location:
-`data/epidprivkey.dat`
+#### Get the Device Private Key (ECDSA P-256 based)
+The SDK requires a device Private Key as input for device attestation process (to prove itself to Rendezvous or Owner Server during TO1 or TO2 protocol). The key could be based on ECDSA (on curve P-256/P-384) based on the device attestation method being used on the field. This key must be stored in a specific file and is read by the SDK on startup. 
 
 _**For ECDSA (P-256) based device-attestation method:**_  
 
@@ -278,8 +271,8 @@ To use **sdo_sys** device module, follow these steps:
 
 ```
 $ cd client-sdk/
-$ make pristine
-$ make MODULES=true
+$ cmake -DMODULES=true .
+$ make -j(nproc)
 ```
 
 The binary would be created either in build/linux/debug or build/linux/release folder. Copy them to the root folder before proceeding with the next steps.
@@ -309,6 +302,5 @@ The following are the known issues:
 
 The following are the known limitations:  
 
-•	EPID based device-attestation (DA) method is not supported with STM32F429ZI MCU due to memory constraints in the underlying development board NUCLEO-F429ZI.  
 •	Network discovery and CSR feature is not supported for ARM Cortex M4, M7, and A7 devices.
 
