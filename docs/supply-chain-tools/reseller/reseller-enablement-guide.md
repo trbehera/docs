@@ -183,13 +183,38 @@ The user and password should be the same as those defined in rt_config.sql. You 
 
 ## Usage Scenarios
 ### Import Customer Public Key
-Import the customer public key by calling the **rt_add_customer_public_key** stored procedure. In a production environment, the import would likely be invoked programmatically. For test, development, or evaluation purposes, run from the command line as follows:
+Import the customer public key by calling the **rt_add_customer_public_key** stored procedure. The stored procedure allows addition of multiple PEM-formatted public keys of different key-types, against a single customer entry, in the format:
 ```
-mysql -u <username> -p -h <SDO database server hostname or ip> -P <server port> -e “use sdo; call rt_add_customer_public key('CUST_DIST_12345', '-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0
-FPqri0cb2JZfXJ/DgYSF6vUpwmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/
-3j+skZ6UtW+5u09lHNsj6tQ51s1SPrCBkedbNf0Tp0GbMJDyR4e9T04ZZwIDAQAB
------END PUBLIC KEY-----’)”
+customer_descriptor='+[keyId:publicKey]' delimited by comma(,)
+where,
+customer_descriptor represents the customer identifier, and
++[keyId:publicKey] represents one-or-more customer PEM-formatted public key entries where each entry contains 'keyId' that denotes the key-identifier (not unique) and 'publicKey' that denotes the customer public key (unique), separated by comma(,).
+```
+In a production environment, the import would likely be invoked programmatically. For test, development, or evaluation purposes, run from the command line as follows:
+```
+mysql -u <username> -p -h <SDO database server hostname or ip> -P <server port> -e “use sdo; call rt_add_customer_public key('CUST_DIST_12345', 'ec_256:
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEWVUE2G0GLy8scmAOyQyhcBiF/fSU
+d3i/Og7XDShiJb2IsbCZSRqt1ek15IbeCI5z7BHea2GZGgaK63cyD15gNA==
+-----END PUBLIC KEY-----
+,
+ec_384:
+-----BEGIN PUBLIC KEY-----
+MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE4RFfGVQdojLIODXnUT6NqB6KpmmPV2Rl
+aVWXzdDef83f/JT+/XLPcpAZVoS++pwZpDoCkRU+E2FqKFdKDDD4g7obfqWd87z1
+EtjdVaI1qiagqaSlkul2oQPBAujpIaHZ
+-----END PUBLIC KEY-----
+,
+rsa_2048:
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtE58Wx9S4BWTNdrTmj3+
+kJXNKuOAk3sgQwvF0Y8uXo3/ECeS/hj5SDmxG5fSnBlmGVKJwGV1bTVERDZ4uh4a
+W1fWMmoUd4xcxun4N4B9+WDSQlX/+Rd3wBLEkKQfNr7lU9ZitfaGkBKxs23Y0GCY
+Hfwh91TjXzNtGzAzv4F/SqQ45KrSafQIIEj72yuadBrQuN+XHkagpJwFtLYr0rbt
+RZfSLcSvoGZtpwW9JfIDntC+eqoqcwOrMRWZAnyAY52GFZqK9+cjJlXuoAS4uH+q
+6KHgLC5u0rcpLiDYJgiv56s4pwd4ILSuRGSohCYsIIIk9rD+tVWqFsGZGDcZXU0z
+CQIDAQAB
+-----END PUBLIC KEY-----')”
 ```
 
 !!! note
