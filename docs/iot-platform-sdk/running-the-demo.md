@@ -50,10 +50,11 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
 
 4.  The device must have already completed the DeviceInitialization (DI) protocol, and an Owner must have been assigned to it using Supply Chain Toolkit. The resulting Ownership voucher(OV) must be moved from SCT into the OCS.
 
-Running the Demo Manually
--------------------------
 
-The demo can be run with the default properties for both the PRI and IOT Platform SDK components. Any configurations to be done, such as configuring proxies, properties or logs, should be done before starting the services. However, resources such as the Ownership Voucher, owner certificate and private keys, and others, can be pushed into the OCS after the services are started.
+Running the Simulation Using Docker* Compose Tool
+------------------------------------------------
+
+The demo can be run using the Docker* Compose tool for the IOT Platform SDK components. Any configuration, such as configuring proxies, properties or logs, should be done before starting the services.
 
 ## Start the Simulated Rendezvous Service
 
@@ -64,40 +65,22 @@ $ cd <sdo-pri-root>/demo/rendezvous
 $ sh rendezvous
 ```
 
-This starts the following server to listen to incoming messages from the IOT Platform SDK and the simulated device.
+## Start the IOT Platform SDK Services
 
-<http://localhost:8040> (for To0Scheduler and Simulated Device messages).
-
-## Start the To0scheduler Service
-
-Open a new terminal window and follow these steps to start the To0scheduler service:
+Open a new terminal window and start the IOT Platform SDK services:
 
 ```
-$ cd <sdo-iot-platform-sdk-root>/demo/to0scheduler/config
-$ sh run-to0scheduler
+$ cd <sdo-iot-platform-sdk-root>/demo/
+$ docker-compose up
 ```
-## Start the OCS Service
+This brings up the OCS, OPS, and To0Scheduler instances inside an Ubuntu-based Docker container. During this operation, everything under the Docker directory, including the configurations and binaries are copied into the built Docker containers. Only the directory 'ocs/config/db' and the file 'to0scheduler/config/redirect.properties', are configurable once the Docker container starts, to externalize the device information and values, and the TO1 OPS (owner) redirect information. If any changes are made to any of the files, other than the directory 'ocs/config/db' and the file 'to0scheduler/config/redirect.properties', both, the container and its image needs to be deleted and re-created again.
 
-Open a new terminal window and follow these steps to start the OCS service:
-
-```
-$ cd <sdo-iot-platform-sdk-root>/demo/ocs/config
-$ sh run-ocs
-```
-
-## Start the OPS Service
-
-Open a new terminal window and follow these steps to start the OPS service:
-
-```
-$ cd <sdo-iot-platform-sdk-root>/demo/ops/config
-$ sh run-ops
-```
+!!! Note
+    When running the demo in multiple machines, the ownership voucher must be created such that the IP address of the Rendezvous service is present, instead of 'localhost' in the Rendezvous information.
 
 ## Start the Device Simulation
 
 Open a new terminal window and follow these steps to start the device:
-
 ```
 $ cd <sdo-pri-root>/demo/device
 $ sh device
@@ -124,33 +107,6 @@ $ rm linux64.sh
 $ rm payload.bin
 $ rm result.txt
 ```
-
-Running the Simulation Using Docker* Compose Tool
-------------------------------------------------
-
-The demo can be run using the Docker* Compose tool for the IOT Platform SDK components. Any configuration, such as configuring proxies, properties or logs, should be done before starting the services.
-
-## Start the Simulated Rendezvous Service
-
-Open a new terminal window and start a virtual instance of the Rendezvous service as per the steps described
-[here](#start-the-simulated-rendezvous-service):
-
-## Start the IOT Platform SDK Services
-
-Open a new terminal window and start the IOT Platform SDK services:
-
-```
-$ cd <sdo-iot-platform-sdk-root>/demo/
-$ sudo docker-compose up
-```
-This brings up the OCS, OPS, and To0Scheduler instances inside an Ubuntu-based Docker container. During this operation, everything under the Docker directory, including the configurations and binaries are copied into the built Docker containers. Only the directory 'ocs/config/db' and the file 'to0scheduler/config/redirect.properties', are configurable once the Docker container starts, to externalize the device information and values, and the TO1 OPS (owner) redirect information. If any changes are made to any of the files, other than the directory 'ocs/config/db' and the file 'to0scheduler/config/redirect.properties', both, the container and its image needs to be deleted and re-created again.
-
-!!! Note
-    When running the demo in a single machine, the ownership voucher must be created such that the IP address of the Rendezvous service is present, instead of 'localhost' in the Rendezvous information.
-
-## Start the Device Simulation
-
-Open a new terminal window and start the device as per the steps described [here](#start-the-device-simulation). Once onboarded, the device will have the same files and behavior as mentioned above.
 
 Generating Ownership Voucher/Credential Pair
 --------------------------------------------
@@ -258,7 +214,8 @@ When the IOT Platform SDK Demo is running, log messages are displayed on the ter
 
 ## Configuring Proxies
 
-Update the proxy information specified by the properties mentioned below:
+Update the proxy information in _JAVA_OPTIONS as
+`_JAVA_OPTIONS=-Dhttp.proxyHost=http_proxy_host -Dhttp.proxyPort=http_proxy_port -Dhttps.proxyHost=https_proxy_host -Dhttps.proxyPort=https_proxy_port`, where
 
 -   http\_proxy\_host: Represents the http proxy hostname. Typically, it is an IP address or domain name in the proxy URL.
 
@@ -274,15 +231,7 @@ Specify combination the hostname and port information together for either http, 
 
 -   http\_proxy\_port: 900
 
-If no proxy needs to be specified, leave the fields blank.
-
-These properties are present in the following script files:
-
-`<sdo-iot-platform-sdk-root>/demo/ops/config/run-ops`
-
-`<sdo-iot-platform-sdk-root>/demo/ocs/config/run-ocs`
-
-`<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/run-to0scheduler`
+If no proxy needs to be specified, do not add these properties to your _JAVA_OPTIONS.
 
 ### Configuring Logs
 
@@ -346,9 +295,9 @@ For Device Simulation:
 
 `org.sdo.cri.device.DeviceApp.logStarting - Starting DeviceApp`
 
-## Configuring the Properties File
+## Configuring the Properties
 
-Each service has its own configuration file called application.properties. When each service starts, it will read the properties file in its current directory. For this simulation and during development, the properties file is writable. However, in a production environment, change the permissions of the properties file to read-only for added security.
+Each docker service of IOT Platform SDK has its own configuration file with extension '.env'. When each service starts, the properties stored in the '.env' files will be set as environment variables within the container. The runnable scripts, namely, run-ops, run-ocs and run-to0scheduler, that are responsible for starting the individual services within the docker container, explicitly maps the set the environment variables to the respective property of the application and passes them as Java* system variables. The properties for the PRI components are configurable using the respective 'application.properties' file. For this simulation and during development, the '.env' files  and the 'application.properties' files are writable. However, in a production environment, change the permissions of the these files to read-only for added security.
 
 The description for the configuration settings can be found in the
 properties associated with each service.
@@ -361,21 +310,32 @@ properties associated with each service.
 
 `<sdo-pri-root>/demo/device/application.properties`
 
-**to0scheduler Service Properties:**
+**to0scheduler Docker Service Properties:**
 
-`<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/application.properties`
+`<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env <br>
+referenced by <br>
+<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/run-to0scheduler 
+`
 
-**OPS Service Properties:**
+**OPS Docker Service Properties:**
 
-`<sdo-iot-platform-sdk-root>/demo/ops/config/application.properties`
+`<sdo-iot-platform-sdk-root>/demo/ops/ops.env <br>
+referenced by <br>
+<sdo-iot-platform-sdk-root>/demo/ops/config/run-ops
+`
 
-**OCS Service Properties:**
+**OCS Docker Service Properties:**
 
-`<sdo-iot-platform-sdk-root>/demo/ocs/config/application.properties`
+`<sdo-iot-platform-sdk-root>/demo/ocs/ocs.env <br>
+referenced by <br>
+<sdo-iot-platform-sdk-root>/demo/ocs/config/run-ocs`
 
 For information on all the properties for PRI components, refer to the comments in the specific properties files, or the README.
 
-For information on all the properties for IOT Platform SDK components, refer to the comments in the specific properties files.
+For information on all the properties for IOT Platform SDK components, refer to the comments in the specific .env files.
+
+!!! Note
+    In rest of the guide, the original name of the properties specified in the runnable scripts: run-ocs, run-ops and run-to0scheduler, will be referenced, instead of the names present in the .env files. The said mapping, that is specified explicitly, generally looks like: 'PROPERTY_NAME' at .env maps to 'property.name' at the application. For example, the property reference in the guide would be 'property.name=property-value', which means that 'PROPERTY_NAME=property-value' from .env is explicitly mapped to 'property.name=${PROPERTY_NAME}' at runnable script.
 
 ## Setting up Resources for OCS
 
@@ -613,7 +573,7 @@ o.s.i.ocs.fsimpl.fs.FsApplication.logStarted - Started FsApplication in 7.792 se
 
 The To0Scheduler service schedules the list of received device GUIDs from OCS, for TO0. During TO0 process, the To0Scheduler will provide the DNS, IP address, and port that the Secure Device Onboard-enabled devices must use for TO2. The To0Scheduler sends the Rendezvous server, the redirect URI that will be used by the device to send TO2 messages. This URI information is passed to the device during the TO1 process. When the device completes TO1, it uses the TO2 redirect URI to communicate with the Owner.
 
-The TO2 redirect information, namely, DNS, IP address, and port information of the Owner Protocol Service, is stored separately in the URI specified by the property inside application.properties:
+The TO2 redirect information, namely, DNS, IP address, and port information of the Owner Protocol Service, is stored separately in the URI specified by the property:
 ```
 org.sdo.to0.ownersign.to1d.bo=./redirect.properties (Path to file containing redirect information, Configurable)
 ```
@@ -634,7 +594,7 @@ o.s.i.t.to0library.To0ClientSession.run - <200,{"ws":7200}
 o.s.i.t.t.To0SchedulerEventsImpl.onSuccess - TO0 done for the device having uuid 1fae14fb-deca-405a-abdd-b25391b9d932
 ```
 
-The To0Scheduler communicates with the OCS at the URL defined by the property rest.api.server, defined in application.properties.
+The To0Scheduler communicates with the OCS at the URL defined by the property rest.api.server.
 
 Similar to OCS, the server is started using HTTPS, by default. The keystore and truststore information can be configured, but the Mutual TLS authentication settings must be left untouched. The properties are the same as that of OCS.
 
@@ -645,11 +605,14 @@ o.s.i.t.t.To0ServiceApplication.logStarting - Starting To0ServiceApplication
 o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8049 (https) with context path ''
 o.s.i.t.t.To0ServiceApplication.logStarted - Started To0ServiceApplication in 9.159 seconds (JVM running for 10.693)
 ```
+!!! NOTE
+    By default, To0Scheduler is configured to verify Rendezvous service's incoming server certificate during TLS handshake for all outgoing HTTPS requests to Rendezvous service. To disable this certificate verification for demo purposes, set the application property 'org.sdo.to0.tls.test-mode' (ORG_SDO_TO0_TLS_TEST_MODE in \<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env) to 'false'.
+
 ## Starting the Owner Protocol Service with HTTP(S) for TO2 Process
 
-The Owner Protocol server starts a HTTP server by default to listen to incoming messages from the device for TO2, by using the configuration provided in the application.properties file. To start the service using HTTPS, refer to [Enabling Transport Layer Security (TLS) during TO2](#enabling-transport-layer-security-tls-during-to2).
+The Owner Protocol server starts a HTTP server by default to listen to incoming messages from the device for TO2, by using the configuration provided in the ops.env file. To start the service using HTTPS, refer to [Enabling Transport Layer Security (TLS) during TO2](#enabling-transport-layer-security-tls-during-to2).
 
-It communicates with the OCS at the URL defined by the rest.api.server property, using the keystore, and trustore as specified in application.properties.
+It communicates with the OCS at the URL defined by the rest.api.server property, using the keystore, and trustore as specified.
 
 ```
 client.ssl.key-store-type=PKCS12 (Key-store type, Configurable)
@@ -691,17 +654,29 @@ To run TO2 in TLS mode, follow the steps listed below.
 
 **Step 1:** Add the following properties to
 
-`<sdo-iot-platform-sdk-root>/demo/ops/config/application.properties`
+`<sdo-iot-platform-sdk-root>/demo/ops/ops.env`
+```
+SECURITY_REQUIRE_SSL=true
+SERVER_SSL_KEY_STORE_TYPE=PKCS12
+SERVER_SSL_KEY_STORE=ops-keystore.p12
+SERVER_SSL_KEY_STORE_PASSWORD=<password>
+SERVER_SSL_CIPHERS=TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256
+SERVER_SSL_ENABLED_PROTOCOLS=TLSv1.3
+```
+Then, reference the properties in `<sdo-iot-platform-sdk-root>/demo/ops/config/run-ops`
 
 ```
-security.require-ssl=true
-server.ssl.key-store-type=PKCS12
-server.ssl.key-store=ops-keystore.p12
-server.ssl.key-store-password=123456
-server.ssl.ciphers=TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256
-server.ssl.enabled-protocols=TLSv1.3
+SERVER_TLS_PROPERTIES="-Dsecurity.require-ssl=${SECURITY_REQUIRE_SSL}"
+SERVER_TLS_PROPERTIES+=" -Dserver.ssl.key-store-type=${SERVER_SSL_KEY_STORE_TYPE}"
+SERVER_TLS_PROPERTIES+=" -Dserver.ssl.key-store=${SERVER_SSL_KEY_STORE}"
+SERVER_TLS_PROPERTIES+=" -Dserver.ssl.key-store-password=${SERVER_SSL_KEY_STORE_PASSWORD}"
+SERVER_TLS_PROPERTIES+=" -Dserver.ssl.ciphers=${SERVER_SSL_CIPHERS}"
+SERVER_TLS_PROPERTIES+=" -Dserver.ssl.enabled-protocols=${SERVER_SSL_ENABLED_PROTOCOLS}"
+
+Add ${SERVER_TLS_PROPERTIES}, keeping the other properties intact, into the exec command as:
+exec java ${SERVER_TLS_PROPERTIES} -jar -Djava.library.path=$base_dir/sdo $bin_path
 ```
-The following properties pertaining to the keystore must always match with each other in the properties file.
+The following properties 'server.ssl.\*' pertaining to the keystore and truststore management, must always match with the corresponding 'client.ssl.\*' properties specified for the application.
 
 ```
 server.ssl.key-store-type matches client.ssl.key-store-type
@@ -745,20 +720,20 @@ To run each IOT Platform SDK component in its own separate machine, the followin
 
 -   Update the following properties at each component:
 
- At OCS `<sdo-iot-platform-sdk-root>/demo/ocs/config/application.properties:`
+ At OCS `<sdo-iot-platform-sdk-root>/demo/ocs/ocs.env`:
 
 ```
 to0.rest.api=https://<To0Scheduler-machine-IP-or-DNS>:<port>/v1/to0/devices
 
 ```
  At OPS
- `<sdo-iot-platform-sdk-root>/demo/ops/config/application.properties`:
+ `<sdo-iot-platform-sdk-root>/demo/ops/ops.env`:
 
 ```
 rest.api.server=https://<OCS-machine-IP-or-DNS>:<port>/
 ```
  At To0Scheduler
- `<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/application.properties`:
+ `<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env`:
 
 ```
 rest.api.server=https://<OCS-machine-IP-or-DNS>:<port>/

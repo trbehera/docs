@@ -1,12 +1,15 @@
 The IOT Platform SDK consists of Owner Companion Service (OCS) that can be implemented to integrate any other device management solution.
 
-Both the OPS and To0Scheduler are bound to the OCS by a set of pre-defined REST contracts, as specified in the module `libocs`, that can be implemented to perform certain pre-defined tasks. Each REST API must carry out only the corresponding task, and must accept/return only the corresponding Message Type object.
+Both the OPS and To0Scheduler are bound to the OCS by a set of pre-defined contracts, as specified in the module `libocs`, that can be implemented to perform certain pre-defined tasks. The contract is backed by a set of REST APIs/interfaces, where each individual REST API/interface is tied to exactly one method from the pre-defined contract. Each REST API/interface carries out only the corresponding task, and accepts/returns only the corresponding Message Type object.
 
 The implementation of these REST contracts in an OCS can be done in any programming language. A sample java-based reference implementation of OCS is provided by the module `ocsfs` that uses file-system as database. As such, both OPS and To0Scheduler will work out-of-the-box with any implementation of OCS that supports the pre-defined REST contracts.
 
+!!! Note
+    The implementation of the pre-defined contracts can be backed by non-REST interfaces as well. However, this would invlove updates to both OPS and To0Scheduler to facilitate communication with the newly defined interface at OCS. Such a change would involve, but is not limited to, updates to existing class `RestClient.java` at both OPS and To0Scheduler.
+
 ## Rest Contracts between OCS (server) and OPS/To0Scheduler (client)
 
-Following are the pre-defined REST API specifications for all the resource paths that must be implemented and exposed by an OCS implementation. Both, OPS and To0Scheduler makes requests to the OCS implementation, as clients, using this format.
+Following are the pre-defined REST API specifications for all the resource paths that must be implemented and exposed by an OCS implementation. Both, OPS and To0Scheduler make requests to the OCS implementation, as clients, using this format.
 
 | Operation                               | Description                                                  | Path/Query Parameters                    | Request Body  | Response Body |
 | ---------------------------------------:|:------------------------------------------------------------:|:----------------------------------------:|:-------------:|--------------:|
@@ -30,11 +33,11 @@ Following are the pre-defined REST API specifications for all the resource paths
 | `GET` /v1/devices/{deviceId}/sessioninfo  | Get the TO2 session info corresponding to the `deviceId`.  | Path: `deviceId`: Device identifier      |                | To2DeviceSessionInfo |
 | `POST` /v1/devices/{deviceId}/sessioninfo  | Update the TO2 session info corresponding to the `deviceId`. | Path: `deviceId`: Device identifier   | To2DeviceSessionInfo |               |
 | `DELETE` /v1/devices/{deviceId}/sessioninfo  | Delete the TO2 session info corresponding to the `deviceId`.   | Path: `deviceId`: Device identifier |               |               |
-
+| `GET` /devices/{deviceId}/resale  | Get the `resale` flag indicating owner's support for resale of the corresponding `deviceId`.   | Path: `deviceId`: Device identifier |               |    Boolean    |
 
 ## Rest Contracts between To0Scheduler (server) and OCS (client)
 
-An OCS implementation must, also, acta as a client to trigger TO0 for set of devices, by making the following request to To0Scheduler. To0Scheduler accepts the request from OCS to initiate TO0 for the list of devices.
+An OCS implementation must, also, act as a client to trigger TO0 for set of devices, by making the following request to To0Scheduler. To0Scheduler accepts the request from OCS to initiate TO0 for the list of devices.
 
 | Operation                               | Description                                                  | Path/Query Parameters                    | Request Body  | Response Body |
 | ---------------------------------------:|:------------------------------------------------------------:|:----------------------------------------:|:-------------:|--------------:|
@@ -77,7 +80,7 @@ This JSON* structure represents the device's error information that occurred dur
 
 
 ### *ModuleMessage*
-This JSON* structure contains the key-value pairs for a particular module name. It is used to store, both, the device's serviceinfo, and the owner's pre-serviceinfo.
+This JSON* structure contains the key-value pairs for a particular module name. It is used to store both the device's serviceinfo and the owner's pre-serviceinfo.
 
 *Message Body:*
 ```
@@ -193,7 +196,7 @@ This JSON* structure represents the information from Secure Device Onboard proto
 
 
 ### *Message47Store*
-This JSON* structure contains the new ownership voucher information, temporarily, until till the end of TO2 protocol, created during response generation of [TO2.SetupDevice, Type 47](../protocol-specification/detailed-protocol-description.md#to2setupdevice-type-47). This information is stored as a part of TO2 session information per device.
+This JSON* structure contains the new ownership voucher information, temporarily, until the end of TO2 protocol, created during response generation of [TO2.SetupDevice, Type 47](../protocol-specification/detailed-protocol-description.md#to2setupdevice-type-47). This information is stored as a part of TO2 session information per device.
 
 *Message Body:*
 ```

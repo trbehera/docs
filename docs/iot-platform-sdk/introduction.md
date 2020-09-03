@@ -11,7 +11,7 @@ Failure to do so can severely compromise the security of this software.
 Introduction
 ------------
 
-The Secure Device Onboard IoT Platform SDK provides components that enable the integration of an owners IOT Platform (also known as a Device Management Service) into a Secure Device Onboard service.  The SDK is comprised of three components: Owner Protocol Service (OPS), Owner Companion Service (OCS), and To0Scheduler.
+The Secure Device Onboard IoT Platform SDK provides components that enable the integration of an owner's IOT Platform (also known as a Device Management Service) into a Secure Device Onboard service.  The SDK is comprised of three components: Owner Protocol Service (OPS), Owner Companion Service (OCS), and To0Scheduler.
 
 The To0Scheduler is responsible for executing TO0, while Owner Protocol Service (OPS) is responsible for executing TO2 for any Secure Device Onboard-enabled device. The Owner Companion Service (OCS) provides the device information and functions to the other two components, and abstracts the actual owner(s) of the devices from the said components.
 
@@ -30,27 +30,27 @@ This component holds the common packages that are shared and used by all the oth
 
 ***to0scheduler***:
 
-This component is responsible for the scheduling and completion of TO0 for multiple ownership proxies. It makes use of  the CRIs libto0client to perform TO0 for any device. This component is comprised of three modules:
+This component is responsible for the scheduling and completion of TO0 for multiple ownership vouchers. This component is comprised of three modules:
 
-**libto0**: This module implements a REST endpoint that takes an array of device IDs (GUIDs) and the corresponding TO0 wait seconds as inputs. OCS calls this endpoint to trigger TO0 for an array of devices. This package also provides interfaces, whose implementation must provide ways to fetch the Ownership vouchers and set the TO0 status for every GUID.
+**libto0**: This module is responsible for all interactions with Rendezvous service to complete TO0 for given devices. This package provides interfaces, whose implementation must provide ways to fetch the Ownership vouchers and set the TO0 status for every GUID.
 
-**to0serviceimpl**: This module contains the spring boot application and its configuration classes. It imports the 'libto0' component as a dependency, configures it, and provides implementations of its interfaces that are used as inputs to the T00 operation. The interface implementation interacts with OCS and does TO0 for a given set of ownership vouchers fetched from OCS. Once built, this package contains the actual runnable war with an embedded tomcat server, which the user can run to start to0scheduler as a service.
+**to0serviceimpl**: This module contains the spring boot application and its configuration classes. It imports the 'libto0' component as a dependency, configures it, and provides implementations of its interfaces that are used as inputs to the TO0 operation. It also implements a REST endpoint that takes an array of device IDs (GUIDs) and the corresponding TO0 wait seconds as inputs. OCS calls this endpoint to trigger TO0 for an array of devices. After receiving the device IDs, the interface implementation interacts with OCS and does TO0 for a given list of ownership vouchers. Once built, this package contains the actual runnable war with an embedded tomcat server, which the user can run to start to0scheduler as a service.
 
 ***ocs:***
 
-This component is comprised of two modules:
+This component is responsible for managing the device-specific data and operations that enables provisioning of devices to any BMS(building management service). This component is comprised of two modules:
 
-**libocs**: Defines the REST endpoints and the associated contract, where each endpoint is mapped to a specific method. Any vendor or BMS(building management service) that is implementing its own OCS needs to import this jar, and to provide their implementations for the same methods.
+**libocs**: Defines the contract that needs to be implemented by vendor or BMS(building management service) to integrate their solution with OPS and To0Scheduler. The implementor of the OCS needs to import this jar and provide their implementations for the defined contract.
 
-**fsimpl**: A sample File-system implementation of OCS. It imports the 'libocs' as a dependency and implements the contracts defined in the OCS's Rest Contract. Being a file-based implementation, it uses the file-system as database to read from, in addition to store the device information as well as the owner credentials.
+**fsimpl**: A sample File-system implementation of OCS. It imports the 'libocs' as a dependency and implements the defined contracts. It also defines multiple REST endpoints where each endpoint is mapped to a specific contract. Being a file-based implementation, it uses the file-system as database to read from, in addition to store the device information as well as the owner credentials.
 
 ***ops:***
 
-This component is responsible for the actual onboarding of a device by running T02 for a given GUID. It is comprised of five modules:
+This component is responsible for the actual onboarding of a device by running TO2 for a given GUID. It is comprised of five modules:
 
-**libops:** This module contains the TO2 REST endpoints and some basic configuration for these endpoint implementations. This module provides interfaces whose implementations must provide the required data for the protocol to work.
+**libops:** This module contains the TO2 protocol implementation. It provides interfaces whose implementations must provide the required data for the protocol to work.
 
-**restimpl:** This module makes use of 'libops' module to execute TO2 for multiple SDO clients. It re-configures the 'libops' and provides implementations of a few interfaces that define the way data is provided to TO2 protocol endpoints. It sends REST calls toOCS to get and store device-specific information, such as ownership voucher, service-info files, TO2 session information among others, then provides these as inputs to the TO2 protocol endpoints.
+**restimpl:** This module makes use of 'libops' module to execute TO2 for multiple SDO clients. It configures the 'libops' and provides implementations of a few interfaces that define the way data is provided to TO2 protocol endpoints. It wraps the TO2 protocol implementation of the 'libops' module, by creating separate REST endpoints for managing all incoming TO2 requests. It sends REST calls to OCS to get and store device-specific information, such as ownership voucher, service-info files, TO2 session information among others, then provides these as inputs to the TO2 protocol endpoints.
 
 **epid:** This module contains the Intel<sup>®</sup> Enhanced Privacy ID(Intel<sup>®</sup> EPID)-specific implementations that is used by the 'libops' module to handle Intel<sup>®</sup> EPID-based Secure Device Onboard clients. It contacts the Intel<sup>®</sup> EPID online services to validate Secure Device Onboard clients.
 
