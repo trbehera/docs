@@ -567,7 +567,7 @@ Before the **TO2 Protocol** begins:
 After the **TO2 Protocol** completes successfully:
 
 -   The **Owner Client** has replaced all the device credentials with its own,
-    except for the Device’ attestation key. The Device TEE has allocated a new
+    except for the Device’s attestation key. The Device TEE has allocated a new
     secret and given the Owner a HMAC to use in a new Ownership Voucher, which
     can be used for resale. Please see section [§](../resale-protocol/#resale-protocol) : Resale Protocol for more
     information.

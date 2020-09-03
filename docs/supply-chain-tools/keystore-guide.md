@@ -26,11 +26,11 @@ Choose the appropriate method for your situation. This process must be done for 
 
 ## Step 1: Key Store File Initialization
 
-Use the **p12init.sh** script provided along with the toolkit to generate the key store file. Before use, update the configuration in the file (For example, key store password and certificate validity period).
+Use the [p12init.sh](https://github.com/secure-device-onboard/supply-chain-tools/blob/master/scripts/p12init.sh) script provided along with the toolkit to generate the key store file. Before use, update the configuration in the file (For example, key store password and certificate validity period).
 
 The script can be run directly on a Linux\* OS. For Windows\* OS, you will need to install the Cygwin\* DLL from <https://www.cygwin.com/> and run the script from a Cygwin\* shell. If running with Cygwin\*, be sure to add Java\* to your path variable. For example, in a Cygwin\* command window:
 
-Export Path=\$PATH:"/cygdrive/C/program files/java/dk-11/bin"
+Export Path=\$PATH:"/cygdrive/C/program files/java/jdk-11/bin"
 
 You should now have a key store file that can be used by the toolkit. You will need to provide the name of this file and the password you used here to the toolkit web service later.
 

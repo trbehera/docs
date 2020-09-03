@@ -93,8 +93,8 @@ Table 3.	Linux* OS-based Manufacturer Toolkit
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Connectivity        |    Two Ethernet networks: one to connect   to the IoT device and a separate network to connect to the backend to provide   access to voucher data and the voucher extension operation.                                                                                                                                                                                            |
 |    Secure Key Fobs     |    YubiKey* security key (see <https://www.yubico.com/products/yubikey-hardware/>)                                                                                                                                                                                                                                                                                                  |
-|    Operating System    |    Ubuntu* OS version 16.x or 18.x                                                                                                                                                                                                                                                                                                                                                |
-|    Software            |    Java\* Runtime Environment (JRE) software version 11 </p>    Oracle\* software (<http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html>) </p>   or  </p> OpenJDK\* (<http://openjdk.java.net/install/index.html>) </p>  · Apache Tomcat\* (<http://tomcat.apache.org/>)   software version 8 or later </p>   · MariaDB* (<https://mariadb.org/>)  server version 10.4 or later </p>   |
+|    Operating System    |    Ubuntu* OS version 18.x                                                                                                                                                                                                                                                                                                                                                |
+|    Software            |    Java\* Runtime Environment (JRE) software version 11 </p> OpenJDK\* (<http://openjdk.java.net/install/index.html>) </p>  · Apache Tomcat\* (<http://tomcat.apache.org/>)   software version 8 or later </p>   · MariaDB* (<https://mariadb.org/>)  server version 10.4 or later </p>   |
 
 Table 4.	Windows* OS-based Manufacturer Toolkit
 
@@ -103,7 +103,7 @@ Table 4.	Windows* OS-based Manufacturer Toolkit
 |    Connectivity        |    Two Ethernet networks: one to connect   to the IoT device and a separate network to connect to the backend to provide   access to voucher data and the voucher extension operation.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |    Secure Key Fobs     |    YubiKey* security key (see  <https://www.yubico.com/products/yubikey-hardware/>)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 |    Operating System    |    Windows* 10 OS or Windows Server\* OS   version 2012 R2 or later, 64-bit version.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|    Software            |    Java* Runtime Environment (JRE) software version 11    Oracle\* software (<http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html>) </p>  or </p>  OpenJDK* (<http://openjdk.java.net/install/index.html>) </p>  · Apache Tomcat\* (<http://tomcat.apache.org/>)   software version 8 or later </p>  · MariaDB* (<https://mariadb.org/>)  server version 10.4 or later  </p>  · OpenSC Utilities (<https://github.com/OpenSC/OpenSC/releases/download/0.17.0/OpenSC-0.17.0-win64_vs12-Release.msi>.   After the installation, you will find the following DLL file installed: C:\windows\system32\opensc-pkcs11.dll    |
+|    Software            |    Java* Runtime Environment (JRE) software version 11  </p>  OpenJDK* (<http://openjdk.java.net/install/index.html>) </p>  · Apache Tomcat\* (<http://tomcat.apache.org/>)   software version 8 or later </p>  · MariaDB* (<https://mariadb.org/>)  server version 10.4 or later  </p>  · OpenSC Utilities (<https://github.com/OpenSC/OpenSC/releases/download/0.17.0/OpenSC-0.17.0-win64_vs12-Release.msi>.   After the installation, you will find the following DLL file installed: C:\windows\system32\opensc-pkcs11.dll    |
 
 ### Step 3: Deploy Database and Manufacturer Toolkit
 Install the SDO database and toolkit, see [Database and Toolkit Installation](#database-and-toolkit-installation). Be sure to use the secure key fob option for the key storage. 
@@ -123,19 +123,19 @@ For the remaining setup, follow the instructions in the readme file in the SDO D
 4.	Edit rt_config.sql and mt_config.sql as directed by the comments in each file. (These files are located in the sources of the SDO release package under /SupplyChainTools/scripts/mysql or /SupplyChainTools/scripts/sqlserver).	
 5.	Run the rt_create.sql script:  
 	```
-	mysql -u <username> -p < rt_create.sql
+	mysql -u <username> -p <rt_create.sql>
 	```
 6.	Run the mt_create.sql script:  
 	```
-	mysql -u <username> -p < mt_create.sql
+	mysql -u <username> -p <mt_create.sql>
 	```
 7.	Run the rt_config.sql script:  
 	```
-	mysql -u <username> -p < rt_config.sql
+	mysql -u <username> -p <rt_config.sql>
 	```
 8.	Run the mt_config.sql script:  
 	```
-	mysql -u <username> -p < mt_config.sql
+	mysql -u <username> -p <mt_config.sql>
 	```
 9.	Create a key store containing the manufacturer keys. See [Supply Chain Tools Key Store Setup Guide](../keystore-guide.md) for details. 
 10.	Set up and deploy the toolkit web service. If this is an evaluation deployment, you have an option to run the web service directly from the command line. If you choose to do this, instructions are provided in the readme file included with the toolkit software. Follow those instructions. You can verify that the toolkit starts up correctly by looking at the output in the window where you ran the toolkit. Installation is then complete, and you can skip the following steps. For example, if running directly:  

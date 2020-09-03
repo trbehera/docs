@@ -12,7 +12,7 @@ Devices enabled with Secure Device Onboard technology work with any IoT cloud se
 
 The Secure Device Onboard process involves interactions between a number of different entities that participate in the process.  Those include:
 
-**Manufacturer** - The manufacture is responsible for loading Secure Device Credentials into a device. They are also directly or indirectly responsible for installing software onto the device that supports the Secure Device Onboard protocols required for device discovery and transfer of ownership.
+**Manufacturer** - The manufacturer is responsible for loading Secure Device Credentials into a device. They are also directly or indirectly responsible for installing software onto the device that supports the Secure Device Onboard protocols required for device discovery and transfer of ownership.
 
 **Device** - The device runs software which supports the Secure Device Onboard protocols required for devices.  The device is initialized with credentials which securely identifies the device.
 

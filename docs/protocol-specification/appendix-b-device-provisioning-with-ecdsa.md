@@ -26,7 +26,7 @@ Device key and certificate, before the Secure Device Onboard Device Initialize
     Secure Device Onboard.
 
 -   The certificate chain is attached to the Ownership Voucher, as described in
-    section ‎5.2.3 (5.2.3	PM.OwnershipProxy, Type 3	91)
+    section [§](../detailed-protocol-description/#persisted-messages) : Persisted Messages Type 3 for more info
 
 The Ownership Voucher HMAC, passed in the DI protocol, references the initial
 Device Certificate. This means that the ECDSA key and certificate must be
