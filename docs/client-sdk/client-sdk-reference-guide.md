@@ -6,7 +6,6 @@ In addition, the Client SDK is ported to the following Arm* platforms:
 1.	Nucleo* development board (NUCLEO-F429ZI) running STM32F429ZI ARM Cortex*-M4 MCU over Mbed* OS.  
 2.	NUCLEO-F767ZI development board running STM32F767ZI Arm* Cortex*-M7 MCU over Mbed* OS.  
 3.	WaRP7 development board running i.MX 7 series Arm Cortex-A7 MPU over Mbed Linux.  
-4.	Raspberry Pi* development board running Arm Cortex-A53 MPU over Raspbian OS.  
 
 The Client SDK is a reference implementation that can be used to onboard a device and then give control to the device application or IOT Platform Service. “Onboarding” means the process by which a device establishes its first trusted connection with an IOT Platform Service.  
 
@@ -51,7 +50,7 @@ It is assumed that the machine on which the SDK runs has access to the network. 
 The SDK will initiate connections to the following external ports, which must not be blocked by a firewall:
 
 -	8039: The SDK connects to the SDO Manufacturer Server on this port.
--	8041: The SDK connects to the SDO Rendezvous Server on this port.
+-	8040: The SDK connects to the SDO Rendezvous Server on this port.
 -	8042: The SDK connects to the SDO Owner Server on this port.
 
 For details on the Manufacturer Server, Rendezvous Server, and Owner Server refer to the Reference Documents.
@@ -121,13 +120,13 @@ If an error occurs after a module has been initialized, during the remainder of 
 The intent of PSI is described in the SDO Protocol specification. Basically, PSI provides the Owner Server with a way to inform a module what to expect during the next two service info sequences (such as, DSI and OSI). The module should use this information to prepare itself for the subsequent exchanges.
 
 PSI is an ASCII string containing one or more 2-tuple of the format 
-`[module-name][module-data]`. The SDK parses the PSI string and locates the module specified by module-name. If this module is not found, the SDK ignores it and continues with the next PSI touple in the string.
+`[module-name][module-data]`. The SDK parses the PSI string and locates the module specified by module-name. If this module is not found, the SDK ignores it and continues with the next PSI tuple in the string.
 
 The `[module-data]` is a key-value pair where the value is optional (depending on the key) and is encoded as `key~value` (the ‘~’ char is the delimiter). The SDK will parse this substring to extract the key and value.
 
-If the module is found, the SDK invokes the modules callback function with type `SDO_SI_SET_PSI` and passes the module-data to it in the sv parameter. The key is contained in `sv.key` and the value if present, is in `sv.value`. If no value is present, the `sv.value` will be `NULL`. The module is expected to process the key-value and return either success or failure. A failure response will cause the entire onboarding sequence to fail and the Application must retry it at a later time. In most cases the Owner Server will use PSI to allow the module to perform basic initialization and setup for the following DSI and OSI rounds in terms of allocating resources, and others.
+If the module is found, the SDK invokes the modules callback function with type `SDO_SI_SET_PSI` and passes the module-data to it in the sv parameter. The key is contained in `sv.key` and the value if present, is in `sv.value`. If no value is present, the `sv.value` will be `NULL`. The module is expected to process the key-value and return either success or failure. A failure response will cause the entire onboarding sequence to fail and the Application must retry it later. In most cases the Owner Server will use PSI to allow the module to perform basic initialization and setup for the following DSI and OSI rounds in terms of allocating resources, and others.
 
-From a format standpoint, both key and value are `NULL` terminated ASCII strings. The value may optionally contain base64 encoded binary data. A PSI string could contain multiple 2-touples with the same module-name. In this case, the SDK will invoke the same module multiple times, once for each occurrence of module-name in the PSI string. The corresponding key-value pairs will be passed in each of these invocations. The `count` parameter will act as an ‘index’ starting at 0 for the first invocation and incremented for subsequent invocations.
+From a format standpoint, both key and value are `NULL` terminated ASCII strings. The value may optionally contain base64 encoded binary data. A PSI string could contain multiple 2-tuples with the same module-name. In this case, the SDK will invoke the same module multiple times, once for each occurrence of module-name in the PSI string. The corresponding key-value pairs will be passed in each of these invocations. The `count` parameter will act as an ‘index’ starting at 0 for the first invocation and incremented for subsequent invocations.
 
 !!! note
 	The PSI is considered the module configuration data and is independent of the DSI (see next section), which is the device information. The number of PSI elements is hence decoupled from the number of DSI elements. If the module wishes to retain either the key of value parameters for later use, it must make a local copy of the contents. The pointers passed during the invocation will be invalid after the callback returns to the SDK.
@@ -140,11 +139,11 @@ DSI follows PSI. The module needs to determine in advance how many DSI key-value
 
 On completing the PSI round, the SDK queries each registered module for the number of DSI rounds it requires. This is done by invoking the modules callback with the `SDO_SI_GET_DSI_COUNT` type. The module is expected to return the number of DSI key-value pairs it requires in the `count` callback parameter.
 
-When the DSI round for a module begins, the SDK will call the modules callback with the `SDO_SI_GET_DSI` type. The *`count`* parameter will indicate the ‘index’ of the DSI key-value pair being requested by the SDK. The SDK uploads each key-value pair to the Owner Server in the same order. The module may choose to ignore the ‘index’ sent by the SDK but it is advisable for the module to return key-value data based on this index. This callback will be invoked as many times as specified by the module by the prior `SDO_SI_GET_DSI_COUNT` return value (the ‘index’ value will vary from 0 to `count-1`).
+When the DSI round for a module begins, the SDK will call the modules callback with the `SDO_SI_GET_DSI` type. The *`count`* parameter will indicate the ‘index’ of the DSI key-value pair being requested by the SDK. The SDK uploads each key-value pair to the Owner Server in the same order. The module may choose to ignore the ‘index’ sent by the SDK, but it is advisable for the module to return key-value data based on this index. This callback will be invoked as many times as specified by the module by the prior `SDO_SI_GET_DSI_COUNT` return value (the ‘index’ value will vary from 0 to `count-1`).
 
-Key-values are returned in the `sv.key` and `sv.value` parameter fields. The `sv.key` must strictly be an `NULL` terminated ASCII string. The `sv.value` is also a `NULL` terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the Owner Server knows how to interpret a particular key-value from a particular module. The module must include Base64 encoding capabilities if required.
+Key-values are returned in the `sv.key` and `sv.value` parameter fields. The `sv.key` must strictly be an `NULL` terminated ASCII string. The `sv.value` is also a `NULL` terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the Owner Server knows how to interpret a particular key-value from a module. The module must include Base64 encoding capabilities if required.
 
-The very first key-value returned by a module (‘index’ zero) must be an activation value indicating whether the module is active or not. The key value must be `“active”` and the value must be `“1”` if the module is active or `“0”` if the module is not active. If the module is not active, the Owner Server will not send and DSI messages to the module. This requires each module to have at least one DSI – that is, the count value returned for the `SDO_SI_GET_DSI_COUNT` callback type must be at least `1.` See the SDO Protocol Specification for more information on module activation and deactivation.
+The very first key-value returned by a module (‘index’ zero) must be an activation value indicating whether the module is active or not. The key value must be `“active”`, and the value must be `“1”` if the module is active or `“0”` if the module is not active. If the module is not active, the Owner Server will not send and DSI messages to the module. This requires each module to have at least one DSI – that is, the count value returned for the `SDO_SI_GET_DSI_COUNT` callback type must be at least `1.` See the SDO Protocol Specification for more information on module activation and deactivation.
 
 Note that DSI is one way – from device to Owner Server. The Owner Server cannot respond to any DSI message during this phase. It can however respond to a prior DSI message in the next, OSI phase.
 
@@ -153,7 +152,7 @@ OSI follows DSI. Unlike DSI, neither the SDK nor the module can determine in adv
 
 Received key-values are passed to the module in the `sv.key` and `sv.value` callback parameter fields. The `sv.key` must strictly be an `NULL` terminated ASCII string. The `sv.value` is also a NULL terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the module knows how to interpret the value for a particular key based on the key name. In addition to the sv parameter, the SDK will pass an ‘index’ of the OSI in the `count` parameter. The ‘index’ begins at 0 and increments for each OSI key-value pair received for the module.
 
-Corresponding to the activation message in DSI, the Owner Server could send a deactivation message to a module if it is not planning to use the module. The message will have a key of `“active”` and value of `“0”`. On receiving this message, a module may free allocated resources and effectively shutdown from an SDO perspective. Unlike the activation message, this message is optional and will only be sent if the Owner Server is not going to use the module. A module must expect to remain active unless it explicitly receives a deactivation message or it already indicated that is not active in the earlier DSI stage. See the SDO Protocol Specification for more information on module activation and deactivation.
+Corresponding to the activation message in DSI, the Owner Server could send a deactivation message to a module if it is not planning to use the module. The message will have a key of `“active”` and value of `“0”`. On receiving this message, a module may free allocated resources and effectively shutdown from an SDO perspective. Unlike the activation message, this message is optional and will only be sent if the Owner Server is not going to use the module. A module must expect to remain active unless it explicitly receives a deactivation message, or it already indicated that is not active in the earlier DSI stage. See the SDO Protocol Specification for more information on module activation and deactivation.
 
 If a module receives an OSI when it is in the deactivated state, it should return a status of `SDO SI_CONTENT_ERROR` indicating that the received element was not expected.
 The module is expected to process the key-value pair and return a result indicating if the operation was successful or failed. The module may return `SDO_SI_CONTENT_ERROR` or `SDO_SI_INTERNAL_ERROR` to differentiate between invalid value contents or a module run-time error. This information is reported to the Owner Server. The module must return `SDO_SI_SUCCESS` on successful completion.
@@ -166,7 +165,7 @@ When all service information rounds of all modules have completed successfully, 
 The SDK will not call into the module after this. The SDK will ignore the return value of this callback since no further failure is expected at this point.
 
 #### Module Errors
-If an error occurs during the service information phase, the TO2 protocol is considered to have failed and will be aborted. The Application will need to retry onboarding at a later time. A failure could occur for multiple reasons including failure of device/server interaction, failure of signature or hash verification, malformed messages and also if a module returns a failure while processing a PSI, DSI, or OSI command/request.
+If an error occurs during the service information phase, the TO2 protocol is considered to have failed and will be aborted. The Application will need to retry onboarding later. A failure could occur for multiple reasons including failure of device/server interaction, failure of signature or hash verification, malformed messages and if a module returns a failure while processing a PSI, DSI, or OSI command/request.
 
 On failure, all modules must clean up internal state and discard any configuration information they might have got from the Owner Server. Conversely, the Owner Server will also discard all data it might have received from modules.
 
@@ -183,14 +182,14 @@ Table 1.	Prerequisites
 
 |                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    Software                                      |    ·      Linux\* Ubuntu\* 16.04 / Ubuntu\* 18.04 using   OpenSSL\* 1.1.1f <br/>·      JDK11  <br/> ·      SDO release binaries package (for running test servers) <br/>     o The root directory of extracted binary package is referred to as <sdo_sdk_binaries> in subsequent sections. <br/>   ·      SDO Client SDK alpha-release binary package <br/>   o The root directory of extracted binary package is referred to as < SDOClientSDK> in subsequent sections. <br/>  ·      SDO Client SDK alpha-release sources package <br/>  o The root directory of extracted source code is referred to as < SDOClientSDK> in subsequent sections. <br/>  ·      Apache Maven\* (for building sample Java\* based test owner   service)   <br/>    Additional Ubuntu\* 16.04/18.04  prerequisites can be found in the   <releases source>/SDOClientSDK/README.md     |
+|    Software                                      |    ·      Linux\* Ubuntu\* 18.04 using   OpenSSL\* 1.1.1g <br/>·      JDK11  <br/> ·      SDO release binaries package (for running test servers) <br/>     o The root directory of extracted binary package is referred to as <sdo_sdk_binaries> in subsequent sections. <br/>   ·      SDO Client SDK alpha-release binary package <br/>   o The root directory of extracted binary package is referred to as < SDOClientSDK> in subsequent sections. <br/>  ·      SDO Client SDK alpha-release sources package <br/>  o The root directory of extracted source code is referred to as < SDOClientSDK> in subsequent sections. <br/>  ·      Apache Maven\* (for building sample Java\* based test owner   service)   <br/>    Additional Ubuntu\* 18.04  prerequisites can be found in the   <releases source>/SDOClientSDK/README.md     |
 |    Safestring   library                          |    Safestring library v1.0.0  <br/> ·          Download safestringlib from  https://github.com/intel/safestringlib  <br/> ·          `cd safestringlib` <br/>   ·          `mkdir obj` <br/>  ·          `make ` <br/>  ·          The   library file libsafestring.a will be created after make.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |    Java\*                                         |    Set the $JAVA_HOME environment   variable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |123456
 
 ### Run the Binary Package
 The following subsections provide the steps to run the binary package.
 
-#### Get the Device Private Key (ECDSA P-256 based)
+#### Get the Device Private Key (ECDSA based)
 The SDK requires a device Private Key as input for device attestation process (to prove itself to Rendezvous or Owner Server during TO1 or TO2 protocol). The key could be based on ECDSA (on curve P-256/P-384) based on the device attestation method being used on the field. This key must be stored in a specific file and is read by the SDK on startup. 
 
 _**For ECDSA (P-256) based device-attestation method:**_  
@@ -213,13 +212,14 @@ _**Terminal #1: Start All-in-one Demo**_
 This section describes about running the SDO reference device (based on Linux* reference implementation) only. 
 Going forward, <sdo-client-sdk-bindir> refers to the location where the SDO Client application 'linux-client' and the related 'data' folder are placed.
 
-!!! note
-    Running the device the first time completes DI. Running the device the second time on boards the device. Between subsequent device runs, it is assumed that ownership proxy is correctly extended and TO0 is successfully completed.
+!!! note:- </b>
+    Running the device for the first time completes DI.
+	Running the device for the second time on boards the device. Between subsequent device runs, it is assumed that ownership voucher is correctly extended and TO0 is successfully completed.
 
 _**Terminal 2: Run the device for device initialization:**_  
   
     $ cd <sdo-client-sdk-bindir>
-    $ ./linux-client`
+    $ ./linux-client
 
 ```    
 $ ./linux-client
@@ -232,7 +232,7 @@ This step completes Device Initialization.
 _**Run the device again to onboard the device:**_ 
 
 	$ cd <sdo-client-sdk-bindir>
-	$ ./linux-client`
+	$ ./linux-client
 
 ```
 $ ./linux-client
@@ -251,8 +251,8 @@ Follow these steps to build the source package:
 
 1.	Make sure you have completed the pre-requisites. Download source code from [Github repository](https://github.com/secure-device-onboard/client-sdk).
 2.	Follow the instructions provided in the [README](https://github.com/secure-device-onboard/client-sdk/blob/master/README.md) to build the source code by setting the necessary environment variables.
-3.	The SDO Client binary is generated either in build/linux/debug or build/linux/release folder, depending on the build mode. Ensure to copy them to the root folder before proceeding with the next steps.
-4.	Run the PRI Servers
+3.	The SDO Client binary is generated in build/ folder. Ensure to copy them to the root folder before proceeding with the next steps.
+4.	Run the SCT, IOT platform SDK and RV servers.
 5.	Complete Device Initialization 
 6.	Complete Device Onboarding
 
@@ -298,6 +298,7 @@ $ ./linux-client
 The following are the known issues:  
 
 •	The HAL implementation provided in this release is for reference only and not intended for production. It does not provide the level of security required by industry standards for a fully secure production environment.
+
 •	‘sdo_sys’ module source within 'device_modules' folder is an example code demonstrating SDO device module implementation for reference purpose only. This code is not written following secure production level coding and checks. This sample code must not to be used as it is.
 
 The following are the known limitations:  

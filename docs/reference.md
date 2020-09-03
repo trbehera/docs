@@ -149,7 +149,7 @@ Protocol Reference Implementation | <https://github.com/secure-device-onboard/pr
 | TO0                                                 | Acronym - Transfer of Ownership, step 0: establishes a connection with the Owner to the Rendezvous server and creates trust that it has ownership of an Ownership Voucher so Service Info can be transmitted. |
 | TO0Client                                           | A utility program that runs the TO0 protocol. It takes an Ownership Voucher as input, runs the TO0 protocol, resulting in the OP being stored in the Rendezvous server. |
 | TO1                                                 | Acronym - Transfer of Ownership, step 1: Establishes a connection from a Device to the Rendezvous server. |
-| TO2                                                 | Acronym - Transfer of Ownership, step 2: Establishes a trusted, secure connection between the Device and the final Owner and enables the Owner to configure the device as per the requirement from DMS. |
+| TO2                                                 | Acronym - Transfer of Ownership, step 2: Establishes a trusted, secure connection between the Device and the final Owner and enables the Owner to configure the device as per the requirement from SDO IOT Platform SDK. |
 | TOFU                                                | Acronym - Trust On First Use |
 | TPM                                                 | Acronym - Trusted Platform Module |
 | URI                                                 | Uniform Resource Identifier (URI) |

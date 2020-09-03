@@ -206,7 +206,7 @@ _**Parameters**_
 
 **type**  
 This value specifies the type of error that occurred. It will be one of the following values (other `sdoSdkStatus` values are not used here):  
-* `SDO_ERROR`: This indicates an unrecoverable error occurred. The SDK will continue with protocol restart for these types of errors but it is unlikely that the operation will succeed. It is advisable to abort the operation and retry at a later time.  
+* `SDO_ERROR`: This indicates an unrecoverable error occurred. The SDK will continue with protocol restart for these types of errors but it is unlikely that the operation will succeed. It is advisable to abort the operation and retry later.
 * `SDO_WARNING`: This indicates that a transient error occurred. The SDK will continue with protocol restart, which might fix the problem. It is advisable that the Application allows the restart to take place.  
 **errorCode**  
 This value indicates details of the error that occurred. See description in SDO SDK Error Values.  
@@ -216,7 +216,7 @@ _**Return Value**_
 The return value could be one of the following constants (***Note:*** These values are constants that are defined in the SDO SDK header file):
 
 * `SDO_SUCCESS`: Indicates that the error was handled and the SDK should continue with its recovery or restart as required.  
-* `SDO_ABORT`: This causes the SDK to terminate protocol processing and return to the caller (such as, the `sdoSdkRun()` API returns). The Application can re-invoke this API at a later time to re-initiate the SDO onboarding process.  
+* `SDO_ABORT`: This causes the SDK to terminate protocol processing and return to the caller (such as, the `sdoSdkRun()` API returns). The Application can re-invoke this API later to re-initiate the SDO onboarding process.
 
 
 ## SDK API Functions  
@@ -262,7 +262,7 @@ This function returns a value of type sdoSdkDeviceStatus as described in SDO Dev
 
 ### Execute SDO SDK Onboarding Protocol
 The Application invokes this API to begin the onboarding process that is, TO1. The onboarding process has completed successfully when this function returns `SDO_SUCCESS`. If this API returns an error, the Application may retry the onboarding process by calling this API again immediately or after a sleep/reset cycle as determined by the use case.
-The SDK will invoke the Application error callback if an error occurs in this phase. Additionally, module-specific callbacks will be invoked when Service Information is received from the Owner Server during the course of the TO2 stage. These callbacks are invoked in the context of the callers thread and the callbacks must not call any SDK APIs since the SDK is not yet re-entrant. 
+The SDK will invoke the Application error callback if an error occurs in this phase. Additionally, module-specific callbacks will be invoked when Service Information is received from the Owner Server during the TO2 stage. These callbacks are invoked in the context of the callers thread and the callbacks must not call any SDK APIs since the SDK is not yet re-entrant. 
 
 _**Syntax**_  
 `sdoSdkStatus sdoSdkRun(void);`  
