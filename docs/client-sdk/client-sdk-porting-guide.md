@@ -2,6 +2,9 @@
 This document provides a guide to porting the Client SDK to new platforms.
 
 ## Solution Architecture
+
+![SDO Client Block Diagram](img/4-software-architecture.png)
+
 The Client SDK reference solution is comprised of 3 layers:
 
 1. **Application**: The reference application which triggers the Device Initialization and Ownership Transfer State Machine.
@@ -18,7 +21,7 @@ The Platform layer is itself comprised of three modules: Crypto, Network, and St
 2. **Network**: Implementation of Networking. This abstracts the “Platform” specific networking functionality from “Library”. The impact of adding new platform is detailed in the Network Subsystem API section below.
 3. **Storage**: Implementation of Secure Storage. This abstracts the “Platform” specific storage methods from “Library”. The impact of adding new platform is detailed in the Storage Subsystem API section below.
  
-## Code Structure
+### Code Structure
 The Client SDK reference implementation source code is organized as follows (folders that are discussed in this porting guide are indicated with "*"):
 
 ```
@@ -37,7 +40,7 @@ The Client SDK reference implementation source code is organized as follows (fol
 └── utils  - - - - - Reference files for setting up TPM, flashing etc.
 ```
 
-## Build System
+### Build System
 Starting with release v1.9.0 of the Client SDK, the build system uses cmake. This section explains the most prominent configurations in build system. The reference application is tightly coupled with the build system, storage and crypto APIs. The intent of this section is to cover those specific bindings to make the solution easy to traverse.
 
 ```
@@ -63,7 +66,7 @@ Starting with release v1.9.0 of the Client SDK, the build system uses cmake. Thi
     └── CMakeLists.txt
 ```
 
-### cli_input.cmake (erstwhile base.mk)
+#### cli_input.cmake (erstwhile base.mk)
 The base.mk was used to define the build flags as a top-level configuration Makefile. The cli_input.cmake still retains that property, however, the blob specific configuration is moved to blob_path.cmake.
 
 The following specifies the default build configuration which can be overridden in invocation of cmake.
@@ -95,7 +98,7 @@ set (TPM2_TCTI_TYPE tabrmd)
 set (RESALE false)
 set (REUSE true)
 ```
-### blob_path.cmake
+#### blob_path.cmake
 The blob specific paths are set with this cmake file. A new variable BLOB_PATH is introduced to customize the placement of blobs in the filesystem.
 
 ```
@@ -121,7 +124,7 @@ client_sdk_compile_definitions(
     -DSDO_CRED_NORMAL=\"${BLOB_PATH}/data/Normal.blob\"
     )
 ```
-#### SDO_CRED_NORMAL - Normal.blob
+##### SDO_CRED_NORMAL - Normal.blob
 The Client SDK or Device lifecycle is maintained in this blob. This data is stored as Authenticated Data meaning that HMAC256 is calculated over this data and stored back.
 
 !!! note
@@ -133,7 +136,7 @@ This is initialized to the following value to indicate that the device is in man
 blob_path.cmake:
 file(WRITE ${BLOB_PATH}/data/Normal.blob "{\"ST\":1}")
 ```
-#### PLATFORM_(IV/HMAC_KEY/AES_KEY)
+##### PLATFORM_(IV/HMAC_KEY/AES_KEY)
 The purpose of these defines is to specify the location where the reference solution stores the following information:
 
 * **PLATFORM_IV:** Initialization Vector used in Authenticated Encryption of Secure Blobs. The Secure Blobs are internal to Client SDK and are not controlled by the application.
@@ -143,14 +146,14 @@ The purpose of these defines is to specify the location where the reference solu
 !!! note
     These flags are not necessary for the platforms which have their own Secure Storage mechanisms. The platform may be able to store all blobs using Authenticated Encryption including Normal.blob. Client SDK always uses `sdo_blob_read()` to read the data, so, the underlying detail is already abstracted. In the reference solution, it is expected that these files exist physically although without any content. The content gets generated on an as-needed basis.
 
-#### MANUFACTURER_(IP/DN/PORT)
+##### MANUFACTURER_(IP/DN/PORT)
 Client SDK uses the location defined by the below flags to connect to Manufacturer Server to perform Device Initialization.
 
 * **MANUFACTURER_IP:** This is the manufacturer IP address to be used for performing Device Initialization.
 * **MANUFACTURER_DN:** This is the manufacturer Domain Name used to resolve to the IP address. This is used if the MANUFACTURER_IP is not given.
 * **MANUFACTURER_PORT:** This is the manufacturer server port, where the Device Initialization protocol is waiting for the device. By default, the port is 8039 if this blob is not created, otherwise, the port is used from this blob.
 
-#### ECDSA_PRIVKEY
+##### ECDSA_PRIVKEY
 This define specifies the ECDSA private key to be used as a device identity. Two options are possible:
 
 * The key could be pre-created like the reference application.
@@ -159,16 +162,16 @@ This define specifies the ECDSA private key to be used as a device identity. Two
 !!! note
     This section is not a recommendation, but specifies some of the possibilities that exist.
 
-#### SDO_CRED_(SECURE/MFG)
+##### SDO_CRED_(SECURE/MFG)
 These defines are used internally by Client SDK:
 
 * **SDO_CRED_SECURE:** This define specifies the location of the device secret. This blob is Authenticated Encrypted in the reference solution.
 * **SDO_CRED_MFG:** This define specifies the location of Manufacturer data. This blob is stored with Authenticated information.
 
-### extension.cmake (erstwhile crypto.conf)
+#### extension.cmake (erstwhile crypto.conf)
 This cmake file consists mostly of build configuration from crypto.conf but is not limited to it.
 
-#### Supported Configurations
+##### Supported Configurations
 The following content is retained from crypto.conf for readability.
 
 ```
@@ -199,7 +202,7 @@ SUPPORTED_AES_MODE = cbc ctr
 
 * **SUPPORTED_AES_MODE:** This specifies the AES mode of encryption supported by device. The device supports CBC and CTR.
 
-#### Auto Configuration
+##### Auto Configuration
 A selection of higher crypto for Device Attestation automatically configures Key Exchange to use higher crypto.
 
 ```
@@ -212,9 +215,8 @@ elseif(DA MATCHES ecdsa384)
       message("KEX moved to higher crypto")
     endif()
 ```
-## Client SDK
 
-### Constants
+### Client SDK Constants
 
 #### sdo_sdk_error
 ```
@@ -256,7 +258,7 @@ typedef enum {
 ```
 The usage of this enum is detailed in `sdo_sdk_get_status()`
 
-### Functions
+### Client SDK Functions
 The application resides in the app directory of the reference solution. The application uses the APIs specified in include/sdo.h to trigger the Ownership transfer state machine. The following lists the APIs which the application uses to perform Device Initialization or start Ownership Transfer Protocol.
 
 #### sdo_sdk_init()
