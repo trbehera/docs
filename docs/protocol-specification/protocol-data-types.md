@@ -123,7 +123,6 @@ string is *((n+2)/3)\*4*, using integer arithmetic.[^5]
     2 4 ab YWI=  
     3 4 abc YWJj  
     4 8 abcd YWJjZA==  
-    5 8 abcde YWJjZGU=  
 
 
 To simplify the parser, we specify that ByteArrays always contain encoded data
@@ -163,12 +162,7 @@ is used to indicate the name of the quantity and the JSON\* type.
 ]
 ```
 	    </td>
-            <td>See section <a href="../data-transmission-persistence/index.html#data-transmission-persistence">§</a>. The length is stored in hexadecimal format fully specified as 4 hex characters. A message longer than 0xFFFF bytes is stored as a 32-bit hexadecimal number fully specified as 8 hex characters.</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Length((String containing hex),</td>
-            <td></td>
+            <td>See section <a href="../data-transmission-persistence/index.html#data-transmission-persistence">§</a>. The length is stored in hexadecimal format fully specified as 4 hex characters. A message longer than 0xFFFF bytes is stored as a 32-bit hexadecimal number fully specified as 8 hex characters. Implementations should store hex strings using upper case letters. Implementations should parse hex strings whether they have upper case or lower case letters in them. This message header need not be transmitted in some protocols.</td>
         </tr>
         <tr>
             <td>ProtocolVersion</td>
@@ -227,8 +221,8 @@ https://en.wikipedia.org/wiki/Hash-based_message_authentication_code
             <td>
 ```json
 [
-    modBytes,	       # size of group number
-    modba(ByteArray),  # group number as byte array
+    modBytes,	       # Number of modulus bytes
+    modba(ByteArray),  # Modulus as byte array
     expBytes,	       # Exponent bytes
     expba(ByteArray)   # Exponent as byte array
 ]
@@ -250,7 +244,7 @@ https://en.wikipedia.org/wiki/Hash-based_message_authentication_code
 
 The group no identifies the specific Intel<sup>®</sup> EPID public key used to
 generate the signature. The actual key value is extracted from Intel<sup>®</sup> EPID artifacts are maintained by Intel.
-    	  /td>
+            </td>
         </tr>
         <tr>
             <td>SigInfo</td>
@@ -362,12 +356,12 @@ section <a href="index.html#device-attestation-signature-and-mechanism">§</a> .
         </tr>
         <tr>
             <td>Nonce</td>
-            <td>ByteArray\* (16 bytes)</td>
+            <td>ByteArray (16 bytes)</td>
             <td>128-bit Random number, intended to be used *only once*.</td>
         </tr>
         <tr>
             <td>GUID</td>
-            <td>ByteArray\* (16 bytes)</td>
+            <td>ByteArray (16 bytes)</td>
             <td>128-bit Random number used for identification. Typically 128 bits.</td>
         </tr>
         <tr>

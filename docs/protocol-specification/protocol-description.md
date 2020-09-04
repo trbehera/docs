@@ -716,7 +716,7 @@ The following steps describe the Diffie-Hellman key exchange protocol
 (DHKEXid15), as part of the verification of the Ownership Voucher:
 
 1.  The Device and Owner each choose random numbers (Owner: a, Device: b), and
-    encode these numbers into exchanged parameters A = ga mod p, and B = gb mod
+    encode these numbers into exchanged parameters A = g<sup>a</sup> mod p, and B = g<sup>b</sup> mod p
 
     1.  The values “p” and “g” are chosen from
         [[RFC3526]] , with sizes as follows:
@@ -932,8 +932,8 @@ concatenation, and blen(x) length of x in bytes. The output of blen(x) is a
         randoms when used with larger SEK and SVK for future crypto. Please contact
         the Secure Device Onboard Enablement team for details.**
 
-    -   Shy is not used to compute the shared secret ShSe because it can be derived
-        from Shx and the curve equation. Hence it provides no additional entropy.
+    -   Sh<sub>y</sub> is not used to compute the shared secret ShSe because it can be derived
+        from Sh<sub>x</sub> and the curve equation. Hence it provides no additional entropy.
 
 #### Key Derivation Function
 
@@ -968,8 +968,8 @@ bits (see Table ‎3):
 
 !!! Note 
     The operation is HMAC-SHA-256[key, value], so the zero argument above
-    indicates a HMAC with key of zero (0). Since HMAC keys are zero padded (See
-    ), this should be sufficient to generate a consistent HMAC operation.
+    indicates a HMAC with key of zero (0). Since HMAC keys are zero padded,
+    this should be sufficient to generate a consistent HMAC operation.
 
 The above strings are ASCII with no terminator character (that is, C ‘&bsol;000’
 terminator is not included).
