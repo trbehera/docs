@@ -414,24 +414,18 @@ The above directory contains several subdirectories, each representing a device,
 
 The demo onboarding process demonstrates download of a script file and a binary file. Once the files are downloaded, the script validates the checksum of the binary file and creates result.txt to store the result.
 
-These files can be replaced to customize the downloading process. For example, the following JavaScript\* Object Notation (JSON) represents that a file 'package.sh' will be sent to the device, and will be renamed to the value stored in the file 'package\_name', say 'linux64.sh'. Similarly, the file 'payload.bin' will be downloaded to the device and will be renamed to the value stored in the file 'payload\_name', say 'payload.bin'. Finally, the value of the file 'sh-linux64', '/bin/sh linux64.sh', will be executed as command in the device.
+## Setting up ServiceInfo transfer
+The ServiceInfo communication involves the transfer of files from the Owner to the Device.
 
-```
+These files can be a binary, an executable script or even a normal text file. The files that are to be transferred to the device is stored in the following path  `<iot-platform-sdk>/demo/ocs/config/db/v1/values`.
+
+While transferring, the files are encoded in base64 format. The ServiceInfo configuration file  **_svi.json_** is available in the following path `<iot-platform-sdk>/demo/ocs/config/db/v1/devices/<DEVICE-GUID>`
+
+The structure of **_svi.json_** can be modified to customize the ServiceInfo transfer process. For example, the following JavaScript* Object Notation (JSON) represents that a file **'package.sh'** will be sent to the
+device and will be renamed to the value stored in the file **'package_name'**, say 'linux64.sh'. Similarly, the file **'payload.bin'** will be downloaded to the device and will be renamed to the value stored in the file **'payload_name'**, say 'payload.bin'. Finally, the value of the file **'binsh-linux64'**, **'/bin/sh linux64.sh'**, will be executed as command in the device.
+
+```json
 [
-  {
-    "module": "sdo_sys",
-    "msg": "filedesc",
-    "valueLen": -1,
-    "valueId": "package_name",
-    "enc": "base64"
-  },
-  {
-    "module": "sdo_sys",
-    "msg": "write",
-    "valueLen": -1,
-    "valueId": "package.sh",
-    "enc": "base64"
-  },
   {
     "module": "sdo_sys",
     "msg": "filedesc",
@@ -448,17 +442,86 @@ These files can be replaced to customize the downloading process. For example, t
   },
   {
     "module": "sdo_sys",
+    "msg": "filedesc",
+    "valueLen": -1,
+    "valueId": "package_name",
+    "enc": "base64"
+  },
+  {
+    "module": "sdo_sys",
+    "msg": "write",
+    "valueLen": -1,
+    "valueId": "package.sh",
+    "enc": "base64"
+  },
+  {
+    "module": "sdo_sys",
     "msg": "exec",
     "valueLen": -1,
-    "valueId": "sh-linux64",
+    "valueId": "binsh-linux64",
     "enc": "base64"
   }
 ]
 ```
-!!! Note
-     When running the services as Docker*, only <sdo-iot-platform-sdk-root\>/demo/ocs/config/db and <sdo-iot-platform-sdk-root\>/demo/to0scheduler/config/redirect.properties, are configurable.
 
-Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs to be done to add it as a device in the directory <sdo-iot-platform-sdk-root\>/demo/ocs/config/db/v1/devices:
+!!! Note
+     The ordering of message blocks are important for **Client-SDK** / **Client-SDK TPM** device. The `filedesc` block must always be followed by `write` block and if any executable script is transfered then the `exec` block must be immediately followed after both `filedesc` and `write` blocks. Additionally, the 'filedesc' and 'write' blocks immediately preceding the 'exec' block must contain the executable script to be run. For devices except Client-SDK and Client-SDK TPM, the above order is not mandatory, we can first define `filedesc` and `write` blocks for both scripts and then define `exec` blocks later.
+
+For the scenario of transferring multiple executables to the Device, then the following order of blocks should be maintained.
+```json
+[ {
+      "module": "sdo_sys",
+      "msg": "filedesc",
+      "valueLen": -1,
+      "valueId": "package1_name",
+      "enc": "base64"
+    },
+    {
+      "module": "sdo_sys",
+      "msg": "write",
+      "valueLen": -1,
+      "valueId": "script_one.sh",
+      "enc": "base64"
+    },
+    {
+      "module": "sdo_sys",
+      "msg": "exec",
+      "valueLen": -1,
+      "valueId": "binsh-script1",
+      "enc": "base64"
+    },
+    {
+      "module": "sdo_sys",
+      "msg": "filedesc",
+      "valueLen": -1,
+      "valueId": "package2_name",
+      "enc": "base64"
+    },
+    {
+      "module": "sdo_sys",
+      "msg": "write",
+      "valueLen": -1,
+      "valueId": "script_two.sh",
+      "enc": "base64"
+    },
+    {
+      "module": "sdo_sys",
+      "msg": "exec",
+      "valueLen": -1,
+      "valueId": "binsh-script2",
+      "enc": "base64"
+    }
+]
+```
+!!! Note
+     Using a single `exec` block you cannot execute multiple scripts on the Device.
+
+To avoid different configurations for different devices, a unified structure is followed for svi.json file which is described above and works for all devices.
+
+!!! Note
+     When running the services as Docker*, only `<sdo-iot-platform-sdk-root\>/demo/ocs/config/db` and `<sdo-iot-platform-sdk-root\>/demo/to0scheduler/config/redirect.properties`, are configurable.
+
+Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs to be done to add it as a device in the directory `<sdo-iot-platform-sdk-root\>/demo/ocs/config/db/v1/devices`:
 
 1. Create a folder named deviceId/GUID.
 
@@ -466,11 +529,9 @@ Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs 
 
 3. Create the psi.json and svi.json files under the same directory. A sample of both files are present at the sample device directory '1fae14fb-deca-405a-abdd-b25391b9d932'.
 
-The following is a sample Python\* script that, given an Owner voucher file as an argument, extracts the GUID and creates the previously mentioned device directory structure.
+The following is a sample Python\* script that, given an Ownership voucher file as an argument, extracts the GUID and creates the previously mentioned device directory structure. This sample script operates under the assumption that both the script and voucher files are placed at `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices`, and that this is the current working directory:
 
-This sample script operates under the assumption that both the script and voucher files are placed at \<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices, and that this is the current working directory:
-
-The svi.json and psi.json files are copied from the sample device  \<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices/1fae14fb-deca-405a-abdd-b25391b9d932,  to the new device directory. The input voucher file is moved to the new device directory and is renamed as voucher.json.
+The svi.json and psi.json files are copied from the sample device `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices/1fae14fb-deca-405a-abdd-b25391b9d932`,  to the new device directory. The input voucher file is moved to the new device directory and is renamed as voucher.json.
 
 ```
 import sys
@@ -531,7 +592,7 @@ if os.path.isdir(copyToPath):
 
  For example, suppose the name of the script is add-device.py and the  name of the owner voucher file to be added as a device is device.json having GUID fad58be5-c7ba-417c-b1bd-eb9703ea8016. Then, the script execution would look like below.
 
-At the end of the script execution, a device directory named fad58be5-c7ba-417c-b1bd-eb9703ea8016 will be created at \<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices with files voucher.json, svi.json, and psi.json as its contents.
+At the end of the script execution, a device directory named fad58be5-c7ba-417c-b1bd-eb9703ea8016 will be created at `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices` with files voucher.json, svi.json, and psi.json as its contents.
 
 ```
 $ cd <sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices
