@@ -12,11 +12,13 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
 
 1.  Clone the source repository of the [Protocol Reference Implementation](https://github.com/secure-device-onboard/pri) (PRI). In the rest of this section, the absolute path of this folder is referred to as <sdo-pri-root\>.
 
-2.  Build the PRI by following the steps mentioned in its [README](https://github.com/secure-device-onboard/pri/blob/master/README.md). Alternatively, run the command
+2.  Build the PRI by following the steps mentioned in its [README](https://github.com/secure-device-onboard/pri/blob/master/README.md). Alternatively, run following command:
+
     ```
     mvn package
     ```
-    The build creates and copies the Rendezvous and Device WAR/JAR files into their respective \<sdo-pri-root\>/demo directory.
+
+    The build creates and copies the Rendezvous and Device WAR/JAR files into their respective <sdo-pri-root\>/demo directory.
 
 3.  <sdo-pri-root\> has the following directories, which are used during the IOT Platform SDK execution.
 
@@ -30,10 +32,12 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
 4.  Clone the source repository of the [IoT Platform SDK](https://github.com/secure-device-onboard/iot-platform-sdk). In the rest of this section, the absolute path of this folder is referred to as <sdo-iot-platform-sdk-root\>.
 
 5.  Build IOT Platform SDK by following the steps mentioned in the [README](https://github.com/secure-device-onboard/iot-platform-sdk/blob/master/README.md). Alternatively, run the following command:
+
     ```
     mvn clean install
     ```
-    The build creates and copies the OCS, OPS and To0Scheduler WAR/JAR files into their respective <sdo-iot-platform-sdk-root\>/demo directory.
+
+    The build creates and copies the OCS, OPS, and To0Scheduler WAR/JAR files into their respective `<sdo-iot-platform-sdk-root>/demo` directory.
 
 6.  <sdo-iot-platform-sdk-root\> has the following directories, which are used during the IOT Platform SDK execution.
 
@@ -119,7 +123,7 @@ Working with Multiple Owner Key-Pair(s)
 The OCS instance handles multiple owner key-pair(s) using a Java* Keystore. Multiple owner key-pairs can be inserted into the keystore with different aliases. The listed key tool commands require a password to be entered. Enter the password whenever prompted.
 
 !!! Note
-    A sample keystore is provided in <sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds/owner-keystore.p12. This is an example implementation for demo purposes and should be updated in production deployment.
+    A sample keystore is provided in `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds/owner-keystore.p12`. This is an example implementation for demo purposes and should be updated in production deployment.
 
 ## Generating Key-Pair for Owner Attestation
 
@@ -180,7 +184,7 @@ Assuming that there is already an existing owner certificate named 'owner-certif
 `$ openssl pkcs12 -export -in owner-certificate-1.pem -inkey
 owner-private-key.pem -name owner_123 -out owner_pkcs.p12`
 
-**Step 2:** Import the above generated PKCS12 file into the existing owner keystore file 'owner-keystore.p12' located under <sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds under the alias 'owner_123'. If the keystore file 'owner-keystore.p12' is not present, the keystore file is created afresh with the same name:
+**Step 2:** Import the above generated PKCS12 file into the existing owner keystore file 'owner-keystore.p12' located under `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds` under the alias 'owner_123'. If the keystore file 'owner-keystore.p12' is not present, the keystore file is created afresh with the same name:
 
 `$ keytool -importkeystore -destkeystore path/to/owner-keystore.p12
 -srckeystore owner_pkcs.p12 -srcstoretype PKCS12 -alias owner_123`
@@ -190,11 +194,11 @@ owner-private-key.pem -name owner_123 -out owner_pkcs.p12`
 
 ## Exporting an Existing Owner's Certificate from Keystore
 
-Assuming that there is an existing owner's certificate and private key stored in the keystore as a PrivateKeyEntry under the alias 'owner_123', run the following command to extract the owner's certificate into \<owner_certificate.pem\>:
+Assuming that there is an existing owner's certificate and private key stored in the keystore as a PrivateKeyEntry under the alias 'owner_123', run the following command to extract the owner's certificate into <owner_certificate.pem\>:
 
 **Step 1:** Get the list of key-pairs, along with their respective aliases, from the keystore:
 
-`$ keytool -list -v -keystore path/to/owner-keystore.p12`
+`$ keytool -list -v -keystore /path/to/owner-keystore.p12`
 
 **Step 2:** Export the certificate from the keystore using any of the aliases present in the keystore**:**
 
@@ -215,13 +219,16 @@ When the IOT Platform SDK Demo is running, log messages are displayed on the ter
 ## Configuring Proxies
 
 Update the proxy information in _JAVA_OPTIONS as
-`_JAVA_OPTIONS=-Dhttp.proxyHost=http_proxy_host -Dhttp.proxyPort=http_proxy_port -Dhttps.proxyHost=https_proxy_host -Dhttps.proxyPort=https_proxy_port`, where
+
+`_JAVA_OPTIONS=-Dhttp.proxyHost=http_proxy_host -Dhttp.proxyPort=http_proxy_port -Dhttps.proxyHost=https_proxy_host -Dhttps.proxyPort=https_proxy_port`
+
+where
 
 -   http\_proxy\_host: Represents the http proxy hostname. Typically, it is an IP address or domain name in the proxy URL.
 
 -   http\_proxy\_port: Represents the http proxy port. Typically, it is the port number in the proxy URL.
 
--   https\_proxy\_host: Represents the https proxy hostname. Typically,it is an IP address or domain name in the proxy URL.
+-   https\_proxy\_host: Represents the https proxy hostname. Typically, it is an IP address or domain name in the proxy URL.
 
 -   https\_proxy\_port: Represents the https proxy port. Typically, it is the port number in the proxy URL.
 
@@ -297,7 +304,7 @@ For Device Simulation:
 
 ## Configuring the Properties
 
-Each docker service of IOT Platform SDK has its own configuration file with extension '.env'. When each service starts, the properties stored in the '.env' files will be set as environment variables within the container. The runnable scripts, namely, run-ops, run-ocs and run-to0scheduler, that are responsible for starting the individual services within the docker container, explicitly maps the set the environment variables to the respective property of the application and passes them as Java* system variables. The properties for the PRI components are configurable using the respective 'application.properties' file. For this simulation and during development, the '.env' files  and the 'application.properties' files are writable. However, in a production environment, change the permissions of the these files to read-only for added security.
+Each Docker\* service of IOT Platform SDK has its own configuration file with extension '.env'. When each service starts, the properties stored in the '.env' files will be set as environment variables within the container. The runnable scripts, namely, run-ops, run-ocs, and run-to0scheduler, that are responsible for starting the individual services within the docker container, explicitly maps the set the environment variables to the respective property of the application and passes them as Java* system variables. The properties for the PRI components are configurable using the respective 'application.properties' file. For this simulation and during development, the '.env' files  and the 'application.properties' files are writable. However, in a production environment, change the permissions of the these files to read-only for added security.
 
 The description for the configuration settings can be found in the
 properties associated with each service.
@@ -312,23 +319,27 @@ properties associated with each service.
 
 **to0scheduler Docker Service Properties:**
 
-`<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env <br>
-referenced by <br>
-<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/run-to0scheduler 
-`
+`<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env`
+
+referenced by
+
+`<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/run-to0scheduler`
 
 **OPS Docker Service Properties:**
 
-`<sdo-iot-platform-sdk-root>/demo/ops/ops.env <br>
-referenced by <br>
-<sdo-iot-platform-sdk-root>/demo/ops/config/run-ops
-`
+`<sdo-iot-platform-sdk-root>/demo/ops/ops.env`
+
+referenced by
+
+`<sdo-iot-platform-sdk-root>/demo/ops/config/run-ops`
 
 **OCS Docker Service Properties:**
 
-`<sdo-iot-platform-sdk-root>/demo/ocs/ocs.env <br>
-referenced by <br>
-<sdo-iot-platform-sdk-root>/demo/ocs/config/run-ocs`
+`<sdo-iot-platform-sdk-root>/demo/ocs/ocs.env`
+
+referenced by
+
+`<sdo-iot-platform-sdk-root>/demo/ocs/config/run-ocs`
 
 For information on all the properties for PRI components, refer to the comments in the specific properties files, or the README.
 
@@ -361,13 +372,13 @@ The above directory contains several subdirectories, each representing a device,
 
 ```
 {
-  "to2Error": "TO2 error message of the form {"ec":"","em":"","emsg":""}",
-  "to2Timestamp": Timestamp at which TO2 was completed,
-  "to0Error": "TO0 error message of the form {"ec":"","em":"","emsg":""}",
-  "to0Timestamp": "Timestamp at which last TO0 was successful",
-  "to2State": "State at which TO2 is. Can be one of to2begin/to2end/to2error",
-  "to0Ws": "Integer value representing the number of seconds after which the last TO0 expires ",
-  "g3" : "New GUID of the device"
+  "to2Error"     : "TO2 error message of the form {"ec":"","em":"","emsg":""}",
+  "to2Timestamp" : Timestamp at which TO2 was completed,
+  "to0Error"     : "TO0 error message of the form {"ec":"","em":"","emsg":""}",
+  "to0Timestamp" : "Timestamp at which last TO0 was successful",
+  "to2State"     : "State at which TO2 is. Can be one of to2begin/to2end/to2error",
+  "to0Ws"        : "Integer value representing the number of seconds after which the last TO0 expires ",
+  "g3"           : "New GUID of the device"
 
 }
 ```
@@ -391,11 +402,11 @@ The above directory contains several subdirectories, each representing a device,
 
 ```
 {
-  "module": "Module name",
-  "msg": "Service-info type. One of filedesc, exec, write",
-  "valueLen": Length of the file to be transferred,
-  "valueId": "An opaque-id representing a resource (in this case, file) that contains the actual service-info value",
-  "enc": "Encoding to be used. One of either base64, or, ascii"
+  "module"   : "Module name",
+  "msg"      : "Service-info type" # One of filedesc, exec, write,
+  "valueLen" : "Length"            # Length of the file to be transferred,
+  "valueId"  : "ID"                # An opaque-id representing a resource (in this case, file) that contains the actual service-info value,
+  "enc"      : "Encoding type"     # Encoding to be used. One of either base64, or, ascii
 }
 ```
 -   **psi.json**: Represents the pre-service info as key-value pairs that get pushed to the device. It is of the form:
@@ -403,9 +414,9 @@ The above directory contains several subdirectories, each representing a device,
 ```
 {
 
-  "module": "Module name",
-  "msg": "Any key",
-  "value": "Any value"
+  "module" : "Module name",
+  "msg"    : "Any key",
+  "value"  : "Any value"
 }
 ```
 -   **dvi.json**: Represents the device service-info. It is of the same form as psi.json.
@@ -421,45 +432,45 @@ These files can be a binary, an executable script or even a normal text file. Th
 
 While transferring, the files are encoded in base64 format. The ServiceInfo configuration file  **_svi.json_** is available in the following path `<iot-platform-sdk>/demo/ocs/config/db/v1/devices/<DEVICE-GUID>`
 
-The structure of **_svi.json_** can be modified to customize the ServiceInfo transfer process. For example, the following JavaScript* Object Notation (JSON) represents that a file **'package.sh'** will be sent to the
+The structure of **_svi.json_** can be modified to customize the ServiceInfo transfer process. For example, the following JavaScript\* Object Notation (JSON) represents that a file **'package.sh'** will be sent to the
 device and will be renamed to the value stored in the file **'package_name'**, say 'linux64.sh'. Similarly, the file **'payload.bin'** will be downloaded to the device and will be renamed to the value stored in the file **'payload_name'**, say 'payload.bin'. Finally, the value of the file **'binsh-linux64'**, **'/bin/sh linux64.sh'**, will be executed as command in the device.
 
 ```json
 [
   {
-    "module": "sdo_sys",
-    "msg": "filedesc",
-    "valueLen": -1,
-    "valueId": "payload_name",
-    "enc": "base64"
+    "module"   : "sdo_sys",
+    "msg"      : "filedesc",
+    "valueLen" : -1,
+    "valueId"  : "payload_name",
+    "enc"      : "base64"
   },
   {
-    "module": "sdo_sys",
-    "msg": "write",
-    "valueLen": -1,
-    "valueId": "payload.bin",
-    "enc": "base64"
+    "module"   : "sdo_sys",
+    "msg"      : "write",
+    "valueLen" : -1,
+    "valueId"  : "payload.bin",
+    "enc"      : "base64"
   },
   {
-    "module": "sdo_sys",
-    "msg": "filedesc",
-    "valueLen": -1,
-    "valueId": "package_name",
-    "enc": "base64"
+    "module"   : "sdo_sys",
+    "msg"      : "filedesc",
+    "valueLen" : -1,
+    "valueId"  : "package_name",
+    "enc"      : "base64"
   },
   {
-    "module": "sdo_sys",
-    "msg": "write",
-    "valueLen": -1,
-    "valueId": "package.sh",
-    "enc": "base64"
+    "module"   : "sdo_sys",
+    "msg"      : "write",
+    "valueLen" : -1,
+    "valueId"  : "package.sh",
+    "enc"      : "base64"
   },
   {
-    "module": "sdo_sys",
-    "msg": "exec",
-    "valueLen": -1,
-    "valueId": "binsh-linux64",
-    "enc": "base64"
+    "module"   : "sdo_sys",
+    "msg"      : "exec",
+    "valueLen" : -1,
+    "valueId"  : "binsh-linux64",
+    "enc"      : "base64"
   }
 ]
 ```
@@ -470,46 +481,46 @@ device and will be renamed to the value stored in the file **'package_name'**, s
 For the scenario of transferring multiple executables to the Device, then the following order of blocks should be maintained.
 ```json
 [ {
-      "module": "sdo_sys",
-      "msg": "filedesc",
-      "valueLen": -1,
-      "valueId": "package1_name",
-      "enc": "base64"
+      "module"   : "sdo_sys",
+      "msg"      : "filedesc",
+      "valueLen" : -1,
+      "valueId"  : "package1_name",
+      "enc"      : "base64"
     },
     {
-      "module": "sdo_sys",
-      "msg": "write",
-      "valueLen": -1,
-      "valueId": "script_one.sh",
-      "enc": "base64"
+      "module"   : "sdo_sys",
+      "msg"      : "write",
+      "valueLen" : -1,
+      "valueId"  : "script_one.sh",
+      "enc"      : "base64"
     },
     {
-      "module": "sdo_sys",
-      "msg": "exec",
-      "valueLen": -1,
-      "valueId": "binsh-script1",
-      "enc": "base64"
+      "module"   : "sdo_sys",
+      "msg"      : "exec",
+      "valueLen" : -1,
+      "valueId"  : "binsh-script1",
+      "enc"      : "base64"
     },
     {
-      "module": "sdo_sys",
-      "msg": "filedesc",
-      "valueLen": -1,
-      "valueId": "package2_name",
-      "enc": "base64"
+      "module"   : "sdo_sys",
+      "msg"      : "filedesc",
+      "valueLen" : -1,
+      "valueId"  : "package2_name",
+      "enc"      : "base64"
     },
     {
-      "module": "sdo_sys",
-      "msg": "write",
-      "valueLen": -1,
-      "valueId": "script_two.sh",
-      "enc": "base64"
+      "module"   : "sdo_sys",
+      "msg"      : "write",
+      "valueLen" : -1,
+      "valueId"  : "script_two.sh",
+      "enc"      : "base64"
     },
     {
-      "module": "sdo_sys",
-      "msg": "exec",
-      "valueLen": -1,
-      "valueId": "binsh-script2",
-      "enc": "base64"
+      "module"   : "sdo_sys",
+      "msg"      : "exec",
+      "valueLen" : -1,
+      "valueId"  : "binsh-script2",
+      "enc"      : "base64"
     }
 ]
 ```
@@ -519,9 +530,9 @@ For the scenario of transferring multiple executables to the Device, then the fo
 To avoid different configurations for different devices, a unified structure is followed for svi.json file which is described above and works for all devices.
 
 !!! Note
-     When running the services as Docker*, only `<sdo-iot-platform-sdk-root\>/demo/ocs/config/db` and `<sdo-iot-platform-sdk-root\>/demo/to0scheduler/config/redirect.properties`, are configurable.
+     When running the services as Docker*, only `<sdo-iot-platform-sdk-root>/demo/ocs/config/db` and `<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/redirect.properties`, are configurable.
 
-Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs to be done to add it as a device in the directory `<sdo-iot-platform-sdk-root\>/demo/ocs/config/db/v1/devices`:
+Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs to be done to add it as a device in the directory `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices`:
 
 1. Create a folder named deviceId/GUID.
 
@@ -531,7 +542,7 @@ Given an OwnershipVoucher file with a unique deviceId/GUID, the following needs 
 
 The following is a sample Python\* script that, given an Ownership voucher file as an argument, extracts the GUID and creates the previously mentioned device directory structure. This sample script operates under the assumption that both the script and voucher files are placed at `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices`, and that this is the current working directory:
 
-The svi.json and psi.json files are copied from the sample device `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices/1fae14fb-deca-405a-abdd-b25391b9d932`,  to the new device directory. The input voucher file is moved to the new device directory and is renamed as voucher.json.
+The svi.json and psi.json files are copied from the sample device  `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices/1fae14fb-deca-405a-abdd-b25391b9d932`, to the new device directory. The input voucher file is moved to the new device directory and is renamed as voucher.json.
 
 ```
 import sys
@@ -590,9 +601,9 @@ if os.path.isdir(copyToPath):
     print "Copied default psi.json from device directory " + copyFromPath + " to directory " + copyToPath
 ```
 
- For example, suppose the name of the script is add-device.py and the  name of the owner voucher file to be added as a device is device.json having GUID fad58be5-c7ba-417c-b1bd-eb9703ea8016. Then, the script execution would look like below.
+ For example, suppose the name of the script is add-device.py and the  name of the owner voucher file to be added as a device is device.json having GUID `fad58be5-c7ba-417c-b1bd-eb9703ea8016`. Then, the script execution would look like below.
 
-At the end of the script execution, a device directory named fad58be5-c7ba-417c-b1bd-eb9703ea8016 will be created at `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices` with files voucher.json, svi.json, and psi.json as its contents.
+At the end of the script execution, a device directory named `fad58be5-c7ba-417c-b1bd-eb9703ea8016` will be created at `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices` with files `voucher.json`, `svi.json`, and `psi.json` as its contents.
 
 ```
 $ cd <sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/devices
@@ -611,7 +622,7 @@ The provided reference implementation of Owner Companion Service, uses file-syst
 
 It sends REST call to To0Scheduler repeatedly at an interval (in seconds) specified by the property to0.scheduler.interval, at the URL defined by the property to0.rest.api.
 
-By default, the server is started using HTTPS. The keystore and truststore information can be configured, but the Mutual Transport Layer Security (TLS) authentication settings must be left untouched:
+By default, the server starts by using HTTPS. The keystore and truststore information can be configured, but the Mutual Transport Layer Security (TLS) authentication settings must be left untouched:
 
 ```
 server.ssl.key-store-type=PKCS12 (Key-store type, Configurable)
@@ -645,7 +656,7 @@ dns=localhost
 ip=127.0.0.1
 port=8042
 ```
-Please see the file <sdo-iot-platform-sdk-root>/demo/to0scheduler/config/redirect.properties for more information on these properties and their default values.
+Please see the file `<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/redirect.properties` for more information on these properties and their default values.
 
 As the TO0 scheduler runs, it will log the TO0 request and responses. On successful TO0, you see a Wait Second response, such as, ws:7200. This refers to the number of seconds the TO0 registration will be known to the Rendezvous Server.
 
@@ -667,7 +678,7 @@ o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8049 (https)
 o.s.i.t.t.To0ServiceApplication.logStarted - Started To0ServiceApplication in 9.159 seconds (JVM running for 10.693)
 ```
 !!! NOTE
-    By default, To0Scheduler is configured to verify Rendezvous service's incoming server certificate during TLS handshake for all outgoing HTTPS requests to Rendezvous service. To disable this certificate verification for demo purposes, set the application property 'org.sdo.to0.tls.test-mode' (ORG_SDO_TO0_TLS_TEST_MODE in \<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env) to 'false'.
+    By default, To0Scheduler is configured to verify Rendezvous service's incoming server certificate during TLS handshake for all outgoing HTTPS requests to Rendezvous service. To disable this certificate verification for demo purposes, set the application property 'org.sdo.to0.tls.test-mode' (`ORG_SDO_TO0_TLS_TEST_MODE` in `<sdo-iot-platform-sdk-root>/demo/to0scheduler/to0scheduler.env`) to 'false'.
 
 ## Starting the Owner Protocol Service with HTTP(S) for TO2 Process
 
@@ -757,7 +768,7 @@ $ keytool -genkeypair -keystore ops-keystore.p12 -storetype PKCS12 -storepass 12
 ```
 $ openssl pkcs12 -in ops-keystore.p12 -clcerts -nokeys -out tlscert.pem
 ```
-**Step 5:** Navigate to the \$JAVA\_HOME/jre/lib/security/ folder and import the generated certificate into the Java\* device's truststore, so that the device can trust the Owner Protocol Service.
+**Step 5:** Navigate to the $JAVA\_HOME/jre/lib/security/ folder and import the generated certificate into the Java\* device's truststore, so that the device can trust the Owner Protocol Service.
 
 ```
 $ keytool -import -alias tomcat -keystore cacerts -file <PATH_TO_CERT>/tlscert.pem
@@ -770,7 +781,7 @@ $ keytool -import -file <PATH_TO_CERT>/tlscert.pem -alias <ALIAS_NAME> -keystore
 With these configurations in place, the OPS will enable TLS during TO2 communication.
 
 !!! Note
-    Sample keystore and truststore files are provided in <sdo-iot-platform-sdk-root\>/demo/ocs/config/, <sdo-iot-platform-sdk-root\>/demo/ops/config/, and <sdo-iot-platform-sdk-root>/demo/to0scheduler/config/. This is an example implementation for demo purposes and should be updated in production deployment.
+    Sample keystore and truststore files are provided in `<sdo-iot-platform-sdk-root>/demo/ocs/config/`, `<sdo-iot-platform-sdk-root>/demo/ops/config/`, and `<sdo-iot-platform-sdk-root>/demo/to0scheduler/config/`. This is an example implementation for demo purposes and should be updated in production deployment.
 
 Running the IOT Platform SDK Components on Separate Machines
 ------------------------------------------------------------
@@ -807,14 +818,14 @@ dns=<OPS-DNS-name>
 ip=<OPS-machine-IP>
 port=<OPS-port>
 ```
--   The keystore and truststore files of each of the components: OCS, OPS and To0Scheduler needs to be updated. Both the keystore and truststore files must contain the certificates whose Common Name (CN) or the Subject Alternative Names (SAN) properties have the IP address and the DNS of the machine where the component is running. This is needed for hostname verification to succeed in the Mutual TLS handshake process. Refer to [Enabling Transport Layer Security (TLS) during TO2](#enabling-transport-layer-security-tls-during-to2) for steps to create such keystore files.
+-   The keystore and truststore files of each of the components: OCS, OPS, and To0Scheduler needs to be updated. Both the keystore and truststore files must contain the certificates whose Common Name (CN) or the Subject Alternative Names (SAN) properties have the IP address and the DNS of the machine where the component is running. This is needed for hostname verification to succeed in the Mutual TLS handshake process. Refer to [Enabling Transport Layer Security (TLS) during TO2](#enabling-transport-layer-security-tls-during-to2) for steps to create such keystore files.
 
 Create a truststore file as follows:
 
 ```
 $ keytool –import –file path/to/certificate –alias sampleCA –keystore path/to/truststore
 ```
-Based on the component interactions, the truststore for each component  must contains the following certificate entries:
+Based on the component interactions, the truststore for each component must contain the following certificate entries:
 
 ```
 OCS truststore contains entries to accept certificates of OPS and To0Scheduler.
@@ -832,9 +843,9 @@ Common Issues While Running the Demo
 
 1.  ***Signature is Invalid during TO0***:
 
- This error occurs when the owner's certificate (and its public key)  residing at the OCS in the owner keystore, does not match the public  key present in the Ownership Voucher. To rectify this error, insert  the owner key-pair at
+ This error occurs when the owner's certificate (and its public key) residing at the OCS in the owner keystore, does not match the public key present in the Ownership Voucher. To rectify this error, insert the owner key-pair at
  `<sdo-iot-platform-sdk-root>/demo/ocs/config/db/v1/creds/owner-keystore.p12`
-per the steps outlined [here](#inserting-an-existing-owners-certificate-and-private-key-into-a-keystore).  Refer to the properties file for details on properties to be updated.  The following is a sample error log at To0Scheduler:
+per the steps outlined [here](#inserting-an-existing-owners-certificate-and-private-key-into-a-keystore). Refer to the properties file for details on properties to be updated.  The following is a sample error log at To0Scheduler:
 
 ```
 o.s.i.t.t.To0SignatureServiceFactoryImpl.lambda$sign$0 - Obtaining signature from OCS

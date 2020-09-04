@@ -42,7 +42,7 @@ You need to have one machine that can run the reseller toolkit as well as host t
 Install the SDO database and toolkit, see [Database and Toolkit Installation](#database-and-toolkit-installation). It is recommended to choose the key store file option unless there is a specified need to test with a secure key fob. 
 
 ## Production Deployment
-### Step 1: Modify business system processes
+### Step 1: Modify Business System Processes
 Your business system processes need to:  
 
 * Manage receipt of ownership vouchers from suppliers and the ownership voucher storage in the SDO Database.  
@@ -160,7 +160,8 @@ An example if running directly:
 	sdo.keystore.password=123456
 	```  
 
-	***Note:*** The database user and password should match those configured in rt_config.sql. 
+	!!! note
+	    The database user and password should match those configured in rt_config.sql. 
 
 	* datasource.url: be sure to use localhost rather than the IP address.  
 	* sdo.keystore: this is either the pathname to the software key store (jks) or to the public key cryptography standards (PKCS#11) library if using the secure key fob. Be sure to not use quotes around the value.  
@@ -174,7 +175,7 @@ Troubleshoot using the following steps if the toolkit web service does not start
 
 1.	Verify that the JDBC* string is correct.  
 
-An example is: jdbc:mariadb://localhost:3307/sdo. Be sure **mariadb** is included, the port is specified as **3307**, and the host name is correct.  
+An example is: jdbc:mariadb://localhost:3307/sdo. Be sure **MariaDB** is included, the port is specified as **3307**, and the host name is correct.  
 
 2.	Verify that the database user and password are correct.  
 

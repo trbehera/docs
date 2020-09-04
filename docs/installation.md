@@ -6,13 +6,13 @@ This document can be used as a quick start guide to setup the development enviro
 
 | Component | Recommended |
 |------- |------|
-| Operating System | Ubuntu 18.04 / Windows 10 |
-| Docker Engine | 18.09 |
-| Docker-compose | 1.21.2 |
-| maven | 3.5.4 |
+| Operating System | Ubuntu\* 18.04 / Windows\* 10 |
+| Docker* Engine | 18.09 |
+| Docker* Compose | 1.21.2 |
+| Maven* | 3.5.4 |
 
 ## Docker* Installation
-1 . Removing the older versions of Docker. If these are installed, uninstall them:
+1 . Removing the older versions of Docker*. If these are installed, uninstall them:
 ```
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
@@ -30,7 +30,7 @@ sudo apt-get remove docker docker-engine docker.io containerd runc
 !!! NOTE
     If you are working behind a proxy, ensure to set proper proxy variables.
 
-3 . Add Docker’s official GPG key:
+3 . Add official GPG key for Docker*:
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
@@ -38,19 +38,19 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 sudo add-apt-repository \ "deb [arch=amd64] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) \ stable"
 ```
-5 . Update the `apt` package index and install the docker engine 18.09
+5 . Update the `apt` package index and install the Docker* Engine 18.09
 ```
 sudo apt-get update
 sudo apt-get install docker-ce=5:18.09.9~3-0~ubuntu-bionic docker-ce-cli=5:18.09.9~3-0~ubuntu-bionic containerd.io
 ```
-6 . Verify that Docker Engine is installed correctly by running the `hello-world` image.
+6 . Verify that Docker* Engine is installed correctly by running the `hello-world` image.
 ```
 sudo docker run hello-world
 ```
 
 ### Running the Docker* behind a proxy
 
-To run the docker system behind a proxy server, the configuration is done by the following steps:
+To run the Docker* system behind a proxy server, the configuration is done by the following steps:
 
 1 . Directory `docker.service.d` is to be created in systemd directory as shown below.
 ```
@@ -83,7 +83,7 @@ Environment="HTTPS_PROXY=<Proxy IP/URL:Port>"
 }
 ```
 
-5 . After configuring the above, the docker needs to be restarted.
+5 . After configuring the above, the Docker* service needs to be restarted.
 ```
 sudo systemctl daemon-reload
 sudo systemctl restart docker
@@ -94,10 +94,10 @@ sudo systemctl restart docker
 sudo systemctl show --property Environment docker
 ```
 
-## Docker-compose Installation
-To install a specific version of docker-compose (for example **_1.21.2_**) follow these steps:
+## Docker* Compose Installation
+To install a specific version of Docker\* Compose (for example **_1.21.2_**) follow these steps:
 
-1 . Download the specific version **(1.21.2)** of docker-compose.
+1 . Download the specific version **(1.21.2)** of Docker* Compose.
 ```
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
 ```

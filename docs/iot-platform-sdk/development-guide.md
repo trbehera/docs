@@ -7,9 +7,9 @@ The implementation of these REST contracts in an OCS can be done in any programm
 !!! Note
     The implementation of the pre-defined contracts can be backed by non-REST interfaces as well. However, this would invlove updates to both OPS and To0Scheduler to facilitate communication with the newly defined interface at OCS. Such a change would involve, but is not limited to, updates to existing class `RestClient.java` at both OPS and To0Scheduler.
 
-## Rest Contracts between OCS (server) and OPS/To0Scheduler (client)
+## Rest Contracts between OCS(Server) and OPS/To0Scheduler(Client)
 
-Following are the pre-defined REST API specifications for all the resource paths that must be implemented and exposed by an OCS implementation. Both, OPS and To0Scheduler make requests to the OCS implementation, as clients, using this format.
+The following are the pre-defined REST API specifications for all the resource paths that must be implemented and exposed by an OCS implementation. Both, OPS and To0Scheduler make requests to the OCS implementation, as clients, using this format.
 
 | Operation                               | Description                                                  | Path/Query Parameters                    | Request Body  | Response Body |
 | ---------------------------------------:|:------------------------------------------------------------:|:----------------------------------------:|:-------------:|--------------:|
@@ -35,7 +35,7 @@ Following are the pre-defined REST API specifications for all the resource paths
 | `DELETE` /v1/devices/{deviceId}/sessioninfo  | Delete the TO2 session info corresponding to the `deviceId`.   | Path: `deviceId`: Device identifier |               |               |
 | `GET` /devices/{deviceId}/resale  | Get the `resale` flag indicating owner's support for resale of the corresponding `deviceId`.   | Path: `deviceId`: Device identifier |               |    Boolean    |
 
-## Rest Contracts between To0Scheduler (server) and OCS (client)
+## Rest Contracts between To0Scheduler(Server) and OCS(Client)
 
 An OCS implementation must, also, act as a client to trigger TO0 for set of devices, by making the following request to To0Scheduler. To0Scheduler accepts the request from OCS to initiate TO0 for the list of devices.
 
@@ -46,7 +46,7 @@ An OCS implementation must, also, act as a client to trigger TO0 for set of devi
 
 ## Message Types
 
-Following is a list of message types that are sent in the message body of each request/response. Each message type follows the standard JSON* schema. Statements after '#' inside the JavaScript Object Notation (JSON), represents the purpose of the field.
+Following is a list of message types that are sent in the message body of each request/response. Each message type follows the standard JSON\* schema. Statements after '#' inside the JavaScript* Object Notation (JSON), represents the purpose of the field.
 
 ### DeviceState
 This JSON* structure represents the state information of the device.
