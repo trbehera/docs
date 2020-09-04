@@ -37,6 +37,7 @@ nav:
     - Community: community.md
     - Releases: releases.md
     - Security Best Practices: security-best-practices/security-best-practices.md
+    - Installation Guide : installation.md
   - Client SDK: 
     - Introduction: client-sdk/client-sdk-reference-guide.md
     - API Reference: client-sdk/client-sdk-api-reference.md
