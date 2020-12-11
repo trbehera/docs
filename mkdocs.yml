@@ -38,6 +38,9 @@ nav:
     - Releases: releases.md
     - Security Best Practices: security-best-practices/security-best-practices.md
     - Installation Guide : installation.md
+  - FIDOIOT:
+    - Introduction: fidoiot/fidoiot-introduction.md
+    - FIDOIOT Client Design: fidoiot/fidoiot-client-sdk-design.md
   - Client SDK: 
     - Introduction: client-sdk/client-sdk-reference-guide.md
     - API Reference: client-sdk/client-sdk-api-reference.md
