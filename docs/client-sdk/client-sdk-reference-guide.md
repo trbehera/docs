@@ -202,9 +202,9 @@ _**For ECDSA (P-384) based device-attestation method:**_
 For ECDSA384, place the ECDSA P-384 private Key with the name ecdsa384privkey.dat in the following
 location: `data/ecdsa384privkey.data`
 
-Follow [All-in-one Demo README](https://github.com/secure-device-onboard/all-in-one-demo/blob/master/README.md) to start the SDO Manufacturer, Rendezvous, and Owner Service: PRI Owner Service and PRI Rendezvous Service.
+Follow [All-in-one Demo README](https://github.com/secure-device-onboard/all-in-one-demo/blob/1.10-rel/README.md) to start the SDO Manufacturer, Rendezvous, and Owner Service: PRI Owner Service and PRI Rendezvous Service.
 
-    To run SDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/master/README.md) document.
+    To run SDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) document.
 
 _**Terminal #1: Start All-in-one Demo**_  
 
@@ -244,13 +244,13 @@ $ ./linux-client
 This step successfully onboards the device. 
 
 !!! note
-    To run SDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/master/README.md) document.
+    To run SDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) document.
 
 ### Build the Source 
 Follow these steps to build the source package:  
 
 1.	Make sure you have completed the pre-requisites. Download source code from [Github repository](https://github.com/secure-device-onboard/client-sdk).
-2.	Follow the instructions provided in the [README](https://github.com/secure-device-onboard/client-sdk/blob/master/README.md) to build the source code by setting the necessary environment variables.
+2.	Follow the instructions provided in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) to build the source code by setting the necessary environment variables.
 3.	The SDO Client binary is generated in build/ folder. Ensure to copy them to the root folder before proceeding with the next steps.
 4.	Run the SCT, IOT platform SDK and RV servers.
 5.	Complete Device Initialization 
