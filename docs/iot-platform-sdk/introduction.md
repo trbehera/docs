@@ -97,7 +97,7 @@ Table 1. Development Environment Specifications
 
 | Environment Variable | Requirement
 |----------------------|------------
-| Operating System     | Ubuntu\* 18.04 (64-bit) or Windows\* 10 (64-bit)
+| Operating System     | Ubuntu\* 20.04 (64-bit) or Windows\* 10 (64-bit)
 | Disk space           | A minimum of 300 MB after installation
 | RAM (Minimum)        | Owner: 1GB <br>  Build: 4GB
 | Java\*               | Java* Development Kit 11

@@ -50,7 +50,7 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
         -  to0scheduler/config/ <br>
            ./run-to0scheduler (Sample scripts and configuration to run the to0scheduler)
 
-        The example instructions are executed under the Ubuntu\* OS version 18.04.
+        The example instructions are executed under the Ubuntu\* OS version 20.04.
 
 4.  The device must have already completed the DeviceInitialization (DI) protocol, and an Owner must have been assigned to it using Supply Chain Toolkit. The resulting Ownership voucher(OV) must be moved from SCT into the OCS.
 
