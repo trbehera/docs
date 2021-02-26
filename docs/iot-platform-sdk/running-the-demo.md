@@ -12,7 +12,7 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
 
 1.  Clone the source repository of the [Protocol Reference Implementation](https://github.com/secure-device-onboard/pri) (PRI). In the rest of this section, the absolute path of this folder is referred to as <sdo-pri-root\>.
 
-2.  Build the PRI by following the steps mentioned in its [README](https://github.com/secure-device-onboard/pri/blob/master/README.md). Alternatively, run following command:
+2.  Build the PRI by following the steps mentioned in its [README](https://github.com/secure-device-onboard/pri/blob/1.10-rel/README.md). Alternatively, run following command:
 
     ```
     mvn package
@@ -31,7 +31,7 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
 
 4.  Clone the source repository of the [IoT Platform SDK](https://github.com/secure-device-onboard/iot-platform-sdk). In the rest of this section, the absolute path of this folder is referred to as <sdo-iot-platform-sdk-root\>.
 
-5.  Build IOT Platform SDK by following the steps mentioned in the [README](https://github.com/secure-device-onboard/iot-platform-sdk/blob/master/README.md). Alternatively, run the following command:
+5.  Build IOT Platform SDK by following the steps mentioned in the [README](https://github.com/secure-device-onboard/iot-platform-sdk/blob/1.10-rel/README.md). Alternatively, run the following command:
 
     ```
     mvn clean install
@@ -50,7 +50,7 @@ To test integration of Secure Device Onboard with the IOT Platform SDK solution,
         -  to0scheduler/config/ <br>
            ./run-to0scheduler (Sample scripts and configuration to run the to0scheduler)
 
-        The example instructions are executed under the Ubuntu\* OS version 18.04.
+        The example instructions are executed under the Ubuntu\* OS version 20.04.
 
 4.  The device must have already completed the DeviceInitialization (DI) protocol, and an Owner must have been assigned to it using Supply Chain Toolkit. The resulting Ownership voucher(OV) must be moved from SCT into the OCS.
 
