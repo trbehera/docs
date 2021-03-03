@@ -38,24 +38,29 @@ nav:
     - Releases: releases.md
     - Security Best Practices: security-best-practices/security-best-practices.md
     - Installation Guide : installation.md
-  - FIDOIOT:
-    - Introduction: fidoiot/fidoiot-introduction.md
-    - FIDOIOT Client Design: fidoiot/fidoiot-client-sdk-design.md
-  - Client SDK: 
+  - FIDO Device Onboard:
+    - Introduction: fdo/fdo-introduction.md
+    - Protocol Specification: fdo/fdo-protocol-specification.md
+    - Protocol Reference Implementation: fdo/fdo-protocol-reference-implementation-introduction.md
+    - FDO Client SDK Design: fdo/fdo-client-sdk-design.md
+    - FDO Client SDK Introduction: fdo/fdo-client-sdk-reference-guide.md
+    - FDO Client SDK API Reference: fdo/fdo-client-sdk-api-reference.md
+    - FDO Client SDK Porting Guide: fdo/fdo-client-sdk-porting-guide.md
+  - Client SDK:
     - Introduction: client-sdk/client-sdk-reference-guide.md
     - API Reference: client-sdk/client-sdk-api-reference.md
     - Porting Guide: client-sdk/client-sdk-porting-guide.md
-  - IOT Platform SDK: 
+  - IOT Platform SDK:
     - Introduction: iot-platform-sdk/introduction.md
     - Running The Demo: iot-platform-sdk/running-the-demo.md
     - Development Guide: iot-platform-sdk/development-guide.md
-  - Rendezvous Service: 
+  - Rendezvous Service:
     - Introduction: rendezvous-service/introduction.md
   - Supply Chain Tools:
     - Manufacturing Tools: supply-chain-tools/manufacturing/manufacturer-enablement-guide.md
     - Reseller Tools: supply-chain-tools/reseller/reseller-enablement-guide.md
     - Keystore Guide: supply-chain-tools/keystore-guide.md
-  - Protocol Reference Implementation: 
+  - Protocol Reference Implementation:
     - Introduction: protocol-reference-implementation/introduction.md
   - All-in-one Demo:
     - Introduction: all-in-one-demo/introduction.md
