@@ -3,7 +3,7 @@ This document provides a guide to porting the Client SDK to new platforms.
 
 ## Solution Architecture
 
-![SDO Client Block Diagram](img/4-software-architecture.png)
+![FDO Client Block Diagram](img/4-software-architecture.png)
 
 The Client SDK reference solution is comprised of 3 layers:
 
@@ -109,28 +109,28 @@ client_sdk_compile_definitions(
     -DPLATFORM_HMAC_KEY=\"${BLOB_PATH}/data/platform_hmac_key.bin\"
     -DPLATFORM_AES_KEY=\"${BLOB_PATH}/data/platform_aes_key.bin\"
     -DEPID_PRIVKEY=\"${BLOB_PATH}/data/epidprivkey.dat\"
-    -DSDO_CRED=\"${BLOB_PATH}/data/PMDeviceCredentials.bin\"
+    -DFDO_CRED=\"${BLOB_PATH}/data/PMDeviceCredentials.bin\"
     -DMANUFACTURER_IP=\"${BLOB_PATH}/data/manufacturer_ip.bin\"
     -DMANUFACTURER_DN=\"${BLOB_PATH}/data/manufacturer_dn.bin\"
     -DMANUFACTURER_PORT=\"${BLOB_PATH}/data/manufacturer_port.bin\"
     )
 
 client_sdk_compile_definitions(
-    -DSDO_CACERT=\"${BLOB_PATH}/data/cacert.bin\"
-    -DSDO_PUBKEY=\"${BLOB_PATH}/data/pubkey.dat\"
-    -DSDO_SIGRL=\"${BLOB_PATH}/data/sigrl.dat\"
-    -DSDO_CRED_SECURE=\"${BLOB_PATH}/data/Secure.blob\"
-    -DSDO_CRED_MFG=\"${BLOB_PATH}/data/Mfg.blob\"
-    -DSDO_CRED_NORMAL=\"${BLOB_PATH}/data/Normal.blob\"
+    -DFDO_CACERT=\"${BLOB_PATH}/data/cacert.bin\"
+    -DFDO_PUBKEY=\"${BLOB_PATH}/data/pubkey.dat\"
+    -DFDO_SIGRL=\"${BLOB_PATH}/data/sigrl.dat\"
+    -DFDO_CRED_SECURE=\"${BLOB_PATH}/data/Secure.blob\"
+    -DFDO_CRED_MFG=\"${BLOB_PATH}/data/Mfg.blob\"
+    -DFDO_CRED_NORMAL=\"${BLOB_PATH}/data/Normal.blob\"
     )
 ```
-##### SDO_CRED_NORMAL - Normal.blob
+##### FDO_CRED_NORMAL - Normal.blob
 The Client SDK or Device lifecycle is maintained in this blob. This data is stored as Authenticated Data meaning that HMAC256 is calculated over this data and stored back.
 
 !!! note
     This is part of custom storage implementation in reference solution. Please refer Storage Subsystem API for details required for implementation on custom platform. The Application may use APIs listed in Storage Subsystem API, to manipulate blobs, so, the blobs remain consistent as expected by Client SDK. However, the APIs mentioned in the above said section are internal APIs and it is up to the application developer to reuse them.
 
-The application, before starting the state machine by calling `sdo_sdk_init()` generates the HMAC over this data and stores it back along with the data.
+The application, before starting the state machine by calling `fdo_sdk_init()` generates the HMAC over this data and stores it back along with the data.
 This is initialized to the following value to indicate that the device is in manufactured state. It also allows the reference application to perform multiple cycles of Secure Device Onboard operation.
 ```
 blob_path.cmake:
@@ -144,7 +144,7 @@ The purpose of these defines is to specify the location where the reference solu
 * **PLATFORM_AES_KEY:** AES key to Authenticate Encrypt the Secure Blobs. The Secure Blobs are internal to Client SDK and are not controlled by the application.
 
 !!! note
-    These flags are not necessary for the platforms which have their own Secure Storage mechanisms. The platform may be able to store all blobs using Authenticated Encryption including Normal.blob. Client SDK always uses `sdo_blob_read()` to read the data, so, the underlying detail is already abstracted. In the reference solution, it is expected that these files exist physically although without any content. The content gets generated on an as-needed basis.
+    These flags are not necessary for the platforms which have their own Secure Storage mechanisms. The platform may be able to store all blobs using Authenticated Encryption including Normal.blob. Client SDK always uses `fdo_blob_read()` to read the data, so, the underlying detail is already abstracted. In the reference solution, it is expected that these files exist physically although without any content. The content gets generated on an as-needed basis.
 
 ##### MANUFACTURER_(IP/DN/PORT)
 Client SDK uses the location defined by the below flags to connect to Manufacturer Server to perform Device Initialization.
@@ -162,11 +162,11 @@ This define specifies the ECDSA private key to be used as a device identity. Two
 !!! note
     This section is not a recommendation, but specifies some of the possibilities that exist.
 
-##### SDO_CRED_(SECURE/MFG)
+##### FDO_CRED_(SECURE/MFG)
 These defines are used internally by Client SDK:
 
-* **SDO_CRED_SECURE:** This define specifies the location of the device secret. This blob is Authenticated Encrypted in the reference solution.
-* **SDO_CRED_MFG:** This define specifies the location of Manufacturer data. This blob is stored with Authenticated information.
+* **FDO_CRED_SECURE:** This define specifies the location of the device secret. This blob is Authenticated Encrypted in the reference solution.
+* **FDO_CRED_MFG:** This define specifies the location of Manufacturer data. This blob is stored with Authenticated information.
 
 #### extension.cmake (erstwhile crypto.conf)
 This cmake file consists mostly of build configuration from crypto.conf but is not limited to it.
@@ -218,58 +218,58 @@ elseif(DA MATCHES ecdsa384)
 
 ### Client SDK Constants
 
-#### sdo_sdk_error
+#### fdo_sdk_error
 ```
 typedef enum {
-        SDO_RV_TIMEOUT = 1,
-        SDO_CONN_TIMEOUT,
-        SDO_DI_ERROR,
-        SDO_TO1_ERROR,
-        SDO_TO2_ERROR
-} sdo_sdk_error;
+        FDO_RV_TIMEOUT = 1,
+        FDO_CONN_TIMEOUT,
+        FDO_DI_ERROR,
+        FDO_TO1_ERROR,
+        FDO_TO2_ERROR
+} fdo_sdk_error;
 ```
-The usage of this enum is detailed in sdo_sdk_init()
+The usage of this enum is detailed in fdo_sdk_init()
 
-#### sdo_sdk_status
+#### fdo_sdk_status
 ```
 typedef enum {
-        SDO_SUCCESS,
-        SDO_INVALID_PATH,
-        SDO_CONFIG_NOT_FOUND,
-        SDO_INVALID_STATE,
-        SDO_RESALE_NOT_SUPPORTED,
-        SDO_RESALE_NOT_READY,
-        SDO_WARNING,
-        SDO_ERROR,
-        SDO_ABORT
-} sdo_sdk_status;
+        FDO_SUCCESS,
+        FDO_INVALID_PATH,
+        FDO_CONFIG_NOT_FOUND,
+        FDO_INVALID_STATE,
+        FDO_RESALE_NOT_SUPPORTED,
+        FDO_RESALE_NOT_READY,
+        FDO_WARNING,
+        FDO_ERROR,
+        FDO_ABORT
+} fdo_sdk_status;
 ```
-The usage of this enum is detailed in `sdo_sdk_init()`
+The usage of this enum is detailed in `fdo_sdk_init()`
 
-#### sdo_sdk_device_state
+#### fdo_sdk_device_state
 ```
 typedef enum {
-        SDO_STATE_PRE_DI = 2,
-        SDO_STATE_PRE_TO1,
-        SDO_STATE_IDLE,
-        SDO_STATE_RESALE,
-        SDO_STATE_ERROR
-} sdo_sdk_device_state;
+        FDO_STATE_PRE_DI = 2,
+        FDO_STATE_PRE_TO1,
+        FDO_STATE_IDLE,
+        FDO_STATE_RESALE,
+        FDO_STATE_ERROR
+} fdo_sdk_device_state;
 ```
-The usage of this enum is detailed in `sdo_sdk_get_status()`
+The usage of this enum is detailed in `fdo_sdk_get_status()`
 
 ### Client SDK Functions
-The application resides in the app directory of the reference solution. The application uses the APIs specified in include/sdo.h to trigger the Ownership transfer state machine. The following lists the APIs which the application uses to perform Device Initialization or start Ownership Transfer Protocol.
+The application resides in the app directory of the reference solution. The application uses the APIs specified in include/fdo.h to trigger the Ownership transfer state machine. The following lists the APIs which the application uses to perform Device Initialization or start Ownership Transfer Protocol.
 
-#### sdo_sdk_init()
+#### fdo_sdk_init()
 ```
-sdo_sdk_status sdo_sdk_init(sdo_sdk_errorCB error_handling_callback,
+fdo_sdk_status fdo_sdk_init(fdo_sdk_errorCB error_handling_callback,
                             uint32_t num_modules,
-                            sdo_sdk_service_info_module *module_information);
-typedef int (*sdo_sdk_errorCB)(sdo_sdk_status type, sdo_sdk_error error_code);
+                            fdo_sdk_service_info_module *module_information);
+typedef int (*fdo_sdk_errorCB)(fdo_sdk_status type, fdo_sdk_error error_code);
 ```
 *Description*  
-This function initializes the Client SDK data structures. It allows the application to control the error handling of the Client SDK state machine by setting error_handling_callback. Client SDK calls error_handling_callback to propagate the error_code(sdo_sdk_error) back to the application with Client SDK internal status sdo_sdk_status(sdo_sdk_status). The application may handle the error and return the appropriate action to be taken by Client SDK further.
+This function initializes the Client SDK data structures. It allows the application to control the error handling of the Client SDK state machine by setting error_handling_callback. Client SDK calls error_handling_callback to propagate the error_code(fdo_sdk_error) back to the application with Client SDK internal status fdo_sdk_status(fdo_sdk_status). The application may handle the error and return the appropriate action to be taken by Client SDK further.
 
 !!! note
     The reference application allows the Client SDK to retry for 5 times before calling abort
@@ -277,16 +277,16 @@ This function initializes the Client SDK data structures. It allows the applicat
 The Client SDK allows the owner to download the required Device Management System agents via Service Info mechanism; the num_modules and module_information registers the Service Info modules with the Client SDK.
 
 *Parameters*  
-`error_handling_callback:` It is of type sdo_sdk_errorCB  
+`error_handling_callback:` It is of type fdo_sdk_errorCB  
 `num_modules:` number of Service Info modules to register.  
 `module_information:` Array of Service Info modules registration information  
 
 *Return Value*  
-`SDO_SUCCESS` for success.
-Greater than `SDO_SUCCESS` for failure (refer sdo_sdk_status)
+`FDO_SUCCESS` for success.
+Greater than `FDO_SUCCESS` for failure (refer fdo_sdk_status)
 
-#### sdo_sdk_run()
-`sdo_sdk_status sdo_sdk_run(void);`
+#### fdo_sdk_run()
+`fdo_sdk_status fdo_sdk_run(void);`
 
 *Description*  
 This function triggers either the Device Initialize state machine or Ownership Transfer Protocol state machine depending on the device status stored in Normal.blob.
@@ -298,11 +298,11 @@ This function triggers either the Device Initialize state machine or Ownership T
 None  
 
 *Return Value*  
-`SDO_SUCCESS` for success.
-Greater than `SDO_SUCCESS` for failure (refer sdo_sdk_status)
+`FDO_SUCCESS` for success.
+Greater than `FDO_SUCCESS` for failure (refer fdo_sdk_status)
 
-#### sdo_sdk_resale()
-`sdo_sdk_status sdo_sdk_resale(void);`
+#### fdo_sdk_resale()
+`fdo_sdk_status fdo_sdk_resale(void);`
 
 *Description*  
 This function triggers the device resale.  
@@ -311,11 +311,11 @@ This function triggers the device resale.
 None  
 
 *Return Value*  
-`SDO_SUCCESS` for success.
-Greater than `SDO_SUCCESS` for failure (refer sdo_sdk_status)
+`FDO_SUCCESS` for success.
+Greater than `FDO_SUCCESS` for failure (refer fdo_sdk_status)
 
-#### sdo_sdk_get_status()
-`sdo_sdk_device_state sdo_sdk_get_status(void);`
+#### fdo_sdk_get_status()
+`fdo_sdk_device_state fdo_sdk_get_status(void);`
 
 *Description*  
 This function returns the current state of the device.  
@@ -324,80 +324,80 @@ This function returns the current state of the device.
 None  
 
 *Return Value*  
-Please refer sdo_sdk_status:  
-`SDO_STATE_PRE_DI:` Device is ready for DI  
-`SDO_STATE_PRE_TO1:` Device is ready for Ownership transfer  
-`SDO_STATE_IDLE:` Device's ownership transfer done  
-`SDO_STATE_RESALE:` Device is ready for ownership transfer  
-`SDO_STATE_ERROR:` Error in getting device status  
+Please refer fdo_sdk_status:  
+`FDO_STATE_PRE_DI:` Device is ready for DI  
+`FDO_STATE_PRE_TO1:` Device is ready for Ownership transfer  
+`FDO_STATE_IDLE:` Device's ownership transfer done  
+`FDO_STATE_RESALE:` Device is ready for ownership transfer  
+`FDO_STATE_ERROR:` Error in getting device status  
 
 ## Crypto Subsystem API
-Cryptography support is a platform offering which enables Client SDK to generate random number, perform encryption, signing, sign verification and so on. The required functionality by the Client SDK is abstracted via a set of APIs declared in file "crypto/include/sdoCryptoHal.h" and "crypto/include/base64.h"
+Cryptography support is a platform offering which enables Client SDK to generate random number, perform encryption, signing, sign verification and so on. The required functionality by the Client SDK is abstracted via a set of APIs declared in file "crypto/include/fdoCryptoHal.h" and "crypto/include/base64.h"
 
 !!! note
     This section of the document specifies the internal APIs to abstract Crypto implementation from Client SDK and are subject to change.
 
 ### Constants
 
-#### SDO_CRYPTO_HASH_TYPE
+#### FDO_CRYPTO_HASH_TYPE
 ```
-#define SDO_CRYPTO_HASH_TYPE_NONE      0
-#define SDO_CRYPTO_HASH_TYPE_SHA_1     3
-#define SDO_CRYPTO_HASH_TYPE_SHA_256   8
-#define SDO_CRYPTO_HASH_TYPE_SHA_384  14
-#define SDO_CRYPTO_HASH_TYPE_SHA_512  10
+#define FDO_CRYPTO_HASH_TYPE_NONE      0
+#define FDO_CRYPTO_HASH_TYPE_SHA_1     3
+#define FDO_CRYPTO_HASH_TYPE_SHA_256   8
+#define FDO_CRYPTO_HASH_TYPE_SHA_384  14
+#define FDO_CRYPTO_HASH_TYPE_SHA_512  10
 ```
 The usage of this define is detailed in `crypto_hal_hash()`.
 
-#### SDO_CRYPTO_HMAC_TYPE
+#### FDO_CRYPTO_HMAC_TYPE
 ```
-#define SDO_CRYPTO_HMAC_TYPE_SHA_256 108
-#define SDO_CRYPTO_HMAC_TYPE_SHA_384 114
-#define SDO_CRYPTO_HMAC_TYPE_SHA_512 110
+#define FDO_CRYPTO_HMAC_TYPE_SHA_256 108
+#define FDO_CRYPTO_HMAC_TYPE_SHA_384 114
+#define FDO_CRYPTO_HMAC_TYPE_SHA_512 110
 ```
 The usage of this define is detailed in `crypto_hal_hmac()`.
 
-#### SDO_CRYPTO_PUB_KEY_ENCODING
+#### FDO_CRYPTO_PUB_KEY_ENCODING
 ```
-#define SDO_CRYPTO_PUB_KEY_ENCODING_NONE        0
-#define SDO_CRYPTO_PUB_KEY_ENCODING_X509        1
-#define SDO_CRYPTO_PUB_KEY_ENCODING_RSA_MOD_EXP 3
-#define SDO_CRYPTO_PUB_KEY_ENCODING_EPID        4
-```
-The usage of this define is detailed in `crypto_hal_sig_verify()`.
-
-#### SDO_CRYPTO_PUB_KEY_ALGO
-```
-#define SDO_CRYPTO_PUB_KEY_ALGO_NONE       0
-#define SDO_CRYPTO_PUB_KEY_ALGO_RSA        1
-#define SDO_CRYPTO_PUB_KEY_ALGO_DH         2
-#define SDO_CRYPTO_PUB_KEY_ALGO_DSA        3
-#define SDO_CRYPTO_PUB_KEY_ALGO_ECDSAp256 13
-#define SDO_CRYPTO_PUB_KEY_ALGO_ECDSAp384 14
-#define SDO_CRYPTO_PUB_KEY_ALGO_EPID_1_1  91
-#define SDO_CRYPTO_PUB_KEY_ALGO_EPID_2_0  92
+#define FDO_CRYPTO_PUB_KEY_ENCODING_NONE        0
+#define FDO_CRYPTO_PUB_KEY_ENCODING_X509        1
+#define FDO_CRYPTO_PUB_KEY_ENCODING_RSA_MOD_EXP 3
+#define FDO_CRYPTO_PUB_KEY_ENCODING_EPID        4
 ```
 The usage of this define is detailed in `crypto_hal_sig_verify()`.
 
-#### SDO_PK_HASH
+#### FDO_CRYPTO_PUB_KEY_ALGO
 ```
-#define SDO_PK_HASH_NONE    0
-#define SDO_PK_HASH_SHA1    3
-#define SDO_PK_HASH_SHA256  8
-#define SDO_PK_HASH_SHA512 10
-#define SDO_PK_HASH_SHA384 14
+#define FDO_CRYPTO_PUB_KEY_ALGO_NONE       0
+#define FDO_CRYPTO_PUB_KEY_ALGO_RSA        1
+#define FDO_CRYPTO_PUB_KEY_ALGO_DH         2
+#define FDO_CRYPTO_PUB_KEY_ALGO_DSA        3
+#define FDO_CRYPTO_PUB_KEY_ALGO_ECDSAp256 13
+#define FDO_CRYPTO_PUB_KEY_ALGO_ECDSAp384 14
+#define FDO_CRYPTO_PUB_KEY_ALGO_EPID_1_1  91
+#define FDO_CRYPTO_PUB_KEY_ALGO_EPID_2_0  92
+```
+The usage of this define is detailed in `crypto_hal_sig_verify()`.
+
+#### FDO_PK_HASH
+```
+#define FDO_PK_HASH_NONE    0
+#define FDO_PK_HASH_SHA1    3
+#define FDO_PK_HASH_SHA256  8
+#define FDO_PK_HASH_SHA512 10
+#define FDO_PK_HASH_SHA384 14
 ```
 The usage of this define is detailed in `crypto_hal_rsa_encrypt()`.
 
 ### Structures
 
-#### sdo_byte_array_t
+#### fdo_byte_array_t
 ```
 typedef struct {
         size_t byte_sz;
         uint8_t * bytes;
-} sdo_bits_t;
-typedef sdo_bits_t sdo_byte_array_t;
+} fdo_bits_t;
+typedef fdo_bits_t fdo_byte_array_t;
 ```
 The usage is detailed in `crypto_hal_get_device_csr()`.
 
@@ -501,7 +501,7 @@ This function hashes the contents of the memory pointed to by buffer of size `bu
     This function may not require a change in implementation for porting to custom platform, as the reference implementation uses standard mbedTLS/openSSL APIs
 
 *Parameters*  
-`hash_type:` This function must support all the hash algorithms identifiers mentioned in SDO_CRYPTO_HASH_TYPE except SDO_CRYPTO_HASH_TYPE_SHA_512 (optional). Client SDK uses SDO_CRYPTO_HASH_TYPE_USED to decide at compile time which hash_type to use - either SDO_CRYPTO_HASH_TYPE_SHA_256 or SDO_CRYPTO_HASH_TYPE_SHA_384.  
+`hash_type:` This function must support all the hash algorithms identifiers mentioned in FDO_CRYPTO_HASH_TYPE except FDO_CRYPTO_HASH_TYPE_SHA_512 (optional). Client SDK uses FDO_CRYPTO_HASH_TYPE_USED to decide at compile time which hash_type to use - either FDO_CRYPTO_HASH_TYPE_SHA_256 or FDO_CRYPTO_HASH_TYPE_SHA_384.  
 `buffer:` a valid pointer to a memory containing data to be hashed  
 `buffer_length:` size of memory pointed to by buffer  
 output: a valid pointer to a memory which will be filled by hash  
@@ -525,7 +525,7 @@ This function HMACs the contents of the memory pointed to by buffer of size `buf
     This function may not require a change in implementation for porting to custom platform, as the reference implementation uses standard mbedTLS/openSSL APIs
 
 *Parameters*  
-`hmac_type`: This function must support all the HMAC algorithms identifiers mentioned in SDO_CRYPTO_HMAC_TYPE except SDO_CRYPTO_HMAC_TYPE_SHA_512 (optional).  Client SDK uses SDO_CRYPTO_HMAC_TYPE_USED to decide at compile time which hmac_type to use - either SDO_CRYPTO_HMAC_TYPE_SHA_256 or SDO_CRYPTO_HMAC_TYPE_SHA_384.  
+`hmac_type`: This function must support all the HMAC algorithms identifiers mentioned in FDO_CRYPTO_HMAC_TYPE except FDO_CRYPTO_HMAC_TYPE_SHA_512 (optional).  Client SDK uses FDO_CRYPTO_HMAC_TYPE_USED to decide at compile time which hmac_type to use - either FDO_CRYPTO_HMAC_TYPE_SHA_256 or FDO_CRYPTO_HMAC_TYPE_SHA_384.  
 `buffer:` a valid pointer to a memory containing data to be HMACed.  
 `buffer_length:` size of memory pointed to by buffer  
 `output:` a valid pointer to a memory which will be filled by HMACed data.  
@@ -555,8 +555,8 @@ This function verifies the ECDSA or RSA signature pointed by `message_signature`
     This function may not require a change in implementation for porting to custom platform, as the reference implementation uses standard mbedTLS/openSSL APIs
 
 *Parameters*  
-`key_encoding:` SDO_CRYPTO_PUB_KEY_ENCODING_X509 encoding is used for ECDSA and SDO_CRYPTO_PUB_KEY_ENCODING_RSA_MOD_EXP is used for RSA. Please refer SDO_CRYPTO_PUB_KEY_ENCODING  
-`key_algorithm:` SDO_CRYPTO_PUB_KEY_ALGO_(ECDSAp256/ECDSAp384) is used for ECDSA and SDO_CRYPTO_PUB_KEY_ALGO_RSA for RSA. Please refer SDO_CRYPTO_PUB_KEY_ALGO  
+`key_encoding:` FDO_CRYPTO_PUB_KEY_ENCODING_X509 encoding is used for ECDSA and FDO_CRYPTO_PUB_KEY_ENCODING_RSA_MOD_EXP is used for RSA. Please refer FDO_CRYPTO_PUB_KEY_ENCODING  
+`key_algorithm:` FDO_CRYPTO_PUB_KEY_ALGO_(ECDSAp256/ECDSAp384) is used for ECDSA and FDO_CRYPTO_PUB_KEY_ALGO_RSA for RSA. Please refer FDO_CRYPTO_PUB_KEY_ALGO  
 `message:` data over which the sign verification needs to be performed.  
 `message_length:` size of the message  
 `message_signature:` signature over the message sent by the signing entity  
@@ -613,9 +613,9 @@ This function encrypts the `clear_text` of size `clear_text_length` with the RSA
     This function may not require a change in implementation for porting to custom platform, as the reference implementation uses standard mbedTLS/openSSL APIs
 
 *Parameters*  
-`hash_type:` mandatory support required for SDO_PK_HASH_SHA256. Please refer SDO_PK_HASH  
-`key_encoding:` SDO_CRYPTO_PUB_KEY_ENCODING_RSA_MOD_EXP. Please refer SDO_CRYPTO_PUB_KEY_ENCODING  
-`key_algorithm:` SDO_CRYPTO_PUB_KEY_ALGO_RSA. Please refer SDO_CRYPTO_PUB_KEY_ALGO  
+`hash_type:` mandatory support required for FDO_PK_HASH_SHA256. Please refer FDO_PK_HASH  
+`key_encoding:` FDO_CRYPTO_PUB_KEY_ENCODING_RSA_MOD_EXP. Please refer FDO_CRYPTO_PUB_KEY_ENCODING  
+`key_algorithm:` FDO_CRYPTO_PUB_KEY_ALGO_RSA. Please refer FDO_CRYPTO_PUB_KEY_ALGO  
 `clear_text:` pointer to the text to be encrypted  
 `clear_text_length:` size of the clear_text  
 `cipher_text:` pointer to the empty buffer to be filled after encrypting clear_text  
@@ -713,7 +713,7 @@ cipher_length:` size of cipher_text.
 
 #### crypto_hal_get_device_csr()
 ```
-int32_t crypto_hal_get_device_csr(sdo_byte_array_t **csr);
+int32_t crypto_hal_get_device_csr(fdo_byte_array_t **csr);
 ```
 *Description*  
 This function fills the Client SDK byte array `csr` with the Certificate Signing Request (CSR) data.  
@@ -722,10 +722,10 @@ This function fills the Client SDK byte array `csr` with the Certificate Signing
     This function may not require a change in implementation for porting to custom platform, as the reference implementation uses the standard mbedTLS/openSSL APIs
 
 *Parameters*  
-`csr:` SDO byte array. Please refer sdo_byte_array_t. The usage of the structure is as below:  
+`csr:` FDO byte array. Please refer fdo_byte_array_t. The usage of the structure is as below:  
 - byte_sz: size of the buffer in bytes pointed by bytes  
 - bytes: pointer to a stream of bytes  
-This array is allocated by using sdo_byte_array_alloc(size_of_buffer) function.
+This array is allocated by using fdo_byte_array_alloc(size_of_buffer) function.
 
 *Return Value*  
 `0` for success  
@@ -948,31 +948,31 @@ Client SDK communicates with Manufacturer, Rendezvous and Owner using REST API. 
 #### IPV4_ADDR_LEN
 `#define IPV4_ADDR_LEN 4`
 
-The Client SDK uses this define for IPv4 IP address. For usage, please refer `sdo_con_dns_lookup()`
-#### SDO_TYPE_ERROR
-`#define SDO_TYPE_ERROR 255`
+The Client SDK uses this define for IPv4 IP address. For usage, please refer `fdo_con_dns_lookup()`
+#### FDO_TYPE_ERROR
+`#define FDO_TYPE_ERROR 255`
 
-The Client SDK uses this to indicate error. For usage, please refer `sdo_con_recv_msg_header()`
+The Client SDK uses this to indicate error. For usage, please refer `fdo_con_recv_msg_header()`
 
 ### Data Types
 
-#### sdo_ip_address_t
-This defines the IP address structure used to pass IP address information within Client SDK. The usage of the structure is detailed in `sdo_con_dns_lookup()`
+#### fdo_ip_address_t
+This defines the IP address structure used to pass IP address information within Client SDK. The usage of the structure is detailed in `fdo_con_dns_lookup()`
 
 ```
 typedef struct {
         uint8_t length;
         uint8_t addr[16];
-} sdo_ip_address_t;
+} fdo_ip_address_t;
 ```
-#### sdo_con_handle
-sdo_con_handle is specific to the underlying network library. In software distributions supporting POSIX, sdo_con_handle can be int or any implementation specific datatype. For Client SDK, this is opaque data type, and it will not use its internal members.
+#### fdo_con_handle
+fdo_con_handle is specific to the underlying network library. In software distributions supporting POSIX, fdo_con_handle can be int or any implementation specific datatype. For Client SDK, this is opaque data type, and it will not use its internal members.
 
 ### Connection Management Functions  
 
-#### sdo_con_setup()
+#### fdo_con_setup()
 ```
-int32_t sdo_con_setup(char *medium, char **params, uint32_t count)
+int32_t fdo_con_setup(char *medium, char **params, uint32_t count)
 ```
 *Description*  
 This function sets up the connection identified by `medium` based on the `count` number of `params`. It is expected that this call will block until the interface has been established and is stable.
@@ -1001,16 +1001,16 @@ wifi|Connect to the WiFi SSID and password specified by params. |params[0] = SSI
 `0` for success  
 `-1` for failure 
 
-#### sdo_con_teardown()
+#### fdo_con_teardown()
 ```
-int32_t sdo_con_teardown(void)
+int32_t fdo_con_teardown(void)
 
 ```
 *Description*  
-This function shuts down the connection established by the function described in `sdo_con_setup()` 
+This function shuts down the connection established by the function described in `fdo_con_setup()` 
 
 !!! note
-    This function may not require a change in implementation for porting to custom platform, as the reference implementation tears down the REST context created in `sdo_con_setup()`
+    This function may not require a change in implementation for porting to custom platform, as the reference implementation tears down the REST context created in `fdo_con_setup()`
 
 *Parameters*  
 None 
@@ -1019,9 +1019,9 @@ None
 `0` for success  
 `-1` for failure 
 
-#### sdo_con_dns_lookup()
+#### fdo_con_dns_lookup()
 ```
-int32_t sdo_con_dns_lookup(const char *url, sdo_ip_address_t **ip_list,
+int32_t fdo_con_dns_lookup(const char *url, fdo_ip_address_t **ip_list,
                            uint32_t *ip_list_size)
 ```
 *Description*  
@@ -1032,7 +1032,7 @@ This function perform a DNS lookup for the specified host identified by the `url
 
 *Parameters*  
 `url:` NULL terminated string like “192.168.0.1” or “example@noname.com”  
-`ip_list:` Refer sdo_ip_address_t for the structure declaration. The usage of this structure is as follows:  
+`ip_list:` Refer fdo_ip_address_t for the structure declaration. The usage of this structure is as follows:  
 - `length:` The value should be 4 for IPv4 and 16 for IPv6 addresses  
 - `addr:` specifies the IP address in network byte order  
 
@@ -1042,9 +1042,9 @@ This function perform a DNS lookup for the specified host identified by the `url
 `0` for success  
 `-1` for failure 
 
-#### sdo_con_connect()
+#### fdo_con_connect()
 ```
-sdo_con_handle sdo_con_connect(sdo_ip_address_t *addr, uint16_t port,
+fdo_con_handle fdo_con_connect(fdo_ip_address_t *addr, uint16_t port,
                                void **ssl)
 ```
 *Description*  
@@ -1054,17 +1054,17 @@ This function connects to the IP address specified in addr on the given port. If
     This function may require a minimal change in implementation for porting to custom platform, as the reference implementation relies on Linux libraries to connect to the server.
 
 *Parameters*  
-`addr:` server IP address. Please refer `sdo_con_dns_lookup()`  
+`addr:` server IP address. Please refer `fdo_con_dns_lookup()`  
 `port:` server port to connect to  
 `ssl:` NULL or valid pointer to receive the ssl context in case ssl is enabled
 
 *Return Value*  
-Connection handle for success. Please refer sdo_con_handle.  
+Connection handle for success. Please refer fdo_con_handle.  
 `-1` for failure 
 
-#### sdo_con_disconnect()
+#### fdo_con_disconnect()
 ```
-int32_t sdo_con_disconnect(sdo_con_handle handle, void *ssl)
+int32_t fdo_con_disconnect(fdo_con_handle handle, void *ssl)
 ```
 *Description*  
 This function terminates the connection associated with handle.  
@@ -1073,8 +1073,8 @@ This function terminates the connection associated with handle.
     This function may require a minimal change in implementation for porting to custom platform, as the reference implementation relies on Linux libraries to disconnect from the server.
 
 *Parameters*  
-`handle:` Valid connection handle. Please refer to `sdo_con_connect()`  
-`ssl:` NULL or valid pointer in case, SSL connection was established. Please refer to `sdo_con_connect()`  
+`handle:` Valid connection handle. Please refer to `fdo_con_connect()`  
+`ssl:` NULL or valid pointer in case, SSL connection was established. Please refer to `fdo_con_connect()`  
 
 *Return Value*  
 `0` for success  
@@ -1082,9 +1082,9 @@ This function terminates the connection associated with handle.
 
 ### Connection Data Management Functions
 
-#### sdo_con_recv_msg_header()
+#### fdo_con_recv_msg_header()
 ```
-int32_t sdo_con_recv_msg_header(sdo_con_handle handle,
+int32_t fdo_con_recv_msg_header(fdo_con_handle handle,
                                 uint32_t *protocol_version,
                                 uint32_t *message_type, uint32_t *msglen,
                                 void *ssl)
@@ -1096,9 +1096,9 @@ This function receives the message header on the specified connection handle and
     This function may require a minimal change in implementation for porting to custom platform, as the reference implementation relies on Linux* libraries to receive data from the server.
 
 *Parameters*  
-`handle:` Connection handle. Please refer to `sdo_con_connect()`  
+`handle:` Connection handle. Please refer to `fdo_con_connect()`  
 `protocol_version:` Incoming protocol version. Client SDK supports 113  
-`message_type:` set to SDO_TYPE_ERROR in case of error. Please refer SDO_TYPE_ERROR  
+`message_type:` set to FDO_TYPE_ERROR in case of error. Please refer FDO_TYPE_ERROR  
 `msglen:` Length of incoming message body  
 `ssl:` valid SSL context in case SSL is enabled. Please refer s`do_con_connect()`  
 
@@ -1106,30 +1106,30 @@ This function receives the message header on the specified connection handle and
 `0` for success  
 `-1` for failure 
 
-#### sdo_con_recv_msg_body()
+#### fdo_con_recv_msg_body()
 ```
-int32_t sdo_con_recv_msg_body(sdo_con_handle handle, uint8_t *buf,
+int32_t fdo_con_recv_msg_body(fdo_con_handle handle, uint8_t *buf,
                               size_t length, void *ssl)
 ```
 *Description*  
-This function receives the message body on the connection specified by `handle` in the provided memory pointed to by `buf` of size `length`. The message received corresponds to the message header received in the immediate preceding call to `sdo_con_recv_msg_header()`. This function blocks unless the specified length of data is received.  
+This function receives the message body on the connection specified by `handle` in the provided memory pointed to by `buf` of size `length`. The message received corresponds to the message header received in the immediate preceding call to `fdo_con_recv_msg_header()`. This function blocks unless the specified length of data is received.  
 
 !!! note
     This function may require a minimal change in implementation for porting to custom platform, as the reference implementation relies on Linux* libraries to receive data from the server.
 
 *Parameters*  
-`handle:` Connection handle. Please refer to `sdo_con_connect()`  
+`handle:` Connection handle. Please refer to `fdo_con_connect()`  
 `buf:` pointer to the empty buffer for receiving the message  
-`length:` size of buf and equal to returned from sdo_con_recv_msg_header().  
-`ssl:` valid SSL context in case SSL is enabled. Please refer to `sdo_con_connect()`  
+`length:` size of buf and equal to returned from fdo_con_recv_msg_header().  
+`ssl:` valid SSL context in case SSL is enabled. Please refer to `fdo_con_connect()`  
 
 *Return Value*
 Number of bytes for success
 `-1` for failure
 
-#### sdo_con_send_message()
+#### fdo_con_send_message()
 ```
-int32_t sdo_con_send_message(sdo_con_handle handle, uint32_t protocol_version,
+int32_t fdo_con_send_message(fdo_con_handle handle, uint32_t protocol_version,
                              uint32_t message_type, const uint8_t *buf,
                              size_t length, void *ssl)
 ```
@@ -1140,12 +1140,12 @@ This function sends the data pointed by `buf` of size `length` over the connecti
     This function may require a minimal change in implementation for porting to custom platform, as the reference implementation relies on Linux libraries to send data to the server.
 
 *Parameters*  
-`handle:` Connection handle. Please refer to `sdo_con_connect()`  
+`handle:` Connection handle. Please refer to `fdo_con_connect()`  
 `protocol_version:` Client SDK supports 113  
 `message_type:` Client SDK state machine specific. To be used as is  
 `buf:` pointer to the buffer containing the message to be sent  
 `length:` size of buf  
-`ssl:` valid SSL context in case SSL is enabled. Please refer to `sdo_con_connect()`  
+`ssl:` valid SSL context in case SSL is enabled. Please refer to `fdo_con_connect()`  
 
 *Return Value*  
 `0` for success  
@@ -1153,9 +1153,9 @@ This function sends the data pointed by `buf` of size `length` over the connecti
 
 ### Network Generic Functions
 
-#### sdo_net_to_host_long()
+#### fdo_net_to_host_long()
 ```
-uint32_t sdo_net_to_host_long(uint32_t value)
+uint32_t fdo_net_to_host_long(uint32_t value)
 ```
 *Description*
 This function converts the `value` from network byte order to host byte order.
@@ -1169,8 +1169,8 @@ value: unsigned integer of size 4 bytes in network byte order
 *Return Value*  
 Unsigned integer of size 4 bytes converted to host byte order
 
-#### sdo_host_to_net_long()
-`uint32_t sdo_host_to_net_long(uint32_t value)`
+#### fdo_host_to_net_long()
+`uint32_t fdo_host_to_net_long(uint32_t value)`
 
 *Description*  
 This function converts the `value` from host byte order to network byte order.  
@@ -1184,9 +1184,9 @@ This function converts the `value` from host byte order to network byte order.
 *Return Value*  
 Unsigned integer of size 4 bytes converted to network byte order  
 
-#### sdo_printable_to_net()
+#### fdo_printable_to_net()
 ```
-int32_t sdo_printable_to_net(const char *src, void *addr)
+int32_t fdo_printable_to_net(const char *src, void *addr)
 ```
 *Description*  
 This function converts the IP address in ASCII string pointed to by `src` to network byte order and stores the result in `addr`.  
@@ -1237,9 +1237,9 @@ None
 *Return Value*  
 NULL terminated ASCII string
 
-#### sdo_random()
+#### fdo_random()
 ```
-int sdo_random(void)
+int fdo_random(void)
 ```
 *Description*  
 This function generates a random number  
@@ -1253,9 +1253,9 @@ None
 *Return Value*  
 A random number  
 
-#### sdo_sleep()
+#### fdo_sleep()
 ```
-void sdo_sleep(int sec)
+void fdo_sleep(int sec)
 ```
 *Description*  
 This function introduces the delay for `sec` number of seconds  
@@ -1271,42 +1271,42 @@ Storage is a platform offering which enables Client SDK to store the credentials
 
 ### Constants
 
-#### sdo_sdk_blob_flags
+#### fdo_sdk_blob_flags
 This enum defines the supported storage hierarchy by the API
 ```
 typedef enum {
-        SDO_SDK_SECURE_DATA = 1,
-        SDO_SDK_NORMAL_DATA = 2,
-        SDO_SDK_OTP_DATA = 4,
-        SDO_SDK_RAW_DATA = 8
-} sdo_sdk_blob_flags;
+        FDO_SDK_SECURE_DATA = 1,
+        FDO_SDK_NORMAL_DATA = 2,
+        FDO_SDK_OTP_DATA = 4,
+        FDO_SDK_RAW_DATA = 8
+} fdo_sdk_blob_flags;
 ```
 | Enum                    | Description                                                                                                                                                                       | 
 |---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| SDO_SDK_SECURE_DATA | This flag indicates to the storage API that the data is Authenticated Encrypted. As an example, the algorithm used could be AES-GCM or AES + HMAC to support this mode | 
-| SDO_SDK_NORMAL_DATA | This flag indicates to the storage API that the data contains Authentication information. As an example, the data is stored along with its HMAC                        | 
-| SDO_SDK_OTP_DATA    | This flag indicates to the storage API that the data resides in One Time Programmable memory, so, essentially, only 1 write is possible.                               | 
-| SDO_SDK_RAW_DATA    | This flag indicates to the storage API that the data is plaintext                                                                                                      |  
+| FDO_SDK_SECURE_DATA | This flag indicates to the storage API that the data is Authenticated Encrypted. As an example, the algorithm used could be AES-GCM or AES + HMAC to support this mode | 
+| FDO_SDK_NORMAL_DATA | This flag indicates to the storage API that the data contains Authentication information. As an example, the data is stored along with its HMAC                        | 
+| FDO_SDK_OTP_DATA    | This flag indicates to the storage API that the data resides in One Time Programmable memory, so, essentially, only 1 write is possible.                               | 
+| FDO_SDK_RAW_DATA    | This flag indicates to the storage API that the data is plaintext                                                                                                      |  
 
 ### Data Types
 There are no specific data types for Storage APIs
 
 ### Blob Functions
 
-#### sdo_blob_read()
+#### fdo_blob_read()
 ```
-int32_t sdo_blob_read(const char *blob_name, sdo_sdk_blob_flags flags,
+int32_t fdo_blob_read(const char *blob_name, fdo_sdk_blob_flags flags,
                       uint8_t *buffer, uint32_t length)
 ```
 *Description*  
-This function reads the data into the `buffer` of size `length` from the blob identified by `blob_name` whose storage properties match with the `flags`. Before reading the data from blob into the `buffer`, it is recommended to use `sdo_blob_size()` to allocate the exact length of `buffer`.  
+This function reads the data into the `buffer` of size `length` from the blob identified by `blob_name` whose storage properties match with the `flags`. Before reading the data from blob into the `buffer`, it is recommended to use `fdo_blob_size()` to allocate the exact length of `buffer`.  
 
 !!! note
     This function may require a change in implementation for porting to a custom platform. For guidance in assessing the secure storage requirements for your device, refer to the Client SDK Security Implications document. 
 
 *Parameters*  
 `blob_name:` NULL terminated string identifying the existing blob  
-`flags:`  Please refer sdo_sdk_blob_flags  
+`flags:`  Please refer fdo_sdk_blob_flags  
 `buffer:` empty buffer to read the blob data  
 `length:` size of buffer  
 
@@ -1314,9 +1314,9 @@ This function reads the data into the `buffer` of size `length` from the blob id
 Number of bytes read for success  
 `-1` for failure  
 
-#### sdo_blob_write()
+#### fdo_blob_write()
 ```
-int32_t sdo_blob_write(const char *blob_name, sdo_sdk_blob_flags flags,
+int32_t fdo_blob_write(const char *blob_name, fdo_sdk_blob_flags flags,
                        const uint8_t *buffer, uint32_t length)
 ```
 *Description*  
@@ -1327,7 +1327,7 @@ This function writes the data from `buffer` of size `length` to the blob identif
 
 *Parameters*  
 `blob_name:` NULL terminated string identifying the blob to be created  
-`flags:`  Please refer sdo_sdk_blob_flags  
+`flags:`  Please refer fdo_sdk_blob_flags  
 `buffer:` data to be stored in the blob  
 `length:` size of the data to be stored into the blob  
 
@@ -1335,29 +1335,29 @@ This function writes the data from `buffer` of size `length` to the blob identif
 Number of bytes written for success  
 `-1` for failure 
 
-#### sdo_blob_size()
+#### fdo_blob_size()
 ```
-int32_t sdo_blob_size(const char *blob_name, sdo_sdk_blob_flags flags)
+int32_t fdo_blob_size(const char *blob_name, fdo_sdk_blob_flags flags)
 ```
 
 *Description*  
-This function returns the size of blob identified by `blob_name` whose storage properties match with the `flags`. This should be used before sdo_blob_read()  
+This function returns the size of blob identified by `blob_name` whose storage properties match with the `flags`. This should be used before fdo_blob_read()  
 
 !!! note
     This function may require a change in implementation for porting to a custom platform. For guidance in assessing the secure storage requirements for your device, refer to the Client SDK Security Implications document.  
 
 *Parameters*  
 `blob_name:` NULL terminated string identifying the existing blob  
-`flags:`  Please refer sdo_sdk_blob_flags  
+`flags:`  Please refer fdo_sdk_blob_flags  
 
 *Return Value*  
 Blob size for success  
 `0` if the blob doesn’t exist  
 `-1` for failure 
 
-#### sdo_read_epid_key()
+#### fdo_read_epid_key()
 ```
-int32_t sdo_read_epid_key(uint8_t *buffer, uint32_t *size)
+int32_t fdo_read_epid_key(uint8_t *buffer, uint32_t *size)
 ```
 *Description*  
 This function reads the EPID key from the storage medium into the buffer of size size. Before calling the function, a buffer of size 144 bytes is required to be allocated which is the length of the EPID key as per the EPID specification used (Version: 6)  
