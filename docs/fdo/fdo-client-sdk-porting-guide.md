@@ -15,8 +15,8 @@ The Platform layer is itself comprised of three modules: Crypto, Network, and St
 
 1. **Crypto**: Implementation of Cryptographic requirements of Ownership Transfer Protocol. This also abstracts the “Platform” specific crypto methods from the “Library”. So, the crypto implementation is divided into:
 
-    * Library: specific implementation: There is no impact of adding new platform
-    * Platform: Specific implementation: The impact of adding new platform is detailed in Crypto Subsystem API section below.
+    * Library specific implementation: There is no impact of adding new platform
+    * Platform specific implementation: The impact of adding new platform is detailed in Crypto Subsystem API section below.
 
 2. **Network**: Implementation of Networking. This abstracts the “Platform” specific networking functionality from “Library”. The impact of adding new platform is detailed in the Network Subsystem API section below.
 3. **Storage**: Implementation of Secure Storage. This abstracts the “Platform” specific storage methods from “Library”. The impact of adding new platform is detailed in the Storage Subsystem API section below.
@@ -154,7 +154,7 @@ Client SDK uses the location defined by the below flags to connect to Manufactur
 * **MANUFACTURER_PORT:** This is the manufacturer server port, where the Device Initialization protocol is waiting for the device. By default, the port is 8039 if this blob is not created, otherwise, the port is used from this blob.
 
 ##### ECDSA_PRIVKEY
-This define specifies the ECDSA private key to be used as a device identity. Two options are possible:
+This specifies the ECDSA private key to be used as a device identity. Two options are possible:
 
 * The key could be pre-created like the reference application.
 * If the device supports secure storage, then the key can be generated within the device and stored using secure storage APIs

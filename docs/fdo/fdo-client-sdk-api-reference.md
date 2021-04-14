@@ -210,7 +210,7 @@ _**Parameters**_
 
 **type**  
 This value specifies the type of error that occurred. It will be one of the following values (other `fdoSdkStatus` values are not used here):  
-* `FDO_ERROR`: This indicates an unrecoverable error occurred. The SDK will continue with protocol restart for these types of errors but it is unlikely that the operation will succeed. It is advisable to abort the operation and retry later.  
+* `FDO_ERROR`: This indicates that an unrecoverable error occurred. The SDK will continue with protocol restart for these types of errors but it is unlikely that the operation will succeed. It is advisable to abort the operation and retry later.  
 * `FDO_WARNING`: This indicates that a transient error occurred. The SDK will continue with protocol restart, which might fix the problem. It is advisable that the Application allows the restart to take place.  
 **errorCode**  
 This value indicates details of the error that occurred. See description in FDO SDK Error Values.  
