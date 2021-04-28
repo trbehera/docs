@@ -112,7 +112,7 @@ Figure 3.	Service Info Exchanges between Device and Owner Server
 As shown in the diagram, PSI is ‘global’ to all modules and occurs once between the device and Owner Server. DSI and OSI are module specific.
 
 #### Module Initialization
-For each registered module, the SDK initializes the module by call its callback with the `FDO_SI_START` type. The module is expected to prepare to receive PSI, DSI, and OSI calls after initialization.
+For each registered module, the SDK initializes the module by calling its callback with the `FDO_SI_START` type. The module is expected to prepare to receive PSI, DSI, and OSI calls after initialization.
 
 If an error occurs after a module has been initialized, during the remainder of TO2 protocol execution and the Application is restarted, the SDK will again call this API to initialize each registered module. The module must be prepared for multiple such calls due to the SDK’s retry-based approach to error recovery.
 
@@ -252,7 +252,7 @@ Follow these steps to build the source package:
 1.	Make sure you have completed the pre-requisites. Download source code from [Github repository](https://github.com/secure-device-onboard/client-sdk).
 2.	Follow the instructions provided in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) to build the source code by setting the necessary environment variables.
 3.	The FDO Client binary is generated in build/ folder. Ensure to copy them to the root folder before proceeding with the next steps.
-4.	Run the SCT, IOT platform SDK and RV servers.
+4.	Run the Manufacturer, Owner and RV servers.
 5.	Complete Device Initialization 
 6.	Complete Device Onboarding
 

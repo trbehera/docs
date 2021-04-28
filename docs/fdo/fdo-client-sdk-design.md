@@ -2,13 +2,13 @@
 
 This document describes the changes required in the FIDO Device Onboard (FDO) Client Software Development Kit (SDK) to support the new [FIDO Device Onboard specification](https://fidoalliance.org/specs/fidoiot/FIDO-IoT-spec-v1.0-wd-20200730.html).
 
-The FDO Client SDK is a portable C Code implementation of the Secure Device Onboarding (FDO) protocols, cryptographic operations, and associated functions required to support microcontroller (MCU) devices. The SDK is written in C since it is the language of choice for programming MCU devices. While the SDK is developed and tested on Linux, the core components of the SDK are isolated from Linux specifics via an abstraction layer. Well-known open source implementations of cryptographic libraries are used for crypto operations.
+The FDO Client SDK is a portable C Code implementation of the FDO Device Onboarding (FDO) protocols, cryptographic operations, and associated functions required to support microcontroller (MCU) devices. The SDK is written in C since it is the language of choice for programming MCU devices. While the SDK is developed and tested on Linux, the core components of the SDK are isolated from Linux specifics via an abstraction layer. Well-known open source implementations of cryptographic libraries are used for crypto operations.
 
 The reader is expected to be familiar with MCUs in general – their SW & HW characteristics, how they are used, typical applications, their lifecycle, etc.
 
 ## FDO Client SDK Design
 
-The design is divided into different blocks of FDO specific implementation.  This document does not specify API-level design, but rather specifies the block-level and call-level design of the FDO design. The existing REST/JSON based protocols currently implemented in the Client SDK are replaced by the CBOR-based protocols described in the FIOD IOT draft specification.  Please refer to the FDO specification for complete details of the new draft protocols.
+The design is divided into different blocks of FDO specific implementation.  This document does not specify API-level design, but rather specifies the block-level and call-level design of the FDO design. The existing REST/JSON based protocols currently implemented in the Client SDK are replaced by the CBOR-based protocols described in the FIDO Device Onboard Proposed Standard.  Please refer to the FDO specification for complete details of the new draft protocols.
 
 Figure 1.	Basic Block Diagram
 ![Basic Block Diagram](img/Slide3.PNG)
