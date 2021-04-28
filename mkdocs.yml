@@ -46,6 +46,7 @@ nav:
     - FDO Client SDK Introduction: fdo/fdo-client-sdk-reference-guide.md
     - FDO Client SDK API Reference: fdo/fdo-client-sdk-api-reference.md
     - FDO Client SDK Porting Guide: fdo/fdo-client-sdk-porting-guide.md
+    - FDO ServiceInfo System Module: fdo/fdo-serviceinfo-sys.md
   - Client SDK:
     - Introduction: client-sdk/client-sdk-reference-guide.md
     - API Reference: client-sdk/client-sdk-api-reference.md
