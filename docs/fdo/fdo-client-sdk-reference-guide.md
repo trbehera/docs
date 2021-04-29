@@ -1,13 +1,13 @@
 ## Introduction
 The FIDO Device Onboard Client SDK is a portable implementation of the FIDO Device Onboard (FDO) protocol state machines, cryptographic operations, and associated components. While the Client SDK was developed and tested on the Linux* OS, the core components of the SDK are isolated from OS-specific components via an abstraction layer. Well-known open-source implementations of cryptographic libraries are used for cryptographic operations.
 
-In addition, the Client SDK is ported to the following Arm* platforms: 
+In addition, the Client SDK will be ported to the following Arm* platforms in future releases:
 
-1.	Nucleo* development board (NUCLEO-F429ZI) running STM32F429ZI ARM Cortex*-M4 MCU over Mbed* OS.  
-2.	NUCLEO-F767ZI development board running STM32F767ZI Arm* Cortex*-M7 MCU over Mbed* OS.  
-3.	WaRP7 development board running i.MX 7 series Arm Cortex-A7 MPU over Mbed Linux.  
+1.	Nucleo* development board (NUCLEO-F429ZI) running STM32F429ZI ARM Cortex*-M4 MCU over Mbed* OS.
+2.	NUCLEO-F767ZI development board running STM32F767ZI Arm* Cortex*-M7 MCU over Mbed* OS.
+3.	WaRP7 development board running i.MX 7 series Arm Cortex-A7 MPU over Mbed Linux.
 
-The Client SDK is a reference implementation that can be used to onboard a device and then give control to the device application or IOT Platform Service. “Onboarding” means the process by which a device establishes its first trusted connection with an IOT Platform Service.  
+The Client SDK is a reference implementation that can be used to onboard a device and then give control to the device application or IOT Platform Service. “Onboarding” means the process by which a device establishes its first trusted connection with an IOT Platform Service.
 
 Linux provides an easy-to-use development environment for SDK development, debug, and validation. When the SDK is ported to a particular environment, the abstraction layer will be ported to the target environment and real-time operating system (RTOS) (or bare metal). If the target environment supports hardware-accelerated cryptography, the cryptography interfaces will also be ported. If the target environment does not support cryptographic acceleration, the software cryptography libraries used by the SDK will need to be ported. The core SDK can be recompiled in the target environment with no change.
 
@@ -30,7 +30,7 @@ Figure 1.	FDO Client Block Diagram
 ![FDO Client Block Diagram](img/1-Intel FDO Client Block Diagram.JPG)
 
 !!! note
-    FDO is an acronym for FIDO Device Onboard.  
+    FDO is an acronym for FIDO Device Onboard.
 
 Before initiating the FIDO Device Onboard functionality, the Application must first initialize the SDK. After initializing the SDK, the Application can initiate the onboarding by calling the `fdo_sdk_run()`API.
 The SDK maintains persistent data such as configuration and state information that are used to track the onboarding state and store credentials, among others. This information is stored in the **SDK Configuration** file that persists across reboots.
@@ -38,7 +38,7 @@ The SDK maintains persistent data such as configuration and state information th
 ### Threading Model
 The FDO Client SDK is single threaded and the APIs are non-reentrant and blocking. SDK code executes in the context of the calling application thread and will make OS calls via the abstraction layer for storage and networking services within the context of this thread. OS service such as storage and network are assumed to be blocking.
 
-During the execution of the onboarding protocol, the SDK receives data from the Owner Server that must be passed back to application modules (Pre-Service & Owner Service Information).This is achieved via module-specific callback functions that are registered during the SDK initialization.
+During the execution of the onboarding protocol, the SDK receives data from the Owner Server that must be passed back to application modules (Pre-Service & Owner ServiceInfo).This is achieved via module-specific callback functions that are registered during the SDK initialization.
 
 These callback functions are also called within the context of the application thread that entered the SDK via one of the SDK’s APIs (*`fdo_sdk_run`*). The application must not invoke an SDK API from within the callback – SDK flows have been designed such that this is not required.
 
@@ -65,16 +65,19 @@ Since FDO cannot define these steps for all devices and IOT Platforms, it provid
 
 Modules are defined by the device manufacturer (ODM) and are pieces of code that have a specific name and perform a specific function. Firmware update, key provisioning, and Wi-Fi* network setup are some examples of common functionality that could be provided by modules.
 
-A module must be able to report information [called the ***Device Service Information (DSI)***], to IOT Platform, and accept configuration information [called the ***Owner Service Information (OSI)***], from the Owner Service. A module must also be able to publish details of what information it will report as DSI and what information it will accept as OSI. This is done in the form of key-value pairs. The key identifies a parameter and the value provides the value of the parameter.
+A module must be able to report information [called the ***Device ServiceInfo***], to IOT Platform, and/or accept configuration information [called the ***Owner ServiceInfo***], from the Owner Service. A module must also be able to publish details of what information it will report as Device ServiceInfo and/or what information it will accept as Owner ServiceInfo. This is done in the form of key-value pairs. The key identifies a parameter and the value provides the value of the parameter.
 
-A module will publish its interface in the form of DSI keys with associated valid values and OSI keys with associated valid values. The Owner Service is expected to be aware of all devices it will onboard and associated DSI and OSI interfaces.
+A module will publish its interface in the form of Device and Owner ServiceInfo Keys (ServiceInfoKey) with associated valid values (ServiceInfoVal). The Owner Service is expected to be aware of all devices it will onboard and associated Device and Owner ServiceInfo interfaces.
+
+!!! note
+	In this release, a module can only be integrated for processing Owner ServiceInfo. Support for integrating Device ServiceInfo modules into the Client SDK will be added in future releases.
 
 !!! note
 	The expectation is that over time, much like reusable libraries, modules providing specific functionality such as firmware updates or key provisioning will become standardized in terms of their capabilities and interfaces. Device manufactures will simply port the modules and include these libraries to their device implementation. A similar development is expected to occur on the Owner Server side where standard libraries will be developed to interact with the device module and included in the Owner Server implementation.
 
-When a device is onboarded, a secure channel is established between the device and Owner Server after the device has authenticated the Owner Server and vice-versa (during the TO2 protocol). At this point, the Owner Server can query information from the device (DSI) and send down configuration information to the device (OSI). The secure channel uses encryption and integrity protection to secure DSI/OSI data in transit from/to the device.
+When a device is onboarded, a secure channel is established between the device and Owner Server after the device has authenticated the Owner Server and vice-versa (during the TO2 protocol). At this point, the Owner Server can query information from the device (Device ServiceInfo) and send down configuration information to the device (Owner ServiceInfo). The secure channel uses encryption and integrity protection to secure Device ServiceInfo/Owner ServiceInfo data in transit from/to the device.
 
-In addition to DSI and OSI, FDO defines ***Pre-Service Info*** or ***PSI***, a mechanism that the Owner Server can use to inform the device of its expectations in terms of module support. This precedes DSI and OSI and contains a list of expected modules along with basic capabilities expected of the module.
+The Device ServiceInfo must always send 'devmod' module as the very first module, containing a list of supported modules along with basic capabilities expected of the module.
 The following section details the interactions between the Application, Client SDK and Device-specific Modules.
 
 ### Integrated Operational Flows
@@ -94,178 +97,96 @@ The integrated image and execution flows from system boot are shown above and ea
 5.	During the onboarding process, the SDK will call registered modules during the Service Info stage of the protocol. This is done by calling the registered module callback. Details of this interaction are provided in the Figure 3. The onboarding process will succeed only if all module interactions at this stage are successful.
 6.	The Application has successfully completed onboarding and continues normal operation of the device.
 
-The Application continues operating until the system is powered off or reset. On System restart, the preceding steps are re-executed. 
+The Application continues operating until the system is powered off or reset. On System restart, the preceding steps are re-executed.
 
 ### FDO Module Flows
-As mentioned in [Device Specific Modules section](#device-specific-modules), three types of information exchange occur between each module and the Owner Service:  
+As mentioned in [Device Specific Modules section](#device-specific-modules), three types of information exchange occur between each module and the Owner Service:
 
-1.	Pre-Service Info (PSI)
-2.	Device Service Info (DSI)
-3.	Owner Service Info (OSI)
+1.	Device ServiceInfo
+2.	Owner ServiceInfo
 
-Each of these is described as follows: 
+Each of these is described as follows:
 
 Figure 3.	Service Info Exchanges between Device and Owner Server
 
 ![FDO Client Block Diagram](img/3-Service Info Exchanges between Device and Owner Server.JPG)
 
-As shown in the diagram, PSI is ‘global’ to all modules and occurs once between the device and Owner Server. DSI and OSI are module specific.
-
 #### Module Initialization
-For each registered module, the SDK initializes the module by calling its callback with the `FDO_SI_START` type. The module is expected to prepare to receive PSI, DSI, and OSI calls after initialization.
+For each registered module, the SDK initializes the module by calling its callback with the `FDO_SI_START` type. The module is expected to prepare to receive PSI, Device ServiceInfo, and Owner ServiceInfo calls after initialization.
 
 If an error occurs after a module has been initialized, during the remainder of TO2 protocol execution and the Application is restarted, the SDK will again call this API to initialize each registered module. The module must be prepared for multiple such calls due to the SDK’s retry-based approach to error recovery.
 
-#### Pre-Service Info (PSI)
-The intent of PSI is described in the FDO Protocol specification. Basically, PSI provides the Owner Server with a way to inform a module what to expect during the next two service info sequences (such as, DSI and OSI). The module should use this information to prepare itself for the subsequent exchanges.
+#### Device ServiceInfo
+This is the information that make the Owner aware of the supported Owner ServiceInfo modules along with other information that aids in proper configuration of the Device. The module needs to determine in advance how many Device ServiceInfo key-value pairs it needs to send to the Owner Service.
 
-PSI is an ASCII string containing one or more 2-tuple of the format 
-`[module-name][module-data]`. The SDK parses the PSI string and locates the module specified by module-name. If this module is not found, the SDK ignores it and continues with the next PSI tuple in the string.
+The Device initally sends the 'devmod' module in the first round. Other module is sent to the Owner in subsequent rounds. As mentioned previously, only one Device ServiceInfo module is supported currently, i.e, `devmod` module, which is configured statically in `app_initialize()`. All but one parameters are configured in the same method, except Device ServiceInfo Key `devmod:modules` that is configured in `fdo_serviceinfo_modules_list_write()`. The total number of supported Owner ServiceInfo modules and their names must be updated in the above mentioned methods. Support for handling multiple Device ServiceInfo modules will be added in future releases.
 
-The `[module-data]` is a key-value pair where the value is optional (depending on the key) and is encoded as `key~value` (the ‘~’ char is the delimiter). The SDK will parse this substring to extract the key and value.
+Note that Device ServiceInfo is one way – from device to Owner Server. The Owner Server cannot respond to any Device ServiceInfo message during this phase.
 
-If the module is found, the SDK invokes the modules callback function with type `FDO_SI_SET_PSI` and passes the module-data to it in the sv parameter. The key is contained in `sv.key` and the value if present, is in `sv.value`. If no value is present, the `sv.value` will be `NULL`. The module is expected to process the key-value and return either success or failure. A failure response will cause the entire onboarding sequence to fail and the Application must retry it later. In most cases the Owner Server will use PSI to allow the module to perform basic initialization and setup for the following DSI and OSI rounds in terms of allocating resources, and others.
+#### Owner ServiceInfo
+Owner ServiceInfo follows Device ServiceInfo. Unlike Device ServiceInfo, neither the SDK nor the module can determine in advance how many Owner ServiceInfo key-values they are going to receive. On receiving an Owner ServiceInfo, the SDK locates the module and invokes its callback with the `FDO_SI_SET_OSI` type.
 
-From a format standpoint, both key and value are `NULL` terminated ASCII strings. The value may optionally contain base64 encoded binary data. A PSI string could contain multiple 2-tuples with the same module-name. In this case, the SDK will invoke the same module multiple times, once for each occurrence of module-name in the PSI string. The corresponding key-value pairs will be passed in each of these invocations. The `count` parameter will act as an ‘index’ starting at 0 for the first invocation and incremented for subsequent invocations.
+The Owner is supposed to send module activation message, that is it sends `active` key with value `true` for a particular module, prior to sending the Owner ServiceInfo for that module. When the SDK receives the same, it activates that particular module and passes on the subsequent ServiceInfo key-values to that module. If the SDK receives ServiceInfo for a module that is, either not supported, or, is not currently active, it returns without throwing any error, without invoking the callback method. Optionally, the Owner Server could send a deactivation message to a module, that is it sends `active` key with value `false` for a particular module if it is not planning to use the module.
 
-!!! note
-	The PSI is considered the module configuration data and is independent of the DSI (see next section), which is the device information. The number of PSI elements is hence decoupled from the number of DSI elements. If the module wishes to retain either the key of value parameters for later use, it must make a local copy of the contents. The pointers passed during the invocation will be invalid after the callback returns to the SDK.
+Received key-values are passed to the module in the `module_message` and `fdor` callback parameter fields. The internal buffer of `fdor` contains the entire message as received in TO2.OwnerServiceInfo (Type 69) with the current position set to the received Owner ServiceInfo value (ServiceInfoVal), while the Owner ServiceInfo key (ServiceInfoKey) is provided in module_message. The module must read the value from `fdor_t`, process it as per the key, and advance the `fdor_t` internal buffer to the next valid CBOR entry (currently being done internally in few methods). The module must treat the received `fdor_t` as a read-only structure, and must never modify it, excpet advancing to the next CBOR entry. It is assumed that the module knows how to interpret the value for a particular key based on the key.
 
-!!! note
-	PSI is one-way, from the Owner Server to the device. Apart from reporting success or failure, the device has no way of communicating any other information back to the Owner Server during this exchange.
-
-#### Device Service Info (DSI)
-DSI follows PSI. The module needs to determine in advance how many DSI key-value pairs it needs to send to the Owner Service. In some cases, this is determined statically while in others, the module uses information obtained from the Owner Server in PSI to determine how many DSI key-values it needs to upload.
-
-On completing the PSI round, the SDK queries each registered module for the number of DSI rounds it requires. This is done by invoking the modules callback with the `FDO_SI_GET_DSI_COUNT` type. The module is expected to return the number of DSI key-value pairs it requires in the `count` callback parameter.
-
-When the DSI round for a module begins, the SDK will call the modules callback with the `FDO_SI_GET_DSI` type. The *`count`* parameter will indicate the ‘index’ of the DSI key-value pair being requested by the SDK. The SDK uploads each key-value pair to the Owner Server in the same order. The module may choose to ignore the ‘index’ sent by the SDK, but it is advisable for the module to return key-value data based on this index. This callback will be invoked as many times as specified by the module by the prior `FDO_SI_GET_DSI_COUNT` return value (the ‘index’ value will vary from 0 to `count-1`).
-
-Key-values are returned in the `sv.key` and `sv.value` parameter fields. The `sv.key` must strictly be an `NULL` terminated ASCII string. The `sv.value` is also a `NULL` terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the Owner Server knows how to interpret a particular key-value from a module. The module must include Base64 encoding capabilities if required.
-
-The very first key-value returned by a module (‘index’ zero) must be an activation value indicating whether the module is active or not. The key value must be `“active”`, and the value must be `“1”` if the module is active or `“0”` if the module is not active. If the module is not active, the Owner Server will not send and DSI messages to the module. This requires each module to have at least one DSI – that is, the count value returned for the `FDO_SI_GET_DSI_COUNT` callback type must be at least `1.` See the FDO Protocol Specification for more information on module activation and deactivation.
-
-Note that DSI is one way – from device to Owner Server. The Owner Server cannot respond to any DSI message during this phase. It can however respond to a prior DSI message in the next, OSI phase.
-
-#### Owner Service Info (OSI)
-OSI follows DSI. Unlike DSI, neither the SDK nor the module can determine in advance how many OSI key-values they are going to receive. On receiving an OSI, the SDK locates the module and invokes its callback with the `FDO_SI_SET_OSI` type.
-
-Received key-values are passed to the module in the `sv.key` and `sv.value` callback parameter fields. The `sv.key` must strictly be an `NULL` terminated ASCII string. The `sv.value` is also a NULL terminated ASCII string but could also be a Base64 encoded binary value. It is assumed that the module knows how to interpret the value for a particular key based on the key name. In addition to the sv parameter, the SDK will pass an ‘index’ of the OSI in the `count` parameter. The ‘index’ begins at 0 and increments for each OSI key-value pair received for the module.
-
-Corresponding to the activation message in DSI, the Owner Server could send a deactivation message to a module if it is not planning to use the module. The message will have a key of `“active”` and value of `“0”`. On receiving this message, a module may free allocated resources and effectively shutdown from an FDO perspective. Unlike the activation message, this message is optional and will only be sent if the Owner Server is not going to use the module. A module must expect to remain active unless it explicitly receives a deactivation message, or it already indicated that is not active in the earlier DSI stage. See the FDO Protocol Specification for more information on module activation and deactivation.
-
-If a module receives an OSI when it is in the deactivated state, it should return a status of `FDO SI_CONTENT_ERROR` indicating that the received element was not expected.
 The module is expected to process the key-value pair and return a result indicating if the operation was successful or failed. The module may return `FDO_SI_CONTENT_ERROR` or `FDO_SI_INTERNAL_ERROR` to differentiate between invalid value contents or a module run-time error. This information is reported to the Owner Server. The module must return `FDO_SI_SUCCESS` on successful completion.
 
-Note that OSI is one way – from Owner Server to the device. Apart from indicating failure, the device cannot respond to an OSI message.
+Note that Owner ServiceInfo is one way – from Owner Server to the device. Apart from indicating failure, the device cannot respond to an Owner ServiceInfo message.
 
 #### Module Completion
-When all service information rounds of all modules have completed successfully, the SDK calls each module’s callback with the `FDO_SI_END` type. All other callback parameters are `NULL`. Modules can commit configuration information at this point if not already done so.
+When all ServiceInfo rounds of all modules have completed successfully, the SDK calls each module’s callback with the `FDO_SI_END` type. All other callback parameters are `NULL`. Modules can commit configuration information at this point if not already done so.
 
 The SDK will not call into the module after this. The SDK will ignore the return value of this callback since no further failure is expected at this point.
 
 #### Module Errors
-If an error occurs during the service information phase, the TO2 protocol is considered to have failed and will be aborted. The Application will need to retry onboarding later. A failure could occur for multiple reasons including failure of device/server interaction, failure of signature or hash verification, malformed messages and if a module returns a failure while processing a PSI, DSI, or OSI command/request.
+If an error occurs during the ServiceInfo phase, the TO2 protocol is considered to have failed and will be aborted. The Application will need to retry onboarding later. A failure could occur for multiple reasons including failure of device/server interaction, failure of signature or hash verification, malformed messages and if a module returns a failure while processing a PSI, Device ServiceInfo, or Owner ServiceInfo command/request.
 
 On failure, all modules must clean up internal state and discard any configuration information they might have got from the Owner Server. Conversely, the Owner Server will also discard all data it might have received from modules.
 
-When all service information rounds of all modules have completed successfully, the SDK calls each module’s callback with the `FDO_SI_FAILURE` type. All other callback parameters are `NULL`. Modules must discard all information received via PSI or OSI commands until this point. If operations have been performed, or data already committed, they should be undone to return the system to a pre-service information state.
+When all ServiceInfo rounds of all modules have completed successfully, the SDK calls each module’s callback with the `FDO_SI_FAILURE` type. All other callback parameters are `NULL`. Modules must discard all information received via Owner ServiceInfo commands until this point. If operations have been performed, or data already committed, they should be undone to return the system to it intial state.
 
 The SDK will not call into the module after this. The SDK will ignore the return value of this callback since no further failure is expected at this point.
 
 ## Run the Client SDK
-The Client SDK includes a binary package, intended to get you started quickly and a source package. For details on downloading the packages, refer to the Get Started Guide. 
+The Client SDK includes a binary package, intended to get you started quickly and a source package. For details on downloading the packages, refer to the Get Started Guide.
 ### Prerequisites
-The requirements for the computer that you will run Client SDK on are as follows: 
+The requirements for the computer that you will run Client SDK on are as follows:
 
 Table 1.	Prerequisites
 
 |                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    Software                                      |    ·      Linux\* Ubuntu\* 20.04 using   OpenSSL\* 1.1.1g <br/>·      JDK11  <br/> ·      FDO release binaries package (for running test servers) <br/>     o The root directory of extracted binary package is referred to as <fdo_sdk_binaries> in subsequent sections. <br/>   ·      FDO Client SDK alpha-release binary package <br/>   o The root directory of extracted binary package is referred to as < FDOClientSDK> in subsequent sections. <br/>  ·      FDO Client SDK alpha-release sources package <br/>  o The root directory of extracted source code is referred to as < FDOClientSDK> in subsequent sections. <br/>  ·      Apache Maven\* (for building sample Java\* based test owner   service)   <br/>    Additional Ubuntu\* 20.04  prerequisites can be found in the   <releases source>/FDOClientSDK/README.md     |
+|    Software                                      |    ·      Linux\* Ubuntu\* 20.04 using   OpenSSL\* 1.1.1k <br/>. Download FDO PRI Components-Samples 0.5-rel (for running test servers) from https://github.com/secure-device-onboard/pri-fidoiot. <br/>     |
 |    Safestring   library                          |    Safestring library v1.0.0  <br/> ·          Download safestringlib from  https://github.com/intel/safestringlib  <br/> ·          `cd safestringlib` <br/>   ·          `mkdir obj` <br/>  ·          `make ` <br/>  ·          The   library file libsafestring.a will be created after make.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|    Java\*                                         |    Set the $JAVA_HOME environment   variable.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |123456
-
-### Run the Binary Package
-The following subsections provide the steps to run the binary package.
+|    TinyCBOR   library                          |    TinyCBOR library v0.5.3  <br/> ·          Download TinyCBOR from  https://github.com/intel/tinycbor  <br/> ·          `cd tinycbor` <br/>   ·          `make ` <br/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 #### Get the Device Private Key (ECDSA based)
-The SDK requires a device Private Key as input for device attestation process (to prove itself to Rendezvous or Owner Server during TO1 or TO2 protocol). The key could be based on ECDSA (on curve P-256/P-384) based on the device attestation method being used on the field. This key must be stored in a specific file and is read by the SDK on startup. 
+The SDK requires a device Private Key as input for device attestation process (to prove itself to Rendezvous or Owner Server during TO1 or TO2 protocol). The key could be based on ECDSA (on curve P-256/P-384) based on the device attestation method being used on the field. This key must be stored in a specific file and is read by the SDK on startup.
 
-_**For ECDSA (P-256) based device-attestation method:**_  
+_**For ECDSA (P-256) based device-attestation method:**_
 
 In case of ECDSA, place the ECDSA P-256 private Key with the name ecdsa256privkey.dat in the following location:
 `data/ecdsa256privkey.dat`
 
-_**For ECDSA (P-384) based device-attestation method:**_  
+_**For ECDSA (P-384) based device-attestation method:**_
 
 For ECDSA384, place the ECDSA P-384 private Key with the name ecdsa384privkey.dat in the following
 location: `data/ecdsa384privkey.data`
 
-Follow [All-in-one Demo README](https://github.com/secure-device-onboard/all-in-one-demo/blob/1.10-rel/README.md) to start the FDO Manufacturer, Rendezvous, and Owner Service: PRI Owner Service and PRI Rendezvous Service.
-
-    To run FDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) document.
-
-_**Terminal #1: Start All-in-one Demo**_  
-
-#### Device Initialization
-This section describes about running the FDO reference device (based on Linux* reference implementation) only. 
-Going forward, <fdo-client-sdk-bindir> refers to the location where the FDO Client application 'linux-client' and the related 'data' folder are placed.
-
-!!! note:- </b>
-    Running the device for the first time completes DI.
-	Running the device for the second time on boards the device. Between subsequent device runs, it is assumed that ownership voucher is correctly extended and TO0 is successfully completed.
-
-_**Terminal 2: Run the device for device initialization:**_  
-  
-    $ cd <fdo-client-sdk-bindir>
-    $ ./linux-client
-
-```    
-$ ./linux-client
---------DI successful--------
-```
-This step completes Device Initialization. 
-
-#### Device Onboarding  
-  
-_**Run the device again to onboard the device:**_ 
-
-	$ cd <fdo-client-sdk-bindir>
-	$ ./linux-client
-
-```
-$ ./linux-client
---------TO2 successful--------
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@FIDO Device Onboarding Complete@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-```
-This step successfully onboards the device. 
-
-!!! note
-    To run FDO ARM Cortex-M4 or Cortex-A7 based devices, follow the detailed steps (including flashing and device preparation) mentioned in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) document.
-
-### Build the Source 
-Follow these steps to build the source package:  
-
-1.	Make sure you have completed the pre-requisites. Download source code from [Github repository](https://github.com/secure-device-onboard/client-sdk).
-2.	Follow the instructions provided in the [README](https://github.com/secure-device-onboard/client-sdk/blob/1.10-rel/README.md) to build the source code by setting the necessary environment variables.
-3.	The FDO Client binary is generated in build/ folder. Ensure to copy them to the root folder before proceeding with the next steps.
-4.	Run the Manufacturer, Owner and RV servers.
-5.	Complete Device Initialization 
-6.	Complete Device Onboarding
+### Run the FDO Client SDK Onboarding Demo
+Refer to [Client SDK README](https://github.com/secure-device-onboard/client-sdk-fidoiot/blob/0.5-rel/README.md) for detailed steps on setting up FDO Client SDK and FDO PRI Manufacturer, Rendezvous and Owner and running the demo.
 
 ## Custom Pluggable Modules
-As part of the onboard protocol, the Client SDK supports custom pluggable modules. OEMs can develop their desired functionality by following the module protocol. This module functionality will be called during the onboard protocol. 
+As part of the onboard protocol, the Client SDK supports custom pluggable modules. OEMs can develop their desired functionality by following the module protocol. This module functionality will be called during the onboard protocol.
 
-A sample device module, **fdo_sys** has been developed and is available for reference.
+A sample device module, **fdo_sys** has been developed as per [specification](../fdo/fdo-serviceinfo-sys.md), and is available for reference.
 
-**fdo_sys** device module is intended to collect the data (typically files and scripts) sent from the FDO Owner to the FDO device, process, and execute the data in some meaningful way.
+**fdo_sys** device module is intended to collect the data (typically files and scripts) sent from the FDO PRI Owner to the FDO Client SDK, process, and execute the data in some meaningful way.
 
 To use **fdo_sys** device module, follow these steps:
 
-**To use the sample device module fdo_sys :**  
+**To use the sample device module fdo_sys :**
 
 1.	Build Client SDK either in release or debug mode using MODULES=true flag.
 
@@ -295,13 +216,12 @@ $ ./linux-client
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 ```
 ## Known Issues and Limitations
-The following are the known issues:  
+The following are the known issues:
 
 •	The HAL implementation provided in this release is for reference only and not intended for production. It does not provide the level of security required by industry standards for a fully secure production environment.
 
-•	‘fdo_sys’ module source within 'device_modules' folder is an example code demonstrating FDO device module implementation for reference purpose only. This code is not written following secure production level coding and checks. This sample code must not to be used as it is.
+•	‘fdo_sys’ module source within 'device_modules' folder is an example code demonstrating FDO device module implementation for reference purpose only. The executable script must only contain alpha-numeric characters and underscore (_) in their names, with extensions `.py` and `.sh`. This code is not written following secure production level coding and checks. This sample code must not to be used as it is.
 
-The following are the known limitations:  
+The following are the known limitations:
 
-•	Network discovery and CSR feature is not supported for ARM Cortex M4, M7, and A7 devices.
-
+•	The ARM platforms, namely ARM Cortex M4, M7, and A7 devices, as well as mbedTLS and SE crypto operations, are not supported in this release.
