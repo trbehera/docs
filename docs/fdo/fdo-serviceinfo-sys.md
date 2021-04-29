@@ -1,8 +1,8 @@
 This section defines the “system” module (fdo_sys) specification which provides basic onboarding services
-FDO capable devices. A module is a set of key-value pairs that define the onboarding operations
-that can be performed on given FDO device. Module key-value pairs are exchanged between the device
+for FDO capable devices. A module is a set of key-value pairs; they define the onboarding operations
+that can be performed on a given FDO device. Module key-value pairs are exchanged between the device
 and it’s owning Device Management Service. It is up to the owning management service and the
-device to interpret the key-value pairs in accordance to the module specification.
+device to interpret the key-value pairs in accordance with the module specification.
 
 ## fdo_sys module definition
 The system module defines basic onboarding operations such as downloading content and executing
@@ -34,7 +34,7 @@ remaining strings are the arguments to the command. It is expected that it would
 The fdo_sys:filedesc command describes the path to a file the will be used as a part of the
 on-boarding process. A zero-length file is expected to exist on the local file system after this
 command is received. If the described file already exists it is truncated to zero length, otherwise
-a zero-length file is created. The file needs to be created its permissions are set to read/write
+a zero-length file is created. The permissions for the created file are set to read/write
 for the user account the module is running under. File permissions can subsequently be modified with
 the fdo_sys:exec command if needed. If a path is not included as a part of the file name, the
 current working directory of the module is assumed. All subsequent fdo_sys:write operations will
